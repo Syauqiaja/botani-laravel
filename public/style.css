@@ -27,7 +27,7 @@ Version:1.0
 15. Newslatter CSS
 16. About Us CSS
 17. Team CSS
-18. Blog CSS	
+18. Blog CSS
 	+ Blog Archive
 	+ Blog Sidebar
 	+ Blog Single
@@ -379,7 +379,7 @@ Version:1.0
 }
 /* Topbar Left Nav */
 .header.shop .left-nav{
-	
+
 }
 .header.shop .top-left .list-main li:first-child{
 	padding-left:0;
@@ -546,7 +546,7 @@ Version:1.0
 	width: 70px;
 	height: 70px;
 	border-radius:0;
-	
+
 }
 .header .shopping-list .cart-img:hover img{
 	transform:scale(1.09);
@@ -792,7 +792,7 @@ Version:1.0
 	-webkit-box-shadow: 0px 5px 15px #0000000a;
 	-moz-box-shadow: 0px 5px 15px #0000000a;
 	box-shadow: 0px 5px 15px #0000000a;
-	
+
 }
 
 .all-category .main-category{
@@ -1163,7 +1163,7 @@ Version:1.0
 .header.sticky .all-category{}
 .header.sticky .all-category h3{
 	cursor:pointer;
-	
+
 }
 .header.sticky .all-category .main-category{
 	opacity:0;
@@ -1226,31 +1226,34 @@ Version:1.0
 
 /*======================================
    Hero Area CSS
-========================================*/ 
+========================================*/
 .hero-slider {
 	background: #fff;
 	overflow: hidden;
 	/* background: rgb(0,0,0);
 	background: linear-gradient(180deg, rgba(0,0,0,0.5074404761904762) 4%, rgba(0,0,0,0) 100%); */
 }
-.hero-slider .single-slider {
-	background:  linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,0,0.23012955182072825) 100%), url('images/slide-1.jpg');
-	height: auto;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+
+.slide-1{
+    background:  linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,0,0.23012955182072825) 100%), url('images/slide-1.jpg');
+}
+.slide-2{
+    background:  linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,0,0.23012955182072825) 100%), url('images/slide-2.jpg');
+}
+.slide-3{
+    background:  linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,0,0.23012955182072825) 100%), url('images/slide-3.jpg');
+}
+
+.hero-slider .single-slider{
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 510px;
 }
 .hero-slider .text-inner {
-	
+
 }
-/* .custom-hero{
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,0,0.4318102240896359) 100%);
- } */
 .hero-slider .hero-text {
 	padding: 0 30px;
 	margin-top:100px;
@@ -1482,7 +1485,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /* Hero Area 4 */
 .hero-area4 .big-content{
-	
+
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1551,11 +1554,11 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 
 /*======================================
    End Hero Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Small Banner CSS
-========================================*/ 
+========================================*/
 .small-banner{
 	padding:30px 0;
 	padding-bottom:0;
@@ -1610,11 +1613,11 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /*======================================
    End Small Banner CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Mid Banner CSS
-========================================*/ 
+========================================*/
 .midium-banner{
 	padding:0;
 }
@@ -1676,7 +1679,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /*======================================
    End Mid Banner CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Most Popular CSS
@@ -1762,7 +1765,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 .product-area .nav-tabs li:last-child a{
 	border-color:transparent;
-} 
+}
 .product-area .nav-tabs li a i{
 	margin-right:10px;
 }
@@ -2153,7 +2156,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	margin-top: 10px;
 }
 .shop-sidebar .categor-list li{
-	
+
 }
 .shop-sidebar .categor-list li {
 	margin-bottom: 10px;
@@ -2624,7 +2627,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	border-color:transparent;
 }
 .shop.single .tab-single {
-	
+
 }
 .shop.single .single-des {
 	margin-top:35px;
@@ -2633,7 +2636,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	margin-bottom:15px;
 	font-weight:500;
 	font-size:22px;
-	
+
 }
 .shop.single .single-des ul{}
 .shop.single .single-des ul li {
@@ -3002,7 +3005,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	transform:rotate(360deg);
 }
 .shopping-cart .border{
-	
+
 }
 .shopping-cart .table .remove-icon{
 	font-size:16px;
@@ -3159,7 +3162,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	padding-left: 100px;
 }
 .shopping-cart .total-amount .right ul{
-	
+
 }
 .shopping-cart .total-amount .right ul li {
 	font-size: 15px;
@@ -3245,7 +3248,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	background: #F6F7FB;
 }
 .shop.checkout .form .form-group input:hover{
-	
+
 }
 .shop.checkout .nice-select {
 	width: 100%;
@@ -3734,7 +3737,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	margin-top:40px;
 	width: 80px;
 	display:inline-block;
-	
+
 }
 .cown-down .content .cdown {
 	text-align: center;
@@ -3993,7 +3996,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 .about-us .about-img img{
 	height:100%;
 	width:100%;
-	
+
 }
 /*=============================
 	End About US CSS
@@ -4001,7 +4004,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 
 /*======================================
   10. Start Team CSS
-========================================*/  
+========================================*/
 .team{
 	background:#F6F7FB;
 }
@@ -4064,7 +4067,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /*======================================
   End Team CSS
-========================================*/ 
+========================================*/
 
 /*======================================
    Start Shop Blog CSS
@@ -4209,7 +4212,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	margin-top: 15px;
 }
 .main-sidebar .categor-list li{
-	
+
 }
 .main-sidebar .categor-list li {
 	margin-bottom: 10px;
@@ -4255,7 +4258,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	border:none;
 }
 .main-sidebar .single-post .image {
-	
+
 }
 .main-sidebar .single-post .image img{
 	float: left;
@@ -4323,7 +4326,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /* Blog Newslatter CSS */
 .main-sidebar .newsletter{
-	
+
 }
 .main-sidebar .newsletter .letter-inner {
 	position:relative;
@@ -4522,7 +4525,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	background:#1CD449;
 }
 .blog-single .comments{
-	
+
 }
 .blog-single .comments .single-comment {
 	position: relative;
@@ -4541,7 +4544,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 	left: 0;
 }
 .blog-single .single-comment .content {
-	
+
 }
 .blog-single .single-comment .content h4 {
 	color: #333;
@@ -4951,7 +4954,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7343312324929971) 4%, rgba(0,0,
 }
 /* Copyright */
 .footer .copyright{
-	
+
 }
 .footer .copyright .inner{
 	border-top:1px solid #eeeeee3d;
