@@ -13,34 +13,34 @@
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-	
+
 	<!-- StyleSheet -->
-	
+
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
 	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.min.css') }}">
 	<!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
 	<!-- Fancybox -->
-	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
 	<!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/themify-icons.css') }}">
 	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="css/niceselect.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/niceselect.css') }}">
 	<!-- Animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
 	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="css/flex-slider.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/flex-slider.min.css') }}">
 	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl-carousel.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl-carousel.css') }}">
 	<!-- Slicknav -->
-    <link rel="stylesheet" href="css/slicknav.min.css">
-	
+    <link rel="stylesheet" href="{{ URL::asset('css/slicknav.min.css') }}">
+
 	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
 
 	<!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -49,13 +49,13 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-	
-	
+
+
 </head>
 <body class="js">
-	
+
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="preloader-inner">
@@ -66,8 +66,8 @@
 		</div>
 	</div>
 	<!-- End Preloader -->
-	
-	
+
+
 	<!-- Header -->
 	<header class="header shop">
 		<!-- Topbar -->
@@ -125,7 +125,7 @@
 						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
-						
+
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
@@ -189,11 +189,11 @@
 							<div class="menu-area">
 								<!-- Main Menu -->
 								<nav class="navbar navbar-expand-lg">
-									<div class="navbar-collapse">	
-										<div class="nav-inner">	
+									<div class="navbar-collapse">
+										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="#">Home</a></li>
-													<li><a href="#">Product</a></li>																			
+													<li><a href="#">Product</a></li>
 													<li><a href="#">Blog<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
@@ -204,7 +204,7 @@
 										</div>
 									</div>
 								</nav>
-								<!--/ End Main Menu -->	
+								<!--/ End Main Menu -->
 							</div>
 						</div>
 					</div>
@@ -214,10 +214,10 @@
 		<!--/ End Header Inner -->
 	</header>
 	<!--/ End Header -->
-	
+
 	<!-- Slider Area -->
 	<section class="hero-slider">
-		
+
 		<div class="single-slider">
 			<div class="container">
 				<div class="row no-gutters">
@@ -232,10 +232,10 @@
 								<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 										class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 							</div>
-		
+
 							<!-- Content Row -->
 							<div class="row">
-		
+
 								<!-- Earnings (Monthly) Card Example -->
 								<div class="col-xl-3 col-md-6 mb-4">
 									<div class="card border-left-primary shadow h-100 py-2">
@@ -253,7 +253,7 @@
 										</div>
 									</div>
 								</div>
-		
+
 								<!-- Earnings (Monthly) Card Example -->
 								<div class="col-xl-3 col-md-6 mb-4">
 									<div class="card border-left-success shadow h-100 py-2">
@@ -271,7 +271,7 @@
 										</div>
 									</div>
 								</div>
-		
+
 								<!-- Earnings (Monthly) Card Example -->
 								<div class="col-xl-3 col-md-6 mb-4">
 									<div class="card border-left-info shadow h-100 py-2">
@@ -300,7 +300,7 @@
 										</div>
 									</div>
 								</div>
-		
+
 								<!-- Pending Requests Card Example -->
 								<div class="col-xl-3 col-md-6 mb-4">
 									<div class="card border-left-warning shadow h-100 py-2">
@@ -319,21 +319,21 @@
 									</div>
 								</div>
 							</div>
-		
+
 							<!-- Content Row -->
-		
-							
+
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		 
+
+
 	</section>
 	<!--/ End Slider Area -->
-	
-	
-	
+
+
+
 	<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
@@ -426,54 +426,54 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
- 
-	<!-- Jquery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<!-- Popper JS -->
-	<script src="js/popper.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Color JS -->
-	<script src="js/colors.js"></script>
-	<!-- Slicknav JS -->
-	<script src="js/slicknav.min.js"></script>
-	<!-- Owl Carousel JS -->
-	<script src="js/owl-carousel.js"></script>
-	<!-- Magnific Popup JS -->
-	<script src="js/magnific-popup.js"></script>
-	<!-- Waypoints JS -->
-	<script src="js/waypoints.min.js"></script>
-	<!-- Countdown JS -->
-	<script src="js/finalcountdown.min.js"></script>
-	<!-- Nice Select JS -->
-	<script src="js/nicesellect.js"></script>
-	<!-- Flex Slider JS -->
-	<script src="js/flex-slider.js"></script>
-	<!-- ScrollUp JS -->
-	<script src="js/scrollup.js"></script>
-	<!-- Onepage Nav JS -->
-	<script src="js/onepage-nav.min.js"></script>
-	<!-- Easing JS -->
-	<script src="js/easing.js"></script>
-	<!-- Active JS -->
-	<script src="js/active.js"></script>
 
-	<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Jquery -->
+    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery-migrate-3.0.0.js') }}"></script>
+	<script src="{{ URL::asset('js/jquery-ui.min.js') }}"></script>
+	<!-- Popper JS -->
+	<script src="{{ URL::asset('js/popper.min.js') }}"></script>
+	<!-- Bootstrap JS -->
+	<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+	<!-- Color JS -->
+	<script src="{{ URL::asset('js/colors.js') }}"></script>
+	<!-- Slicknav JS -->
+	<script src="{{ URL::asset('js/slicknav.min.js') }}"></script>
+	<!-- Owl Carousel JS -->
+	<script src="{{ URL::asset('js/owl-carousel.js') }}"></script>
+	<!-- Magnific Popup JS -->
+	<script src="{{ URL::asset('js/magnific-popup.js') }}"></script>
+	<!-- Waypoints JS -->
+	<script src="{{ URL::asset('js/waypoints.min.js') }}"></script>
+	<!-- Countdown JS -->
+	<script src="{{ URL::asset('js/finalcountdown.min.js') }}"></script>
+	<!-- Nice Select JS -->
+	<script src="{{ URL::asset('js/nicesellect.js') }}"></script>
+	<!-- Flex Slider JS -->
+	<script src="{{ URL::asset('js/flex-slider.js') }}"></script>
+	<!-- ScrollUp JS -->
+	<script src="{{ URL::asset('js/scrollup.js') }}"></script>
+	<!-- Onepage Nav JS -->
+	<script src="{{ URL::asset('js/onepage-nav.min.js') }}"></script>
+	<!-- Easing JS -->
+	<script src="{{ URL::asset('js/easing.js') }}"></script>
+	<!-- Active JS -->
+	<script src="{{ URL::asset('js/active.js') }}"></script>
+
+	<script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ URL::asset('js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ URL::asset('vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{{ URL::asset('js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ URL::asset('js/demo/chart-pie-demo.js') }}"></script>
 </body>
 </html>

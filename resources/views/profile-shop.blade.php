@@ -13,34 +13,34 @@
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-	
+
 	<!-- StyleSheet -->
-	
+
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
 	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.min.css') }}">
 	<!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
 	<!-- Fancybox -->
-	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
 	<!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/themify-icons.css') }}">
 	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="css/niceselect.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/niceselect.css') }}">
 	<!-- Animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
 	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="css/flex-slider.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/flex-slider.min.css') }}">
 	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl-carousel.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl-carousel.css') }}">
 	<!-- Slicknav -->
-    <link rel="stylesheet" href="css/slicknav.min.css">
-	
+    <link rel="stylesheet" href="{{ URL::asset('css/slicknav.min.css') }}">
+
 	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
 
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;    
+    background-color: #e2e8f0;
 }
 .main-body {
     padding: 15px;
@@ -100,11 +100,11 @@
 }
 
     </style>
-	
-	
+
+
 </head>
 <body class="js">
-	
+
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="preloader-inner">
@@ -115,9 +115,9 @@
 		</div>
 	</div>
 	<!-- End Preloader -->
-	
-	
-		
+
+
+
 		<!-- Header -->
 		<header class="header shop">
 			<!-- Topbar -->
@@ -252,11 +252,11 @@
 								<div class="menu-area">
 									<!-- Main Menu -->
 									<nav class="navbar navbar-expand-lg">
-										<div class="navbar-collapse">	
-											<div class="nav-inner">	
+										<div class="navbar-collapse">
+											<div class="nav-inner">
 												<ul class="nav main-menu menu navbar-nav">
 														<li class="active"><a href="index.html">Home</a></li>
-														<li><a href="#">Product</a></li>																			
+														<li><a href="#">Product</a></li>
 														<li><a href="#">Blog<i class="ti-angle-down"></i></a>
 															<ul class="dropdown">
 																<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
@@ -267,7 +267,7 @@
 											</div>
 										</div>
 									</nav>
-									<!--/ End Main Menu -->	
+									<!--/ End Main Menu -->
 								</div>
 							</div>
 						</div>
@@ -277,7 +277,7 @@
 			<!--/ End Header Inner -->
 		</header>
 		<!--/ End Header -->
-	
+
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
 		<div class="container">
@@ -294,7 +294,7 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-  
+
 		<div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -311,7 +311,7 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
             <div class="col-md-8">
               <div class="card mb-3">
@@ -362,12 +362,12 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
     </div>
-	
+
 	<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
@@ -460,51 +460,51 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-	
-	
- 
+
+
+
 	<!-- Jquery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
+    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery-migrate-3.0.0.js') }}"></script>
+	<script src="{{ URL::asset('js/jquery-ui.min.js') }}"></script>
 	<!-- Popper JS -->
-	<script src="js/popper.min.js"></script>
+	<script src="{{ URL::asset('js/popper.min.js') }}"></script>
 	<!-- Bootstrap JS -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 	<!-- Color JS -->
-	<script src="js/colors.js"></script>
+	<script src="{{ URL::asset('js/colors.js') }}"></script>
 	<!-- Slicknav JS -->
-	<script src="js/slicknav.min.js"></script>
+	<script src="{{ URL::asset('js/slicknav.min.js') }}"></script>
 	<!-- Owl Carousel JS -->
-	<script src="js/owl-carousel.js"></script>
+	<script src="{{ URL::asset('js/owl-carousel.js') }}"></script>
 	<!-- Magnific Popup JS -->
-	<script src="js/magnific-popup.js"></script>
+	<script src="{{ URL::asset('js/magnific-popup.js') }}"></script>
 	<!-- Fancybox JS -->
-	<script src="js/facnybox.min.js"></script>
+	<script src="{{ URL::asset('js/facnybox.min.js') }}"></script>
 	<!-- Waypoints JS -->
-	<script src="js/waypoints.min.js"></script>
+	<script src="{{ URL::asset('js/waypoints.min.js') }}"></script>
 	<!-- Jquery Counterup JS -->
-	<script src="js/jquery-counterup.min.js"></script>
+	<script src="{{ URL::asset('js/jquery-counterup.min.js') }}"></script>
 	<!-- Countdown JS -->
-	<script src="js/finalcountdown.min.js"></script>
+	<script src="{{ URL::asset('js/finalcountdown.min.js') }}"></script>
 	<!-- Nice Select JS -->
-	<script src="js/nicesellect.js"></script>
+	<script src="{{ URL::asset('js/nicesellect.js') }}"></script>
 	<!-- Ytplayer JS -->
-	<script src="js/ytplayer.min.js"></script>
+	<script src="{{ URL::asset('js/ytplayer.min.js') }}"></script>
 	<!-- Flex Slider JS -->
-	<script src="js/flex-slider.js"></script>
+	<script src="{{ URL::asset('js/flex-slider.js') }}"></script>
 	<!-- ScrollUp JS -->
-	<script src="js/scrollup.js"></script>
+	<script src="{{ URL::asset('js/scrollup.js') }}"></script>
 	<!-- Onepage Nav JS -->
-	<script src="js/onepage-nav.min.js"></script>
+	<script src="{{ URL::asset('js/onepage-nav.min.js') }}"></script>
 	<!-- Easing JS -->
-	<script src="js/easing.js"></script>
+	<script src="{{ URL::asset('js/easing.js') }}"></script>
 	<!-- Google Map JS -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM"></script>	
-	<script src="js/gmap.min.js"></script>
-	<script src="js/map-script.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM"></script>
+	<script src="{{ URL::asset('js/gmap.min.js') }}"></script>
+	<script src="{{ URL::asset('js/map-script.js') }}"></script>
 	<!-- Active JS -->
-	<script src="js/active.js"></script>
+	<script src="{{ URL::asset('js/active.js') }}"></script>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
