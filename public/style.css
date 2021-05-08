@@ -53,6 +53,13 @@ Version:1.0
     height: 100%;
     object-fit: cover;
   }
+
+  .btn.bs.btn-primary {
+    color: rgb(245, 245, 245);
+  }
+  .btn.bs.btn-primary:hover {
+    color: white;
+  }
 /* === END USER CUSTOM ===*/
 .color-plate {
 	position: fixed;
@@ -195,8 +202,8 @@ Version:1.0
   100% {-webkit-transform: scale(1, 1); opacity:0;}
 }
 /* End Preloader */
-
-.btn {
+/* ===== TAMBAHKAN CLASS bs PADA BUTTON UNTUK MENGHINDARI OVERRIDING =====*/
+.btn:not(.bs) {
 	position: relative;
 	font-weight: 500;
 	font-size:14px;
@@ -212,7 +219,7 @@ Version:1.0
 	border-radius: 0px;
 	text-transform:uppercase;
 }
-.btn:hover{
+.btn:not(.bs):hover {
 	color:#fff;
 	background:#1CD449;
 }
@@ -263,7 +270,11 @@ Version:1.0
 }
 /* Main Menu */
 .navbar-expand-lg .navbar-collapse{
+    height: 100%;
 	display:block !important;
+}
+.navbar-expand-lg{
+    height: 100%;
 }
 .header.v3 .navbar-expand-lg .navbar-collapse{
 	display:block !important;
@@ -381,6 +392,9 @@ Version:1.0
 	padding: 12px 0px;
 }
 .header.shop .nav-inner {
+    height: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 	margin-right: 188px;
 }
 .header.shop .logo {
@@ -605,7 +619,7 @@ Version:1.0
 	float:right;
 	font-size:14px;
 }
-.header .shopping-item .bottom .btn {
+.header .shopping-item .bottom .btn:not(.bs) {
 	background: #222;
 	padding: 10px 20px;
 	display: block;
@@ -616,7 +630,7 @@ Version:1.0
 	font-size: 14px;
 	font-weight: 500;
 }
-.header .shopping-item .bottom .btn:hover{
+.header .shopping-item .bottom .btn:not(.bs):hover {
 	background:#1CD449;
 	color:#fff;
 }
@@ -765,6 +779,7 @@ Version:1.0
 }
 .header.shop .header-inner {
 	background: #333;
+    padding-bottom: 0%;
 }
 .header.shop.v3 .header-inner {
 	background: transparent;
@@ -773,6 +788,7 @@ Version:1.0
 	background: #fff;
 	border-top:1px solid #eee;
 }
+
 .header.shop .topbar p {
 	color: #333;
 }
@@ -957,6 +973,7 @@ Version:1.0
 	position: relative;
 }
 .header.shop .nav li {
+    height: 100%;
 	margin-right:5px;
 	position: relative;
 	float: none;
@@ -982,6 +999,8 @@ Version:1.0
 	color:#333;
 }
 .header.shop .nav li a {
+    height: 100%;
+    margin-right: 0%;
 	color: #fff;
 	text-transform: capitalize;
 	font-size: 15px;
@@ -1299,7 +1318,7 @@ Version:1.0
 .hero-slider .hero-text .button{
 	margin:0;
 }
-.hero-slider .hero-text .btn {
+.hero-slider .hero-text .btn:not(.bs) {
 	color: #fff;
 	background: #333;
 	padding: 13px 30px;
@@ -1308,7 +1327,7 @@ Version:1.0
 	height: auto;
 	z-index: 0;
 }
-.hero-slider .hero-text .btn:hover{
+.hero-slider .hero-text .btn:not(.bs):hover {
 	background:#1CD449;
 	color:#fff;
 }
@@ -1373,14 +1392,14 @@ Version:1.0
 	color:#fff;
 }
 .hero-area2 .single-slider .content .button{}
-.hero-area2 .single-slider .content .button .btn {
+.hero-area2 .single-slider .content .button .btn:not(.bs) {
 	padding: 9px 25px;
 	border: 2px solid #fff;
 	background: transparent;
 	color: #fff;
 	margin-top: 25px;
 }
-.hero-area2 .single-slider .content .button .btn:hover{
+.hero-area2 .single-slider .content .button .btn:not(.bs):hover {
 	background:#fff;
 	color:#333;
 	border-color:transparent;
@@ -1491,14 +1510,14 @@ Version:1.0
 	margin-top:10px;
 	display:block;
 }
-.hero-area3 .small-content .button .btn {
+.hero-area3 .small-content .button .btn:not(.bs) {
 	background: transparent;
 	padding: 0;
 	color: #333;
 	border-bottom: 2px solid #333;
 	font-size: 13px;
 }
-.hero-area3 .small-content .button .btn:hover{
+.hero-area3 .small-content .button .btn:not(.bs):hover {
 	color:#1CD449;
 	border-color:#1CD449;
 }
@@ -2544,7 +2563,7 @@ Version:1.0
 	border-radius:0;
 	overflow:hidden;
 }
-.shop.single .quantity .button .btn {
+.shop.single .quantity .button .btn:not(.bs) {
 	padding: 0;
 	width: 35px;
 	height: 45px;
@@ -2555,7 +2574,7 @@ Version:1.0
 	font-size: 12px;
 	border: none;
 }
-.shop.single .quantity .button .btn:hover{
+.shop.single .quantity .button .btn:not(.bs):hover {
 	color:#1CD449;
 }
 .shop.single .quantity .input-number {
@@ -2570,7 +2589,7 @@ Version:1.0
 .shop.single .add-to-cart {
 	display:inline-block;
 }
-.shop.single .add-to-cart .btn {
+.shop.single .add-to-cart .btn:not(.bs) {
 	height: 45px;
 	width: auto;
 	padding: 0 42px;
@@ -2584,7 +2603,7 @@ Version:1.0
 	display: inline-block;
 	font-weight: 500;
 }
-.shop.single .add-to-cart .btn:hover{
+.shop.single .add-to-cart .btn:not(.bs):hover {
 	color:#fff;
 	background:#1CD449;
 }
@@ -3057,7 +3076,7 @@ Version:1.0
 	border-radius:0;
 	overflow:hidden;
 }
-.shopping-cart .qty .button .btn {
+.shopping-cart .qty .button .btn:not(.bs) {
 	padding: 0;
 	width: 44px;
 	height: 47px;
@@ -3068,7 +3087,7 @@ Version:1.0
 	border: none;
 	font-size: 12px;
 }
-.shopping-cart .qty .button .btn:hover{
+.shopping-cart .qty .button .btn:not(.bs):hover {
 	color:#1CD449;
 }
 .shopping-cart .qty .input-number {
@@ -3105,7 +3124,7 @@ Version:1.0
 	border: none;
 	box-shadow: 0px 0px 5px #0000000a;
 }
-.shopping-cart .total-amount .left .coupon form .btn {
+.shopping-cart .total-amount .left .coupon form .btn:not(.bs) {
 	display: inline-block;
 	height: 48px;
 	border: navajowhite;
@@ -3115,7 +3134,7 @@ Version:1.0
 	background: #fff;
 	box-shadow: 0px 0px 5px #00000012;
 }
-.shopping-cart .total-amount .left .coupon form .btn:hover{
+.shopping-cart .total-amount .left .coupon form .btn:not(.bs):hover {
 	background:#fff;
 	color:#1CD449;
 }
@@ -3200,7 +3219,7 @@ Version:1.0
 	display:inline-block;
 	float:right;
 }
-.shopping-cart .total-amount .right .button5 .btn {
+.shopping-cart .total-amount .right .button5 .btn:not(.bs) {
 	text-align: center;
 	border-radius: 0;
 	width: 100%;
@@ -3431,7 +3450,7 @@ Version:1.0
 	text-align: center;
 	padding:0px 35px;
 }
-.shop.checkout .single-widget.get-button .btn {
+.shop.checkout .single-widget.get-button .btn:not(.bs) {
 	height: 46px;
 	width: 100%;
 	line-height: 19px;
@@ -3511,20 +3530,20 @@ Version:1.0
 	border-color:#1308a3;
 	color:#1308a3;
 }
-.shop.login .form .form-group.login-btn {
+.shop.login .form .form-group.login-btn:not(.bs) {
 	margin: 0;
 }
 .shop.login .form button {
 	border: none;
 }
-.shop.login .form .btn {
+.shop.login .form .btn:not(.bs) {
 	display: inline-block;
 	margin-right: 10px;
 	height: 46px;
 	color: #fff;
 	line-height: 20px;
 }
-.shop.login .form .btn:hover{
+.shop.login .form .btn:not(.bs):hover {
 	background:#1CD449;
 	color:#fff;
 }
@@ -3632,7 +3651,7 @@ Version:1.0
 	margin-left: 3px;
 }
 .shop-list .list-content .des{}
-.shop-list .list-content .btn {
+.shop-list .list-content .btn:not(.bs) {
 	margin-top: 22px;
 	height: 42px;
 	line-height: 15px;
@@ -3645,7 +3664,7 @@ Version:1.0
 	line-height: a;
 	padding: 13px 32px;
 }
-.shop-list .list-content .btn:hover{
+.shop-list .list-content .btn:not(.bs):hover {
 	background:#1CD449;
 	color:#fff;
 	border-color:transparent;
@@ -3873,7 +3892,7 @@ Version:1.0
 	box-shadow:none;
 	border-radius:0;
 }
-.shop-newsletter .newsletter-inner .btn {
+.shop-newsletter .newsletter-inner .btn:not(.bs) {
 	display: inline-block;
 	height: 55px;
 	padding: 10px 30px;
@@ -3887,7 +3906,7 @@ Version:1.0
 	font-weight: 500;
 	text-transform: uppercase;
 }
-.shop-newsletter .newsletter-inner .btn:hover{
+.shop-newsletter .newsletter-inner .btn:not(.bs):hover {
 	background:#333;
 	color:#fff;
 }
@@ -3951,7 +3970,7 @@ Version:1.0
 	color:#fff;
 	margin-right:15px;
 }
-.about-us .about-content .button .btn:hover{
+.about-us .about-content .button .btn:not(.bs):hover {
 	background:#1CD449;
 	color:#fff;
 }
@@ -4124,14 +4143,14 @@ Version:1.0
 	margin-bottom: 5px;
 	color: #B7B7B7;
 }
-.shop-blog .shop-single-blog .content .more-btn {
+.shop-blog .shop-single-blog .content .more-btn:not(.bs) {
 	font-size: 14px;
 	font-weight: 400;
 	color: #3c3c3c;
 	margin-top: 10px;
 	display: block;
 }
-.shop-blog .shop-single-blog .content .more-btn:hover{
+.shop-blog .shop-single-blog .content .more-btn:not(.bs):hover {
 	color:#1CD449;
 }
 /* Related Product */
@@ -4593,7 +4612,7 @@ Version:1.0
 	line-height: 22px;
 }
 .blog-single .single-comment .content .button{}
-.blog-single .single-comment .content .btn {
+.blog-single .single-comment .content .btn:not(.bs) {
 	display: inline-block;
 	color: #666;
 	font-weight: 400;
@@ -4674,7 +4693,7 @@ Version:1.0
 	text-align: left;
 	margin-bottom:0px;
 }
-.blog-single .reply .button .btn {
+.blog-single .reply .button .btn:not(.bs) {
 	height: 50px;
 	border: none;
 }
@@ -4784,7 +4803,7 @@ Version:1.0
 .contact-us .form .button {
 	margin:0;
 }
-.contact-us .form .button .btn {
+.contact-us .form .button .btn:not(.bs) {
 	height: 50px;
 	border: none;
 }
@@ -4816,11 +4835,11 @@ Version:1.0
 	margin-bottom: 30px;
 	line-height: 22px;
 }
-.mail-success .mail-inner .btn {
+.mail-success .mail-inner .btn:not(.bs) {
 	color: #fff;
 	padding: 10px 30px;
 }
-.mail-success .mail-inner .btn i{
+.mail-success .mail-inner .btn:not(.bs) i{
 	margin-right:5px;
 }
 
@@ -4866,7 +4885,7 @@ Version:1.0
 .error-page .button {
 	margin-top: 30px;
 }
-.error-page .button .btn {
+.error-page .button .btn:not(.bs) {
 	margin-right: 15px;
 	border-radius: 30px;
 	background: #333;
@@ -4879,7 +4898,7 @@ Version:1.0
 	color: #333;
 	padding: 10px 28px;
 }
-.error-page .button .btn:hover{
+.error-page .button .btn:not(.bs):hover {
 	color:#fff;
 	background:#1CD449;
 	border-color:transparent;
