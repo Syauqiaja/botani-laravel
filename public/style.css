@@ -60,6 +60,32 @@ Version:1.0
   .btn.bs.btn-primary:hover {
     color: white;
   }
+  .btn.bs.btn-outline-success{
+      color: #1CD449;
+  }
+  .btn.bs.btn-outline-success:hover{
+    color: white;
+  }
+  .btn.bs.btn-outline-danger{
+    color: #d32923;
+}
+.btn.bs.btn-outline-danger:hover{
+  color: white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
 /* === END USER CUSTOM ===*/
 .color-plate {
 	position: fixed;

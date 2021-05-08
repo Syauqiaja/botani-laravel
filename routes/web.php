@@ -23,7 +23,12 @@ Route::get('/tes', function(){
 Route::get('/index', function(){
     return view('index');
 });
-
+Route::get('/detail', function () {
+    return view('detail-product', ['harga'=>100000]);
+});
+Route::get('/blog', function () {
+    return view('blog-single-sidebar');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
