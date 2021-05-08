@@ -18,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/tes', function(){
-    return view('cart');
+    return view('dashboard-shop');
+});
+Route::get('/index', function(){
+    return view('index');
 });
 
 Auth::routes();

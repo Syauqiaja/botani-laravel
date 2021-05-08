@@ -37,10 +37,18 @@
 	<!-- Slicknav -->
     <link rel="stylesheet" href="{{ URL::asset('css/slicknav.min.css') }}">
 
+    <!-- Custom styles for this template-->
+    <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
 
 
@@ -230,10 +238,10 @@
 									<div class="navbar-collapse">
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Beranda</a></li>
-													<li><a href="#">Produk</a></li>
-													<li><a href="#">Pelayanan</a></li>
-													<li><a href="#">Toko<i class="ti-angle-down"></i><span class="new">New</span></a>
+													<li class="active mr-0"><a href="#">Beranda</a></li>
+													<li class="mr-0"><a href="#">Produk</a></li>
+													<li class="mr-0"><a href="#">Pelayanan</a></li>
+													<li class="mr-0"><a href="#">Toko<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
 															<li><a href="cart.html">Cart</a></li>
@@ -241,12 +249,12 @@
 														</ul>
 													</li>
 
-													<li><a href="#">Blogtani<i class="ti-angle-down"></i></a>
+													<li class="mr-0"><a href="#">Blogtani<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 														</ul>
 													</li>
-													<li><a href="contact.html">Hubungi Kami</a></li>
+													<li class="mr-0"><a href="contact.html">Hubungi Kami</a></li>
 												</ul>
 										</div>
 									</div>
@@ -390,5 +398,21 @@
 	<script src="{{ URL::asset('js/easing.js') }}"></script>
 	<!-- Active JS -->
 	<script src="{{ URL::asset('js/active.js') }}"></script>
+
+    <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ URL::asset('js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ URL::asset('vendor/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ URL::asset('js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ URL::asset('js/demo/chart-pie-demo.js') }}"></script>
 </body>
 </html>

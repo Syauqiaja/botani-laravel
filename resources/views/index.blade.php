@@ -12,83 +12,80 @@
 		</ol>
 		<div class="carousel-inner mt-5">
 		  <div class="carousel-item active">
-			<!-- <img class="d-block w-100" src="https://via.placeholder.com/600x300" alt="First slide"> -->
 			<!-- Single Slider -->
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-9 col-12">
-									<div class="hero-text">
-										<h1><span>Kini Telah Hadir </span>Botani</h1>
-										<p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-										<div class="button">
-											<a href="#" class="btn">Daftar Sekarang</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Single Slider -->
+                <div class="single-slider slide-1">
+                    <div class="container">
+                        <div class="row no-gutters">
+                            <div class="col-lg-9 offset-lg-3 col-12">
+                                <div class="text-inner">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-12">
+                                            <div class="hero-text">
+                                                <h1><span>Kini Telah Hadir </span>Botani</h1>
+                                                <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                                <div class="button">
+                                                    <a href="#" class="btn">Daftar Sekarang</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--/ End Single Slider -->
+            </div>
+            <div class="carousel-item">
+                <!-- Single Slider -->
+            <div class="single-slider slide-2">
+                <div class="container">
+                    <div class="row no-gutters">
+                        <div class="col-lg-9 offset-lg-3 col-12">
+                            <div class="text-inner">
+                                <div class="row">
+                                    <div class="col-lg-9 col-12">
+                                        <div class="hero-text">
+                                            <h1><span>Kini Telah Hadir </span>Botani</h1>
+                                            <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                            <div class="button">
+                                                <a href="#" class="btn">Daftar Sekarang</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ End Single Slider -->
 		  </div>
 		  <div class="carousel-item">
-			<!-- <img class="d-block w-100" src="https://via.placeholder.com/600x300" alt="Second slide"> -->
 			<!-- Single Slider -->
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-9 col-12">
-									<div class="hero-text">
-										<h1><span>Kini Telah Hadir </span>Botani</h1>
-										<p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-										<div class="button">
-											<a href="#" class="btn">Daftar Sekarang</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Single Slider -->
-		  </div>
-		  <div class="carousel-item">
-			<!-- <img class="d-block w-100" src="https://via.placeholder.com/600x300" alt="Third slide"> -->
-			<!-- Single Slider -->
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-9 col-12">
-									<div class="hero-text">
-										<h1><span>Kini Telah Hadir </span>Botani</h1>
-										<p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-										<div class="button">
-											<a href="#" class="btn">Daftar Sekarang</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Single Slider -->
-		  </div>
+                <div class="single-slider slide-3">
+                    <div class="container">
+                        <div class="row no-gutters">
+                            <div class="col-lg-9 offset-lg-3 col-12">
+                                <div class="text-inner">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-12">
+                                            <div class="hero-text">
+                                                <h1><span>Kini Telah Hadir </span>Botani</h1>
+                                                <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                                <div class="button">
+                                                    <a href="#" class="btn">Daftar Sekarang</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--/ End Single Slider -->
+		    </div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
