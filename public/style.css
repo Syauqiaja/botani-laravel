@@ -7,12 +7,11 @@ Version:1.0
 ========================================*/
 /*======================================
 [ CSS Table of contents ]
-00. User Custom
 01. Preloader CSS
 02. Header CSS
-	+ Logo
-	+ Category Menu
-	+ Main Menu
++ Logo
++ Category Menu
++ Main Menu
 03. Hero Area CSS
 04. Small Banner CSS
 05. Medium Banner CSS
@@ -29,38 +28,15 @@ Version:1.0
 16. About Us CSS
 17. Team CSS
 18. Blog CSS
-	+ Blog Archive
-	+ Blog Sidebar
-	+ Blog Single
++ Blog Archive
++ Blog Sidebar
++ Blog Single
 19. Contact CSS
 20. 404 Error CSS
 21. Footer CSS
+22. User Custom
 ========================================*/
-/* === START USER CUSTOM ===*/
-.rect-img-container {
-    position: relative;
-  }
 
-  .rect-img-container::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
-
-  .rect-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .btn.bs.btn-primary {
-    color: rgb(245, 245, 245);
-  }
-  .btn.bs.btn-primary:hover {
-    color: white;
-  }
-/* === END USER CUSTOM ===*/
 .color-plate {
 	position: fixed;
 	display: block;
@@ -5009,6 +4985,97 @@ Version:1.0
 	color:#fff;
 	text-decoration:underline;
 }
+/* === START USER CUSTOM ===*/
+.rect-img-container {
+    position: relative;
+  }
+
+  .rect-img-container::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  .rect-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .btn.bs.btn-primary {
+    color: rgb(245, 245, 245) !important;
+  }
+  .btn.bs.btn-primary:hover {
+    color: white !important;
+  }
+  .btn.bs.btn-success {
+      background: #1CD449;
+    color: rgb(245, 245, 245) !important;
+  }
+  .btn.bs.btn-success:hover {
+      background: #2be459;
+    color: white !important;
+  }
+  .btn.bs.btn-primary {
+    background: #4e73df;
+  color: rgb(245, 245, 245) !important;
+}
+.btn.bs.btn-primary:hover {
+    background: #5279ee;
+  color: white !important;
+}
+  .btn.bs.btn-outline-success{
+      color: #1CD449 !important;
+  }
+  .btn.bs.btn-outline-success:hover{
+    color: white !important;
+  }
+  .btn.bs.btn-outline-danger{
+    color: #d32923 !important;
+}
+.btn.bs.btn-outline-danger:hover{
+  color: white !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
+.popup-overlay{
+    z-index: 99999999999;
+    top: 0;
+    height: 100%;
+    position: fixed;
+    visibility: hidden;
+    background-color: rgba(22, 22, 22, 0.486);
+}
+.popup-content{
+    opacity: 1;
+    height: fit-content;
+    background: white;
+    visibility: hidden;
+}
+.popup-content, .popup-overlay{
+    visibility: hidden;
+}
+.popup-content.active, .popup-overlay.active{
+    visibility: visible;
+}
+.top-0.end-0{
+    top: 10px;
+    right: 10px;
+}
+/* === END USER CUSTOM ===*/
 /*=============================
 	End Footer CSS
 ===============================*/
