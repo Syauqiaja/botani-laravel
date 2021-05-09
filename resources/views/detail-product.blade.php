@@ -2,6 +2,38 @@
 
 @section('content')
     <script>var harga = parseInt("<?php echo $harga; ?>");</script>
+
+    <!-- POP-UP START -->
+    <div class="popup-overlay container-fluid row justify-content-center">
+        <div class="popup-content my-5 col-5">
+            <h1 class="h2 mb-3 mt-5 text-gray-800 text-center">Tambahkan Pesanan</h1>
+            <div class="my-5 mx-3">
+                <div class="pop-header my-3 row justify-content-between">
+                    <div class="rect-img-container col-3">
+                        <img src="https://via.placeholder.com/370x370" alt="Foto" class="img-fluid rect-img">
+                    </div>
+                    <h2 class="col align-self-end text-right"><small>Rp.</small><span id="total" class="h2">0</span></h2>
+                </div>
+                <form action="" class="">
+                    <div>
+                        <div class="form-group row justify-content-between my-4">
+                            <h4 class="text-gray-700 col-sm-4 h4">Jumlah</h4>
+                            <div class="input-group col d-flex justify-content-end">
+                                <a class="btn bs btn-outline-danger mx-1 rounded-0" id="barang-minus"><i class="fas fa-minus"></i></a>
+                                <input type="number" value="0" name="jumlah_barang" style="max-width:15%" class="form-control text-center">
+                                <a class="btn bs btn-outline-success mx-1 rounded-0" id="barang-plus"><i class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                        <input type="submit" name="checkout" id="" value="Checkout" class="btn bs w-100 btn-success my-1 p-2" style="font-size: 18px">
+                        <input type="submit" name="keranjang" id="" value="Masukkan Keranjang" class="btn bs w-100 btn-primary my-1 p-2" style="font-size: 18px">
+                    </div>
+                </form>
+            </div>
+            <div class="position-absolute top-0 end-0"><a id="popClose"class="fas fa-times text-success" style="font-size: 24px"></a></div>
+        </div>
+    </div>
+    <!-- POP-UP END -->
+
     <div class="container my-5 mx-3 row align-items-start">
         <div class="col-md-5 my-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -37,21 +69,12 @@
                 </a>
             </div>
             <div class="mt-3">
-                <form action="" class="">
-                    <div class="input-group mx-auto mt-3 row" >
-                        <h1 class="h5 text-gray-800 col-sm-2 input-group-text bg-white"> &nbsp Rp.</h1>
-                        <input type="text" name="total_harga" disabled class="form-control col-sm-8 border-0 bg-white mx-3" value="0">
-                    </div>
-                    <div>
-                        <div class="input-group mt-3">
-                            <a class="btn bs btn-outline-danger mx-1" id="barang-minus"><i class="fas fa-minus"></i></a>
-                            <input type="number" value="0" name="jumlah_barang" style="max-width:15%" class="rounded form-control text-center">
-                            <a class="btn bs btn-outline-success mx-1" id="barang-plus"><i class="fas fa-plus"></i></a>
+                <div>
+                    <a class="h3 mb-3 btn bs btn-success text-center text-success w-100" id="popOpen">
+                        Dapatkan Barangmu
+                    </a>
+                </div>
 
-                            <input type="submit" name="submit" id="" value="Checkout" class="btn bs btn-success mx-5">
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
         <div class="col-md my-3">
@@ -79,7 +102,9 @@
                         <div class="col">: 50</div>
                     </div>
                     <div>
-                        <div class="mb-1 mt-3"><strong>Deskripsi Lainnya </strong>&nbsp<span ><i style="color:#1CD449" class="fas fa-chevron-down"></i></div>
+                        <div class="mb-1 mt-3"><a id="descArrow" style="cursor: pointer;"><strong style="color:#1CD449;">Deskripsi Lainnya </strong>&nbsp
+                            <i style="color:#1CD449;" class="fas fa-chevron-down" id="arrow"></i>
+                        </a></div>
                         <div class="deskripsi" id="deskripsi">
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique voluptatem impedit doloribus odit, repellendus vero enim quae sed? Obcaecati quibusdam placeat dolorem magnam soluta non incidunt aut quia ipsum nobis.</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, mollitia temporibus? Repellendus, magnam. Architecto labore quis tempore, rem temporibus non? Voluptas eos ea at fuga consequatur. Velit veniam tenetur blanditiis.</p>
