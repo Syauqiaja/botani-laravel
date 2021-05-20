@@ -10,7 +10,7 @@
 		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner mt-5">
+		<div class="carousel-inner">
 		  <div class="carousel-item active">
 			<!-- Single Slider -->
                 <div class="single-slider slide-1">

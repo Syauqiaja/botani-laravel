@@ -14,11 +14,11 @@ class CreatePelanggansTable extends Migration
     public function up()
     {
         Schema::create('pelanggans', function (Blueprint $table) {
-            $table->id('id_pelanggan');
-            $table->string('nama_pelanggan', 25);
-            $table->string('password_pelanggan');
-            $table->string('email_pelanggan')->unique();
-            $table->char('telp_pelanggan', 15)->nullable(true);
+            $table->id('id');
+            $table->string('nama', 25);
+            $table->string('password');
+            $table->string('email')->unique();
+            $table->char('telp', 15)->nullable(true);
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <script>var harga = parseInt("<?php echo $harga; ?>");</script>
+    <script>var harga = parseInt("<?php echo $produk->harga_produk; ?>");</script>
 
     <!-- POP-UP START -->
     <div class="popup-overlay container-fluid row justify-content-center">
@@ -38,26 +38,27 @@
         <div class="col-md-5 my-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  @forelse ($fotos as $foto)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}"
+                        class="@if($loop->first) active @endif"></li>
+                    @empty
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    @endforelse
                 </ol>
                 <div class="carousel-inner">
+                    @forelse ($fotos as $foto)
+                        <div class="carousel-item @if($loop->first) active @endif">
+                            <div class="rect-img-container">
+                                <img src="{{URL::asset('images/'.$foto->path)}}" alt="Foto" class="img-fluid rect-img">
+                            </div>
+                        </div>
+                    @empty
                     <div class="carousel-item active">
                         <div class="rect-img-container">
                             <img src="https://via.placeholder.com/370x370" alt="Foto" class="img-fluid rect-img">
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="rect-img-container">
-                            <img src="https://via.placeholder.com/370x370" alt="Foto" class="img-fluid rect-img">
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="rect-img-container">
-                            <img src="https://via.placeholder.com/370x370" alt="Foto" class="img-fluid rect-img">
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -83,33 +84,26 @@
                 <div style="font-size:16px">
                     <div class="row">
                         <div class="col-3 "><strong>Nama Barang</strong></div>
-                        <div class="col">: Kembang Janda Bolong</div>
+                        <div class="col">: {{$produk->nama_produk}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-3 "><strong>Famili</strong></div>
-                        <div class="col">: Daun Lebar</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 fw-500 fs-3"><strong>Habibat</strong></div>
-                        <div class="col">: Daerah Panas</div>
+                        <div class="col-3 "><strong>Jenis Barang</strong></div>
+                        <div class="col">: {{$produk->jenis_produk}}</div>
                     </div>
                     <div class="row">
                         <div class="col-3 fw-500 fs-3"><strong>Harga</strong></div>
-                        <div class="col">: Rp.{{$harga}}</div>
+                        <div class="col">: Rp.{{$produk->harga_produk}}</div>
                     </div>
                     <div class="row">
                         <div class="col-3 fw-500 fs-3"><strong>Barang Tersedia</strong></div>
-                        <div class="col">: 50</div>
+                        <div class="col">: {{$produk->stok}}</div>
                     </div>
                     <div>
                         <div class="mb-1 mt-3"><a id="descArrow" style="cursor: pointer;"><strong style="color:#1CD449;">Deskripsi Lainnya </strong>&nbsp
                             <i style="color:#1CD449;" class="fas fa-chevron-down" id="arrow"></i>
                         </a></div>
                         <div class="deskripsi" id="deskripsi">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique voluptatem impedit doloribus odit, repellendus vero enim quae sed? Obcaecati quibusdam placeat dolorem magnam soluta non incidunt aut quia ipsum nobis.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, mollitia temporibus? Repellendus, magnam. Architecto labore quis tempore, rem temporibus non? Voluptas eos ea at fuga consequatur. Velit veniam tenetur blanditiis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus minima commodi provident autem iure saepe iusto dolore eum voluptas fugit, tenetur non rerum maiores culpa beatae nostrum velit pariatur perspiciatis?</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero quaerat dolor architecto reiciendis suscipit, quidem nisi sit, nobis laboriosam harum officiis. Neque distinctio, accusantium in libero dolor beatae sit aut.</p>
+                            {{$produk->deskripsi_produk}}
                         </div>
                     </div>
                 </div>

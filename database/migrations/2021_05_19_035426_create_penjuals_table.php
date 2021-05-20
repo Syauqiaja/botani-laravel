@@ -14,13 +14,13 @@ class CreatePenjualsTable extends Migration
     public function up()
     {
         Schema::create('penjuals', function (Blueprint $table) {
-            $table->id('id_penjual');
-            $table->string('nama_penjual', 25);
-            $table->string('password_penjual');
-            $table->string('email_penjual')->unique();
-            $table->char('telp_penjual', 15);
-            $table->text('alamat_penjual');
-            $table->text('informasi_penjual')->nullable(true);
+            $table->id('id');
+            $table->string('nama', 25);
+            $table->string('password');
+            $table->string('email')->unique();
+            $table->char('telp', 15);
+            $table->text('alamat');
+            $table->text('informasi')->nullable(true);
             $table->tinyInteger('rate')->default(3);
             $table->timestamps();
         });

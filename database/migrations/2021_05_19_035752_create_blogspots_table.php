@@ -14,7 +14,7 @@ class CreateBlogspotsTable extends Migration
     public function up()
     {
         Schema::create('blogspots', function (Blueprint $table) {
-            $table->id('id_blogspot');
+            $table->id('id');
             $table->string('nama_blogspot');
             $table->text('isi_blogspot');
             $table->string('video')->nullable(true);
