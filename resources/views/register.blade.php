@@ -11,36 +11,57 @@
     <div class="container-fluid my-5 row justify-content-center ">
         <div class="card">
             <div class="card-header text-center font-weight-bold">
-                FORM REGISTRASI CUSTOMER
+                FORMULIR REGISTRASI
             </div>
             <div class="card-body ">
-                <form method="POST">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                            <input id="nama" type="text" class="form-control" name="nama" value="" placeholder="Masukkan Nama Lengkap">
+                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="name" autofocus placeholder="Masukkan Nama Lengkap">
+                            @error('nama')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="telepon">Nomor Telepon</label>
-                            <input id="telepon" type="text" class="form-control" name="telepon" value="" placeholder="Masukkan Nomor Telepon/HP">
+                            <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" required placeholder="Masukkan Nomor Telepon/HP" autocomplete="tel">
+                            @error('telepon')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control" name="email" value="" placeholder="Masukkan Alamat Email">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan Alamat Email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                            <input id="password" type="password" class="form-control" name="password" placeholder="Masukkan Kata Sandi">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Kata Sandi">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="password2">Konfirmasi Password</label>
-                            <input id="password2" type="password" class="form-control" name="password2" placeholder="Ulangi Kata Sandi">
+                        <label for="password_confirmation">Konfirmasi Password</label>
+                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Ulangi Kata Sandi">
                     </div>
 
                     <div class="form-group m-0">
                         <button type="submit" class="btn btn-primary btn-block">
-                            Buat
+                            Registrasi
                         </button>
                     </div>
 

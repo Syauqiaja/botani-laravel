@@ -17,7 +17,7 @@ class CreateProduksTable extends Migration
             $table->id('id');
             $table->string('nama_produk');
             $table->string('jenis_produk');
-            $table->bigInteger('id_penjual');
+            $table->bigInteger('id_toko');
             $table->bigInteger('harga_produk');
             $table->text('deskripsi_produk');
             $table->string('foto_produk');

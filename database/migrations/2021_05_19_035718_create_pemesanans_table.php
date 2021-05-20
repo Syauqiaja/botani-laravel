@@ -16,13 +16,13 @@ class CreatePemesanansTable extends Migration
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_produk');
-            $table->bigInteger('id_pelanggan');
-            $table->string('bukti_path');
+            $table->bigInteger('id_user');
+            $table->string('bukti_pembayaran');
             $table->string('ekspedisi');
             $table->date('batas_pembayaran');
             $table->text('alamat_pengiriman');
             $table->date('tanggal_pemesanan');
-            $table->bigInteger('id_penjual');
+            $table->bigInteger('id_toko');
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('index');
 });
+
 Auth::routes();
 
 Route::prefix('produks')->group(function () {
@@ -34,45 +35,6 @@ Route::prefix('produks')->group(function () {
     Route::delete('/{produk}', [ProdukController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('pelanggans')->group(function () {
-    Route::get('/', [PelangganController::class, 'index'])->name('index');
-    Route::get('/create', [PelangganController::class, 'create'])->name('create');
-    Route::post('/', [PelangganController::class, 'store'])->name('store');
-    Route::get('/{pelanggan}', [PelangganController::class, 'show'])->name('show');
-    Route::get('/{pelanggan}/edit', [PelangganController::class, 'edit'])->name('edit');
-    Route::patch('/{pelanggan}', [PelangganController::class, 'update'])->name('update');
-    Route::delete('/{pelanggan}', [PelangganController::class, 'destroy'])->name('destroy');
-});
-
-Route::prefix('penjuals')->group(function () {
-    Route::get('/', [PenjualController::class, 'index'])->name('index');
-    Route::get('/create', [PenjualController::class, 'create'])->name('create');
-    Route::post('/', [PenjualController::class, 'store'])->name('store');
-    Route::get('/{penjual}', [PenjualController::class, 'show'])->name('show');
-    Route::get('/{penjual}/edit', [PenjualController::class, 'edit'])->name('edit');
-    Route::patch('/{penjual}', [PenjualController::class, 'update'])->name('update');
-    Route::delete('/{penjual}', [PenjualController::class, 'destroy'])->name('destroy');
-});
-
-Route::prefix('blogspots')->group(function () {
-    Route::get('/', [BlogspotController::class, 'index'])->name('index');
-    Route::get('/create', [BlogspotController::class, 'create'])->name('create');
-    Route::post('/', [BlogspotController::class, 'store'])->name('store');
-    Route::get('/{blogspot}', [BlogspotController::class, 'show'])->name('show');
-    Route::get('/{blogspot}/edit', [BlogspotController::class, 'edit'])->name('edit');
-    Route::patch('/{blogspot}', [BlogspotController::class, 'update'])->name('update');
-    Route::delete('/{blogspot}', [BlogspotController::class, 'destroy'])->name('destroy');
-});
-
-Route::prefix('pemesanans')->group(function () {
-    Route::get('/', [PemesananController::class, 'index'])->name('index');
-    Route::get('/create', [PemesananController::class, 'create'])->name('create');
-    Route::post('/', [PemesananController::class, 'store'])->name('store');
-    Route::get('/{pemesanan}', [PemesananController::class, 'show'])->name('show');
-    Route::get('/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('edit');
-    Route::patch('/{pemesanan}', [PemesananController::class, 'update'])->name('update');
-    Route::delete('/{pemesanan}', [PemesananController::class, 'destroy'])->name('destroy');
-});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

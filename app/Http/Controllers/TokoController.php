@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
+use App\Models\Toko;
 use Illuminate\Http\Request;
 
-class PelangganController extends Controller
+class TokoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PelangganController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pelanggan  $pelanggan
+     * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelanggan $pelanggan)
+    public function show(Toko $toko)
     {
         //
     }
@@ -52,10 +52,10 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pelanggan  $pelanggan
+     * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit(Toko $toko)
     {
         //
     }
@@ -64,10 +64,10 @@ class PelangganController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pelanggan  $pelanggan
+     * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, Toko $toko)
     {
         //
     }
@@ -75,10 +75,10 @@ class PelangganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pelanggan  $pelanggan
+     * @param  \App\Models\Toko  $toko
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pelanggan $pelanggan)
+    public function destroy(Toko $toko)
     {
         //
     }

@@ -19,7 +19,7 @@ class CreateBlogspotsTable extends Migration
             $table->text('isi_blogspot');
             $table->string('video')->nullable(true);
             $table->string('foto')->nullable(true);
-            $table->bigInteger('id_penjual');
+            $table->bigInteger('id_toko');
             $table->tinyInteger('rate')->default(3);
             $table->timestamps();
         });
