@@ -119,8 +119,19 @@
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
-							<div class="sinlge-bar">
+							<div class="sinlge-bar profile">
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                <div class="profile-item">
+                                    <h1 class="h5 mb-3 text-gray-800 text-center">{{Auth::user()->nama}}</h1>
+                                    <hr>
+                                    <div class="bottom mt-4">
+										<a href="checkout.html" class="btn animate btn-profile">Profile</a>
+									</div>
+									<div class="bottom mt-2"><form method="POST" action="{{ route('logout') }}">@csrf
+										<button type="submit" href="checkout.html" class="btn animate w-100">Log out</button>
+                                    </form></div>
+								</div>
+								<!--/ End Shopping Item -->
 							</div>
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>

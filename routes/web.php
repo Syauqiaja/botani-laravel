@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogspotController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PenjualController;
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Auth::routes();
 
