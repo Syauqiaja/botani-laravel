@@ -53,7 +53,10 @@ class RegisterController extends Controller
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'telepon' => ['digits_between:10,15']
+            'telepon' => ['digits_between:10,15'],
+            'jenis_kelamin' => ['required'],
+            'foto_profil' => ['image', 'max:2000'],
+            'avatar' => ['required_without:foto_profil']
         ]);
     }
 
@@ -65,12 +68,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $path = "";
+        if(array_key_exists('useavatar', $data)){
+            $path = 'images/profiles/'.$data['avatar'];
+        }else{
+            $ext = $data['foto_profil']->getClientOriginalExtension();
+            $nama = $data['nama'].rand(99,999).time().'.'.$ext;
+            $path = $data['foto_profil']->move('images\profiles',$nama);
+        }
         return User::create([
             'nama' => $data['nama'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'telepon' => $data['telepon'],
             'role' => $data['role'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'foto_profil' => $path,
         ]);
     }
 }

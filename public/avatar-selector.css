@@ -1,0 +1,106 @@
+.rect-img-container {
+    position: relative;
+  }
+
+  .rect-img-container::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  .rect-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.cc-selector input:active +.drinkcard-cc{opacity: 1;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+            border: 2px solid #1CD449;
+}
+.avatar-1{background-image: url('images/profiles/female-1.png');}
+.avatar-2{background-image: url('images/profiles/female-2.png');}
+.avatar-3{background-image: url('images/profiles/female-3.png');}
+.avatar-4{background-image: url('images/profiles/female-4.png');}
+.avatar-5{background-image: url('images/profiles/female-5.png');}
+.avatar-6{background-image: url('images/profiles/female-6.png');}
+.avatar-7{background-image: url('images/profiles/female-7.png');}
+.avatar-8{background-image: url('images/profiles/female-8.png');}
+.avatarmale-1{background-image: url('images/profiles/male-1.png');}
+.avatarmale-2{background-image: url('images/profiles/male-2.png');}
+.avatarmale-3{background-image: url('images/profiles/male-3.png');}
+.avatarmale-4{background-image: url('images/profiles/male-4.png');}
+.avatarmale-5{background-image: url('images/profiles/male-5.png');}
+.avatarmale-6{background-image: url('images/profiles/male-6.png');}
+.avatarmale-7{background-image: url('images/profiles/male-7.png');}
+.avatarmale-8{background-image: url('images/profiles/male-8.png');}
+.drinkcard-cc{
+    border-radius: 10px;
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:50px;height:50px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(.4) opacity(1);
+       -moz-filter: brightness(1) grayscale(.4) opacity(1);
+            filter: brightness(1) grayscale(.4) opacity(1);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(.9) grayscale(.1) opacity(1);
+       -moz-filter: brightness(.9) grayscale(.1) opacity(1);
+            filter: brightness(.9) grayscale(.1) opacity(1);
+}
+
+/* AVATAR  */
+
+.avatar-cc{
+    cursor:pointer;
+    display:inline-block;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+
+}
+.avatar-cc:hover{
+    color: #1CD449;
+
+}
+
+#preview-profile{
+    cursor: pointer;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+             -khtml-user-select: none; /* Konqueror HTML */
+               -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome, Edge, Opera and Firefox */
+}
+#preview-profile:hover{
+    color: #1CD449;
+}
+#preview-profile:active{
+    color: #1a8d37;
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}

@@ -122,6 +122,9 @@
 							<div class="sinlge-bar profile">
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 <div class="profile-item">
+                                    <div class="rect-img-container w-50 h-50 mx-auto mb-3">
+                                        <img src="{{asset(Auth::user()->foto_profil)}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #aae2b8; border-radius: 50%">
+                                    </div>
                                     <h1 class="h5 mb-3 text-gray-800 text-center">{{Auth::user()->nama}}</h1>
                                     <hr>
                                     <div class="bottom mt-4">

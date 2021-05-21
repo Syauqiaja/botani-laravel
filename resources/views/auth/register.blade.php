@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('avatar-selector.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Form Registrasi</title>
 </head>
 <body style="background-color:rgb(7, 148, 26);">
+    @if (count($errors) > 0)
+  @foreach ($errors->all() as $error)
+    <p class="alert alert-danger alert-dismissible fade show" role="alert">{{ $error }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </p>
+  @endforeach
+@endif
+
+@if (session()->has('message'))
+    <p class="alert alert-success alert-dismissible fade show" role="alert">{{ session('message') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </p>
+@endif
     <div class="container-fluid my-5 row justify-content-center ">
         <div class="card col-6">
             <div class="card-header text-center font-weight-bold">
                 Isikan Identitas Anda
             </div>
             <div class="card-body ">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
@@ -30,6 +48,26 @@
                         <label for="email">Email</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan Alamat Email">
                             @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Jenis Kelamin</label> <br>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="laki-laki" name="jenis_kelamin" class="custom-control-input"
+                                    value="L" @if(old('jenis_kelamin')=='L') checked @endif>
+                                <label class="custom-control-label" for="laki-laki">Laki-laki</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="perempuan" name="jenis_kelamin" class="custom-control-input"
+                                    value="P" @if(old('jenis_kelamin')=='P') checked @endif>
+                                <label class="custom-control-label" for="perempuan">Perempuan</label>
+                              </div>
+                            @error('jenis_kelamin')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -59,19 +97,73 @@
                         <label for="password_confirmation">Konfirmasi Password</label>
                             <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Ulangi Kata Sandi">
                     </div>
-
                     <div class="form-group">
                         <label for="role">Daftar Sebagai</label>
                         <div class="row mx-auto">
-                            <select name="role" id="role" class="form-control col-4">
+                            <select name="role" id="role" class="form-control col-9">
                                 <option value="1" @if(old('role') != 2) selected @endif>Pembeli</option>
                                 <option value="2" @if(old('role') == 2) selected @endif>Penjual</option>
                             </select>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label for="">Foto Profil</label>
+                                <div class="row mx-auto">
+                                    <div class="custom-file col-12">
+                                        <input type="file" class="custom-file-input" id="customFile" name="foto_profil">
+                                        <label class="custom-file-label" for="customFile">Pilih Foto</label>
+                                    </div>
+                                    @error('foto_profil')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mx-auto">
+                                <div class="col-12 p-0">
+                                    <div class="mx-0">Atau Pilih Avatar
+                                        <small style="opacity: .9;"> (<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>)</small>
+                                    </div>
+                                    <div id="avatar-container">
+                                        <div class="alert alert-primary mt-3" role="alert">
+                                            Mohon pilih jenis kelamin :)
+                                          </div>
+                                    </div>
+                                    <div class="cc-selector mt-3 text-center d-none" id="female-avatar">
+                                        @for ($i = 1; $i<=8; $i++)
+                                            <input id="avatar-{{$i}}" type="radio" name="avatar" value="female-{{$i}}" />
+                                            <label class="drinkcard-cc avatar-{{$i}}" for="avatar-{{$i}}"></label>
+                                        @endfor
+                                    </div>
+                                    <div class="cc-selector mt-3 text-center d-none" id="male-avatar">
+                                        @for ($i = 1; $i<=8; $i++)
+                                            <input id="avatarmale-{{$i}}" type="radio" name="avatar" value="male-{{$i}}" />
+                                            <label class="drinkcard-cc avatarmale-{{$i}}" for="avatarmale-{{$i}}"></label>
+                                        @endfor
+                                    </div>
+                                    @error('avatar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mx-auto my-auto">
+                            <div class="rect-img-container">
+                                <img src="{{asset('images/profiles/preview.png')}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #aae2b8; border-radius: 50%">
+                            </div>
+                            <div class=" mb-3 my-1 text-center cc-selector">
+                                <input id="preview-profile" type="checkbox" name="useavatar" value="using"/>
+                                <label class="h5 avatar-cc" for="preview-profile" id="preview-label">Gunakan Avatar</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary btn-block bs">
                             Registrasi
                         </button>
                     </div>
@@ -86,9 +178,80 @@
             </div>
         </div>
     </div>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function (){
+    var avatarPath="{{asset('images/profiles/preview.png')}}";
+    var profilePath="{{asset('images/profiles/preview.png')}}";
+    function getRadioValue(name) {
+        var radios = document.getElementsByName(name);
+
+        for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            return radios[i].value;
+        }
+        }
+    }
+    $("input[name='avatar']").click(function(){
+        var img = getRadioValue('avatar');
+        avatarPath = "{{URL::to('images/profiles/')}}"+"/"+img+".png";
+
+        document.getElementById('preview-profile').checked = true;
+        document.getElementById("preview-label").innerHTML = "Gunakan Foto";
+
+        $("#preview").attr("src", avatarPath);
+    });
+    $("input[name='jenis_kelamin']").click(function(){
+        document.getElementById("avatar-container").innerHTML = "";
+        if(getRadioValue('jenis_kelamin') == 'L'){
+            document.getElementById("female-avatar").className += " d-none";
+
+            document.getElementById("male-avatar").className =
+            document.getElementById("male-avatar").className.replace(/\bd-none\b/,'');
+            document.getElementById("male-avatar").className =
+            document.getElementById("male-avatar").className.replace(/\bd-none\b/,'');
+        }else{
+            document.getElementById("male-avatar").className += " d-none";
+
+            document.getElementById("female-avatar").className =
+            document.getElementById("female-avatar").className.replace(/\bd-none\b/,'');
+            document.getElementById("female-avatar").className =
+            document.getElementById("female-avatar").className.replace(/\bd-none\b/,'');
+        }
+    });
+    $('#customFile').on('change',function(){
+        // get the file name
+        var fileName = $(this).val();
+        var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(cleanFileName);
+        if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function () {
+                    profilePath = reader.result;
+                    $('#preview').attr('src', profilePath);
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            }
+            document.getElementById('preview-profile').checked = false;
+            document.getElementById("preview-label").innerHTML = "Gunakan Avatar";
+    });
+    $('#preview-profile').change(function(){
+        if(document.getElementById('preview-profile').checked == true){
+            $('#preview').attr('src', avatarPath);
+            // document.getElementById('preview-profile').click();
+            document.getElementById("preview-label").innerHTML = "Gunakan Foto";
+        }else{
+            $('#preview').attr('src', profilePath);
+            // document.getElementById('preview-profile').click();
+            document.getElementById("preview-label").innerHTML = "Gunakan Avatar";
+        }
+        alert(document.getElementById('preview-profile').checked);
+    });
+});
+</script>
 </body>
 </html>

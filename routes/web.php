@@ -8,6 +8,7 @@ use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,16 @@ Route::prefix('produks')->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/email/verify', function () {
+//     return view('auth.verify');
+// })->middleware('auth')->name('verification.notice');
+
+
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+
+//     return redirect('/');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
 
 

@@ -20,8 +20,10 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'telp',
+        'telepon',
         'role',
+        'foto_profil',
+        'jenis_kelamin'
     ];
 
     /**
