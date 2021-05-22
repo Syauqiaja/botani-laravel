@@ -120,7 +120,7 @@
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
 							<div class="sinlge-bar profile">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+								<a class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 <div class="profile-item">
                                     <div class="rect-img-container w-50 h-50 mx-auto mb-3">
                                         <img src="{{asset(Auth::user()->foto_profil)}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #aae2b8; border-radius: 50%">

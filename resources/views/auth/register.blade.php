@@ -9,23 +9,7 @@
     <title>Form Registrasi</title>
 </head>
 <body style="background-color:rgb(7, 148, 26);">
-    @if (count($errors) > 0)
-  @foreach ($errors->all() as $error)
-    <p class="alert alert-danger alert-dismissible fade show" role="alert">{{ $error }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-  </p>
-  @endforeach
-@endif
 
-@if (session()->has('message'))
-    <p class="alert alert-success alert-dismissible fade show" role="alert">{{ session('message') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  </p>
-@endif
     <div class="container-fluid my-5 row justify-content-center ">
         <div class="card col-6">
             <div class="card-header text-center font-weight-bold">
@@ -36,7 +20,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="name" autofocus placeholder="Masukkan Nama Lengkap">
+                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" autocomplete="name" autofocus placeholder="Masukkan Nama Lengkap">
                             @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,16 +51,15 @@
                                     value="P" @if(old('jenis_kelamin')=='P') checked @endif>
                                 <label class="custom-control-label" for="perempuan">Perempuan</label>
                               </div>
-                            @error('jenis_kelamin')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                              @error('jenis_kelamin')
+                                <span class="text-danger" role="alert">
+                                    <small><strong>{{ $message }}</strong></small>
                                 </span>
                             @enderror
                     </div>
-
                     <div class="form-group">
                         <label for="telepon">Nomor Telepon</label>
-                            <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" required placeholder="Masukkan Nomor Telepon/HP" autocomplete="tel">
+                            <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" placeholder="Masukkan Nomor Telepon/HP" autocomplete="tel">
                             @error('telepon')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -116,8 +99,8 @@
                                         <label class="custom-file-label" for="customFile">Pilih Foto</label>
                                     </div>
                                     @error('foto_profil')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small><strong>{{ $message }}</strong></small>
                                         </span>
                                     @enderror
                                 </div>
@@ -127,26 +110,28 @@
                                     <div class="mx-0">Atau Pilih Avatar
                                         <small style="opacity: .9;"> (<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>)</small>
                                     </div>
-                                    <div id="avatar-container">
-                                        <div class="alert alert-primary mt-3" role="alert">
-                                            Mohon pilih jenis kelamin :)
-                                          </div>
-                                    </div>
-                                    <div class="cc-selector mt-3 text-center d-none" id="female-avatar">
+                                    @if(old('jenis_kelamin')!='L' && old('jenis_kelamin')!='P')
+                                        <div id="avatar-container">
+                                            <div class="alert alert-primary mt-3" role="alert">
+                                                Mohon pilih jenis kelamin :)
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="cc-selector mt-3 text-center @if(old('jenis_kelamin')!='P') d-none @endif" id="female-avatar">
                                         @for ($i = 1; $i<=8; $i++)
                                             <input id="avatar-{{$i}}" type="radio" name="avatar" value="female-{{$i}}" />
                                             <label class="drinkcard-cc avatar-{{$i}}" for="avatar-{{$i}}"></label>
                                         @endfor
                                     </div>
-                                    <div class="cc-selector mt-3 text-center d-none" id="male-avatar">
+                                    <div class="cc-selector mt-3 text-center @if(old('jenis_kelamin')!='L') d-none @endif" id="male-avatar">
                                         @for ($i = 1; $i<=8; $i++)
                                             <input id="avatarmale-{{$i}}" type="radio" name="avatar" value="male-{{$i}}" />
                                             <label class="drinkcard-cc avatarmale-{{$i}}" for="avatarmale-{{$i}}"></label>
                                         @endfor
                                     </div>
                                     @error('avatar')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small><strong>{{ $message }}</strong></small>
                                         </span>
                                     @enderror
                                 </div>

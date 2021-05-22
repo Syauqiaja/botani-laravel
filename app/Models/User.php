@@ -23,7 +23,7 @@ class User extends Authenticatable
         'telepon',
         'role',
         'foto_profil',
-        'jenis_kelamin'
+        'jenis_kelamin',
     ];
 
     /**

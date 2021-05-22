@@ -57,6 +57,25 @@ class RegisterController extends Controller
             'jenis_kelamin' => ['required'],
             'foto_profil' => ['image', 'max:2000'],
             'avatar' => ['required_without:foto_profil']
+        ],[
+            "required" => "Field :attribute harus diisi.",
+            "email" => "Field :attribute bukan berupa valid email.",
+            "max"=> array(
+                "numeric" => "Field :attribute tidak boleh lebih dari :max.",
+                "file" => "Field :attribute tidak boleh lebih dari :max KB.",
+                "string" => "Field :attribute tidak boleh lebih dari :max karakter.",
+                "array" => "Field :attribute tidak boleh lebih dari :max items.",
+            ),
+            "min"=> array(
+                "numeric" => "Field :attribute tidak boleh kurang dari :min.",
+                "file" => "Field :attribute tidak boleh kurang dari :min KB.",
+                "string" => "Field :attribute tidak boleh kurang dari :min karakter.",
+                "array" => "Field :attribute tidak boleh kurang dari :min items.",
+            ),
+            "digits_between" => "Field :attribute harus di antara :min and :max digit.",
+            "image" => "Field :attribute harus berupa gambar.",
+            "required_without" => "Field :attribute harus diisi ketika :values tidak ada.",
+            "confirmed" => "Field :attribute konfirmasi tidak cocok.",
         ]);
     }
 
@@ -70,7 +89,7 @@ class RegisterController extends Controller
     {
         $path = "";
         if(array_key_exists('useavatar', $data)){
-            $path = 'images/profiles/'.$data['avatar'];
+            $path = 'images/profiles/'.$data['avatar'].'png';
         }else{
             $ext = $data['foto_profil']->getClientOriginalExtension();
             $nama = $data['nama'].rand(99,999).time().'.'.$ext;
