@@ -50,7 +50,7 @@
     <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-
+    @yield('style')
     <script src="https://kit.fontawesome.com/ba28014178.js" crossorigin="anonymous"></script>
 
 </head>
@@ -79,7 +79,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -125,13 +125,21 @@
                                     <div class="rect-img-container w-50 h-50 mx-auto mb-3">
                                         <img src="{{asset(Auth::user()->foto_profil)}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #aae2b8; border-radius: 50%">
                                     </div>
-                                    <h1 class="h5 mb-3 text-gray-800 text-center">{{Auth::user()->nama}}</h1>
+                                    <h1 class="h5 mb-3 text-gray-800 text-center">{{strtok(Auth::user()->nama, " ")}}</h1>
                                     <hr>
-                                    <div class="bottom mt-4">
-										<a href="checkout.html" class="btn animate btn-profile">Profile</a>
+                                    <div class="bottom mt-4 mb-0">
+										<a href="{{url('users/show')}}/{{Auth::user()->id}}" class="btn animate btn-profile">Profil</a>
 									</div>
-									<div class="bottom mt-2"><form method="POST" action="{{ route('logout') }}">@csrf
-										<button type="submit" href="checkout.html" class="btn animate w-100">Log out</button>
+                                    <div class="bottom mt-0">
+										<a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
+									</div>
+                                    @if (Auth::user()->role == 2)
+                                    <div class="bottom mt-0">
+										<a href="#" class="btn animate btn-profile">Toko Saya</a>
+									</div>
+                                    @endif
+									<div class="bottom mt-4"><form method="POST" action="{{ route('logout') }}">@csrf
+										<button type="submit" href="checkout.html" class="btn animate w-100 final">Keluar</button>
                                     </form></div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -253,7 +261,7 @@
 									<div class="navbar-collapse">
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active mr-0"><a href="#">Beranda</a></li>
+													<li class="active mr-0"><a href="{{url('/')}}">Beranda</a></li>
 													<li class="mr-0"><a href="#">Produk</a></li>
 													<li class="mr-0"><a href="#">Pelayanan</a></li>
 													<li class="mr-0"><a href="#">Toko<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -298,7 +306,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="images/logo2.png" alt="#"></a>
+								<a href="index.html"><img src="{{asset('images/logo2.png')}}" alt="#"></a>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
@@ -380,7 +388,7 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-
+    @yield('script')
 	<!-- Jquery -->
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/jquery-migrate-3.0.0.js') }}"></script>

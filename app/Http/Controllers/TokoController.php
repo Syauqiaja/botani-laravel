@@ -7,11 +7,24 @@ use Illuminate\Http\Request;
 
 class TokoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function profile(){
+        return view('Toko.profile-shop');
+    }
+    public function dashboard(){
+        return view('Toko.dashboard-shop');
+    }
+    public function register(){
+        return view('Toko.create');
+    }
     public function index()
     {
         //

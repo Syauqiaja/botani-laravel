@@ -24,6 +24,8 @@ class User extends Authenticatable
         'role',
         'foto_profil',
         'jenis_kelamin',
+        'quote',
+        'alamat',
     ];
 
     /**

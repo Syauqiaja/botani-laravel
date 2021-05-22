@@ -58,8 +58,7 @@
                     <div class="mt-4 mb-2 text-center">
                         Belum punya akun?
                     </div>
-                        <a href="register_admin" type="button" class="btn btn-block btn-success">Buat akun Seller</a>
-                        <a href="register" type="button" class="btn btn-block btn-info">Buat akun Customer</a>
+                        <a href="{{url('/register')}}" type="button" class="btn btn-block btn-success">Akun baru</a>
                 </form>
             </div>
             <div class="card-footer">

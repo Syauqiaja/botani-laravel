@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'telepon' => ['digits_between:10,15'],
             'jenis_kelamin' => ['required'],
             'foto_profil' => ['image', 'max:2000'],
-            'avatar' => ['required_without:foto_profil']
+            'avatar' => ['required_without:foto_profil'],
+            'quote' => ['string', 'max:255']
         ],[
             "required" => "Field :attribute harus diisi.",
             "email" => "Field :attribute bukan berupa valid email.",
@@ -89,7 +90,7 @@ class RegisterController extends Controller
     {
         $path = "";
         if(array_key_exists('useavatar', $data)){
-            $path = 'images/profiles/'.$data['avatar'].'png';
+            $path = 'images/profiles/'.$data['avatar'].'.'.'png';
         }else{
             $ext = $data['foto_profil']->getClientOriginalExtension();
             $nama = $data['nama'].rand(99,999).time().'.'.$ext;
@@ -102,7 +103,9 @@ class RegisterController extends Controller
             'telepon' => $data['telepon'],
             'role' => $data['role'],
             'jenis_kelamin' => $data['jenis_kelamin'],
+            'quote' => $data['quote'],
             'foto_profil' => $path,
+            'alamat' => $data['alamat']
         ]);
     }
 }

@@ -20,7 +20,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" autocomplete="name" autofocus placeholder="Masukkan Nama Lengkap">
+                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" autocomplete="name" autofocus placeholder="ex: Greg Hambali">
                             @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan Alamat Email">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="ex: greghambali@gmail.com">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -59,8 +59,26 @@
                     </div>
                     <div class="form-group">
                         <label for="telepon">Nomor Telepon</label>
-                            <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" placeholder="Masukkan Nomor Telepon/HP" autocomplete="tel">
+                            <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" placeholder="ex: +6289xxxxxxx" autocomplete="tel">
                             @error('telepon')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                            <textarea id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" placeholder="Masukkan alamat lengkap">{{ old('alamat') }}</textarea>
+                            @error('alamat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">Quotes</label>
+                            <input id="quote" type="text" class="form-control @error('quote') is-invalid @enderror" name="quote" value="{{ old('quote') }}" placeholder="ex: Hiduplah seperti tumbuhan">
+                            @error('quote')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -75,7 +93,6 @@
                                 </span>
                             @enderror
                     </div>
-
                     <div class="form-group">
                         <label for="password_confirmation">Konfirmasi Password</label>
                             <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Ulangi Kata Sandi">
