@@ -1,10 +1,66 @@
 @extends('layouts.master')
+@section('style')
+<style>
+.carousel-item{
+    -webkit-transform: translateZ(0); -moz-transform: translateZ(0);
+}
+.slide-1{
+    background: url('images/slide-1.jpg');
+}
+.slide-2{
+    background: url('images/slide-2.jpg');
+}
+.slide-3{
+    background: url('images/slide-3.jpg');
+}
+.hero-slider .carousel-item .single-slider .text-inner{
+    background: rgba(0, 0, 0, 0.4);
+    animation-name: hero-text;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    position: relative;
+    opacity: 0;
+}
+@keyframes hero-text{
+    0%{
+        opacity: 0;
+        top: 40%;
+    }
+    100%{
+        opacity: 1;
+        top: 0%;
+    }
+}
+.hero-text h1{
+color: #29ec5a;
+}
+.slide-btn {
+    position: relative;
+    padding-left: 0;
+  }
+  .slide-btn:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-bottom: 3px solid #1cd449;
+    transition: width .3s ease-in-out;
+  }
+
+  .slide-btn:hover:after {
+    width: 93%;
+  }
+</style>
+@endsection
 
 @section('content')
 	<!-- Slider Area -->
 	<section class="hero-slider">
 
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
 		<ol class="carousel-indicators">
 		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -16,15 +72,15 @@
                 <div class="single-slider slide-1">
                     <div class="container">
                         <div class="row no-gutters">
-                            <div class="col-lg-9 offset-lg-3 col-12">
-                                <div class="text-inner">
+                            <div class="col-lg-9 offset-lg-1 col-12 row">
+                                <div class="text-inner col-8 mt-5 p-3">
                                     <div class="row">
                                         <div class="col-lg-9 col-12">
                                             <div class="hero-text">
-                                                <h1><span>Kini Telah Hadir </span>Botani</h1>
-                                                <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-                                                <div class="button">
-                                                    <a href="#" class="btn">Daftar Sekarang</a>
+                                                <h1><span class="text-white">Kini Telah Hadir </span>Botani</h1>
+                                                <p class="text-white">E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                                <div class="hero-button">
+                                                    <a href="#" class="btn bs slide-btn text-white">Daftar Sekarang</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,16 +97,16 @@
             <div class="single-slider slide-2">
                 <div class="container">
                     <div class="row no-gutters">
-                        <div class="col-lg-9 offset-lg-3 col-12">
-                            <div class="text-inner">
+                        <div class="col-lg-9 offset-lg-1 col-12 row">
+                            <div class="text-inner col-8 mt-5 p-3">
                                 <div class="row">
                                     <div class="col-lg-9 col-12">
                                         <div class="hero-text">
-                                            <h1><span>Kini Telah Hadir </span>Botani</h1>
-                                            <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-                                            <div class="button">
-                                                <a href="#" class="btn">Daftar Sekarang</a>
-                                            </div>
+                                            <h1><span class="text-white">Kini Telah Hadir </span>Botani</h1>
+                                                <p class="text-white">E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                                <div class="hero-button">
+                                                    <a href="#" class="btn bs slide-btn text-white">Daftar Sekarang</a>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -66,15 +122,15 @@
                 <div class="single-slider slide-3">
                     <div class="container">
                         <div class="row no-gutters">
-                            <div class="col-lg-9 offset-lg-3 col-12">
-                                <div class="text-inner">
+                            <div class="col-lg-9 offset-lg-1 col-12 row">
+                                <div class="text-inner col-8 mt-5 p-3">
                                     <div class="row">
                                         <div class="col-lg-9 col-12">
                                             <div class="hero-text">
-                                                <h1><span>Kini Telah Hadir </span>Botani</h1>
-                                                <p>E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
-                                                <div class="button">
-                                                    <a href="#" class="btn">Daftar Sekarang</a>
+                                                <h1><span class="text-white">Kini Telah Hadir </span>Botani</h1>
+                                                <p class="text-white">E-Marketplace Tanaman Pertama di Indonesia <br> Tersedia 100+ toko tanaman hias terpercaya <br> Ratusan blog eduasi botani, serta ribuan produk siap beli</p>
+                                                <div class="hero-button">
+                                                    <a href="#" class="btn bs slide-btn text-white">Daftar Sekarang</a>
                                                 </div>
                                             </div>
                                         </div>

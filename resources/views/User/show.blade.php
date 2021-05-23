@@ -86,11 +86,13 @@ box-shadow: none!important;
 	<!-- End Breadcrumbs -->
     <div class="main-body">
 		<div class="row gutters-sm">
+
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{asset($user['foto_profil'])}}" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{asset($user['foto_profil'])}}" alt="Admin" class="rounded-circle" width="150"
+                    style="background-color: @if(strpos(Auth::user()->foto_profil,'male-')) #c7ccf5; @elseif(strpos(Auth::user()->foto_profil,'female-')) #f5c7cf; @else white; @endif">
                     <div class="mt-3">
                       <h4>{{strtok($user['nama'], " ")}}</h4>
                       {{-- <p class="text-secondary mb-3">"Hiduplah seperti tumbuhan"</p> --}}
@@ -106,8 +108,8 @@ box-shadow: none!important;
                   </div>
                 </div>
               </div>
-
             </div>
+
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -140,25 +142,32 @@ box-shadow: none!important;
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
+                      <h6 class="mb-0">Jenis Kelamin</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        @if($user['jenis_kelamin'] == 'L') Laki-laki @else Perempuan @endif
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
                       <h6 class="mb-0">Alamat</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                         {{$user['alamat']}}
                     </div>
                   </div>
+                  @if($user['role']=='2')
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Toko</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-						@if($user['role']=='2')
-                            <a href="#" class="namatoko">---Nama Toko---</a>
-                        @else
-                            <span class="text-warning">Tidak memiliki toko</span>
-                        @endif
+                        <a href="#" class="namatoko">---Nama Toko---</a>
                     </div>
-                  </div>
+                 </div>
+                 @endif
                 </div>
               </div>
           </div>

@@ -58,7 +58,7 @@
                     <div class="mt-4 mb-2 text-center">
                         Belum punya akun?
                     </div>
-                        <a href="{{url('/register')}}" type="button" class="btn btn-block btn-success">Akun baru</a>
+                        <a href="{{route('register')}}" type="button" class="btn btn-block btn-success">Akun baru</a>
                 </form>
             </div>
             <div class="card-footer">

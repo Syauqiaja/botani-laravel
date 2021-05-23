@@ -37,6 +37,8 @@
 .avatar-6{background-image: url('images/profiles/female-6.png');}
 .avatar-7{background-image: url('images/profiles/female-7.png');}
 .avatar-8{background-image: url('images/profiles/female-8.png');}
+.avatar-9{background-image: url('images/profiles/female-9.png');}
+.avatar-10{background-image: url('images/profiles/female-10.png');}
 .avatarmale-1{background-image: url('images/profiles/male-1.png');}
 .avatarmale-2{background-image: url('images/profiles/male-2.png');}
 .avatarmale-3{background-image: url('images/profiles/male-3.png');}
@@ -45,6 +47,8 @@
 .avatarmale-6{background-image: url('images/profiles/male-6.png');}
 .avatarmale-7{background-image: url('images/profiles/male-7.png');}
 .avatarmale-8{background-image: url('images/profiles/male-8.png');}
+.avatarmale-9{background-image: url('images/profiles/male-9.png');}
+.avatarmale-10{background-image: url('images/profiles/male-10.png');}
 .drinkcard-cc{
     border-radius: 10px;
     cursor:pointer;
@@ -99,7 +103,9 @@
 #preview-profile:active{
     color: #1a8d37;
 }
-
+.avatar-wrapper{
+    border: 1px solid #1CD449;
+}
 /* Extras */
 a:visited{color:#888}
 a{color:#444;text-decoration:none;}

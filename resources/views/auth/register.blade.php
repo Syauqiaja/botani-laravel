@@ -122,26 +122,28 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="text-secondary my-3">atau</div>
                             <div class="row mx-auto">
                                 <div class="col-12 p-0">
-                                    <div class="mx-0">Atau Pilih Avatar
+                                    <div class="mx-0">Pilih Avatar
                                         <small style="opacity: .9;"> (<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>)</small>
                                     </div>
+                                  <div class="avatar-wrapper mt-2">
                                     @if(old('jenis_kelamin')!='L' && old('jenis_kelamin')!='P')
                                         <div id="avatar-container">
-                                            <div class="alert alert-primary mt-3" role="alert">
+                                            <div class="alert alert-primary mt-3 mx-3" role="alert">
                                                 Mohon pilih jenis kelamin :)
                                             </div>
                                         </div>
                                     @endif
                                     <div class="cc-selector mt-3 text-center @if(old('jenis_kelamin')!='P') d-none @endif" id="female-avatar">
-                                        @for ($i = 1; $i<=8; $i++)
+                                        @for ($i = 1; $i<=10; $i++)
                                             <input id="avatar-{{$i}}" type="radio" name="avatar" value="female-{{$i}}" />
                                             <label class="drinkcard-cc avatar-{{$i}}" for="avatar-{{$i}}"></label>
                                         @endfor
                                     </div>
                                     <div class="cc-selector mt-3 text-center @if(old('jenis_kelamin')!='L') d-none @endif" id="male-avatar">
-                                        @for ($i = 1; $i<=8; $i++)
+                                        @for ($i = 1; $i<=10; $i++)
                                             <input id="avatarmale-{{$i}}" type="radio" name="avatar" value="male-{{$i}}" />
                                             <label class="drinkcard-cc avatarmale-{{$i}}" for="avatarmale-{{$i}}"></label>
                                         @endfor
@@ -151,12 +153,13 @@
                                             <small><strong>{{ $message }}</strong></small>
                                         </span>
                                     @enderror
+                                  </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto my-auto">
                             <div class="rect-img-container">
-                                <img src="{{asset('images/profiles/preview.png')}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #aae2b8; border-radius: 50%">
+                                <img src="{{asset('images/profiles/preview.png')}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview" style="background-color: #f5c7cf; border-radius: 50%">
                             </div>
                             <div class=" mb-3 my-1 text-center cc-selector">
                                 <input id="preview-profile" type="checkbox" name="useavatar" value="using"/>
@@ -198,6 +201,11 @@ $(document).ready(function (){
     $("input[name='avatar']").click(function(){
         var img = getRadioValue('avatar');
         avatarPath = "{{URL::to('images/profiles/')}}"+"/"+img+".png";
+        if(getRadioValue('jenis_kelamin') == 'P'){
+            $("#preview").attr("style", "background-color: #f5c7cf; border-radius: 50%");
+        }else{
+            $("#preview").attr("style", "background-color: #c7ccf5; border-radius: 50%");
+        }
 
         document.getElementById('preview-profile').checked = true;
         document.getElementById("preview-label").innerHTML = "Gunakan Foto";
@@ -238,6 +246,8 @@ $(document).ready(function (){
 
                 reader.readAsDataURL(this.files[0]);
             }
+            $("#preview").attr("style", "background-color: white; border-radius: 50%");
+
             document.getElementById('preview-profile').checked = false;
             document.getElementById("preview-label").innerHTML = "Gunakan Avatar";
     });
@@ -245,13 +255,18 @@ $(document).ready(function (){
         if(document.getElementById('preview-profile').checked == true){
             $('#preview').attr('src', avatarPath);
             // document.getElementById('preview-profile').click();
+            if(getRadioValue('jenis_kelamin') == 'P'){
+                $("#preview").attr("style", "background-color: #f5c7cf; border-radius: 50%");
+            }else{
+                $("#preview").attr("style", "background-color: #c7ccf5; border-radius: 50%");
+            }
             document.getElementById("preview-label").innerHTML = "Gunakan Foto";
         }else{
             $('#preview').attr('src', profilePath);
             // document.getElementById('preview-profile').click();
+            $("#preview").attr("style", "background-color: white; border-radius: 50%");
             document.getElementById("preview-label").innerHTML = "Gunakan Avatar";
         }
-        alert(document.getElementById('preview-profile').checked);
     });
 });
 </script>

@@ -43,6 +43,9 @@ Route::get('/users/show/{user}', [UserController::class, 'show'])->name('user.sh
 Route::get('/users/', [UserController::class, 'index'])->name('user.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', function () {
+    return view('text',  ["user"=>Auth::user()]);
+});
 
 // Route::get('/email/verify', function () {
 //     return view('auth.verify');
