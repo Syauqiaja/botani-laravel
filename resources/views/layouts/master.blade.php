@@ -123,7 +123,9 @@
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
 							<div class="sinlge-bar profile">
-								<a class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+
+                                <a class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                @if (!Auth::guest())
                                 <div class="profile-item">
                                     <div class="rect-img-container w-50 h-50 mx-auto mb-3">
                                         <img src="{{asset(Auth::user()->foto_profil)}}" alt="Foto" class="img-fluid rect-img h-100 w-100" id="preview"
@@ -135,17 +137,30 @@
 										<a href="{{url('users/show')}}/{{Auth::user()->id}}" class="btn animate btn-profile">Profil</a>
 									</div>
                                     <div class="bottom mt-0">
-										<a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
+                                        <a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
 									</div>
                                     @if (Auth::user()->role == 2)
                                     <div class="bottom mt-0">
-										<a href="#" class="btn animate btn-profile">Toko Saya</a>
+                                        <a href="#" class="btn animate btn-profile">Toko Saya</a>
 									</div>
                                     @endif
 									<div class="bottom mt-4"><form method="POST" action="{{ route('logout') }}">@csrf
 										<button type="submit" href="checkout.html" class="btn animate w-100 final">Keluar</button>
                                     </form></div>
 								</div>
+                                @else
+                                <div class="profile-item text-center">
+                                    <div class="rounded-circle"> <i class="fas fa-user" style="font-size: 400%"></i></div>
+                                    <small>Anda belum masuk</small>
+                                    <hr>
+                                    <div class="bottom mt-0">
+                                        <a href="#" class="btn animate btn-profile">Masuk</a>
+									</div>
+                                    <div class="bottom mt-0 final">
+                                        <a href="#" class="btn animate btn-profile w-100 rounded-0 btn-success">Daftar</a>
+									</div>
+								</div>
+                                @endif
 								<!--/ End Shopping Item -->
 							</div>
 							<div class="sinlge-bar shopping">

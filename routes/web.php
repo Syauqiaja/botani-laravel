@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BlogspotController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
@@ -46,6 +46,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
+Route::get('/blogs', [BlogController::class, 'index']);
 
 // Route::get('/email/verify', function () {
 //     return view('auth.verify');
