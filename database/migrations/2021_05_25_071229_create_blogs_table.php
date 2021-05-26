@@ -19,7 +19,8 @@ class CreateBlogsTable extends Migration
             $table->text('isi_blog');
             $table->string('video')->nullable(true);
             $table->string('foto')->nullable(true);
-            $table->bigInteger('id_toko');
+            $table->bigInteger('id_toko')->nullable(true);
+            $table->bigInteger('id_user');
             $table->tinyInteger('rate')->default(3);
             $table->timestamps();
         });

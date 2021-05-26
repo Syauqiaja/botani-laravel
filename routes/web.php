@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
@@ -47,16 +48,15 @@ Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
 Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/create', [BlogController::class, 'create']);
 
-// Route::get('/email/verify', function () {
-//     return view('auth.verify');
-// })->middleware('auth')->name('verification.notice');
+// Blog comment reply system
+Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.comment');
+Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply');
+Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
-
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-
-//     return redirect('/');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 

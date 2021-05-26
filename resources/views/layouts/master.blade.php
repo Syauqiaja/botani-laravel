@@ -154,10 +154,10 @@
                                     <small>Anda belum masuk</small>
                                     <hr>
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Masuk</a>
+                                        <a href="{{route('login')}}" class="btn animate btn-profile">Masuk</a>
 									</div>
                                     <div class="bottom mt-0 final">
-                                        <a href="#" class="btn animate btn-profile w-100 rounded-0 btn-success">Daftar</a>
+                                        <a href="{{route('register')}}" class="btn animate btn-profile w-100 rounded-0 btn-success">Daftar</a>
 									</div>
 								</div>
                                 @endif
@@ -407,7 +407,6 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-    @yield('script')
 	<!-- Jquery -->
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/jquery-migrate-3.0.0.js') }}"></script>
@@ -457,5 +456,6 @@
     <script src="{{URL::asset('js/userjs.js')}}"></script>
     <script src="{{ URL::asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ URL::asset('js/demo/chart-pie-demo.js') }}"></script>
+    @yield('script')
 </body>
 </html>
