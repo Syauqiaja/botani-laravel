@@ -48,12 +48,12 @@ Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
 Route::get('/blogs', [BlogController::class, 'index']);
-Route::get('/blogs/create', [BlogController::class, 'create']);
+Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('auth');
 
 // Blog comment reply system
-Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.comment');
-Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply');
-Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store');
+Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.comment')->middleware('auth');
+Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply')->middleware('auth');
+Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store')->middleware('auth');
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {

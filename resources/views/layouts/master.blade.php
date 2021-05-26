@@ -293,7 +293,8 @@
 
 													<li class="mr-0"><a href="#">Blogtani<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
-															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
+															<li><a href="{{route('blog.create')}}">Buat Blogtani</a></li>
+                                                            <li><a href="#">Blogtani [belum tersedia]</a></li>
 														</ul>
 													</li>
 													<li class="mr-0"><a href="contact.html">Hubungi Kami</a></li>
