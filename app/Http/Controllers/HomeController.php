@@ -24,4 +24,17 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function createProduct()
+    {
+        return view('Toko.create-product');
+    }
+    public function editProduct()
+    {
+        return view('Toko.edit-product');
+    }
+    public function createPesanan()
+    {
+        return view('User.create-pemesanan');
+    }
 }

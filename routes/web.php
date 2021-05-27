@@ -48,6 +48,11 @@ Route::get('/test', function () {
 });
 Route::get('/blogs', [BlogController::class, 'index']);
 
+//Buat Test biar bisa edit nanti disesuaikan aja gpp :v
+Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
+Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
+Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
+
 // Route::get('/email/verify', function () {
 //     return view('auth.verify');
 // })->middleware('auth')->name('verification.notice');
