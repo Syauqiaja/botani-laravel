@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Cache\RedisTaggedCache;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,14 +52,14 @@ class BlogController extends Controller
         $blog->isi_blog = $validated['blogcontent'];
         $blog->nama_blog = $validated['blog_title'];
 
-        if(array_key_exists('blog_image', $validated)){
+        if($request->hasFile('blog_image')){
             $ext = $validated['blog_image']->getClientOriginalExtension();
             $nama = md5($validated['blog_title'].time()).'.'.$ext;
             $path = $validated['blog_image']->move('images\blogs',$nama);
             $blog->foto = $path;
         }
         $blog->save();
-        return redirect('blogs/'.$blog->id);
+        return redirect('blogs/'.$blog->id)->with('pesan', "Selamat, pembuatan blog berhasil !");
     }
 
     /**
@@ -95,7 +96,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view("Blog.edit", ["blog"=>$blog]);
     }
 
     /**
@@ -107,7 +108,23 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $validated = $request->validate([
+            "blog_title" => "required|max:255",
+            "blog_image" => "image|max:3000",
+            "blogcontent" => "required"
+        ]);
+
+        if($request->hasFile('blog_image')){
+            $ext = $validated['blog_image']->getClientOriginalExtension();
+            $nama = md5($validated['blog_title'].time()).'.'.$ext;
+            $path = $validated['blog_image']->move('images\blogs',$nama);
+            $blog->foto = $path;
+        }
+        $blog->isi_blog = $validated['blogcontent'];
+        $blog->nama_blog = $validated['blog_title'];
+        $blog->save();
+
+        return redirect('blogs/'.$blog->id)->with('pesan', "Selamat, Update berhasil !");
     }
 
     /**
@@ -118,6 +135,12 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        DB::table('comments')
+                ->where('commentable_type', '=', 'App\Models\Blog')
+                ->where('commentable_id', '=', $blog->id)
+                ->delete();
+        $blog->delete();
+
+        return "Data dihapus";
     }
 }

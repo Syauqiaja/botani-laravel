@@ -47,8 +47,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
-Route::get('/blogs', [BlogController::class, 'index']);
-Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('auth');
 
 //Buat Test biar bisa edit nanti disesuaikan aja gpp :v
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
@@ -56,21 +54,32 @@ Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk 
 Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
 
 // Route::get('/email/verify', function () {
-//     return view('auth.verify');
-// })->middleware('auth')->name('verification.notice');
+    //     return view('auth.verify');
+    // })->middleware('auth')->name('verification.notice');
 
 
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
+    // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        //     $request->fulfill();
 
-//     return redirect('/');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
+        //     return redirect('/');
+        // })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('auth');
 // Blog comment reply system
 Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.comment')->middleware('auth');
 Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply')->middleware('auth');
 Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store')->middleware('auth');
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit')->middleware('auth');
+Route::patch('/blogs/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
+Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy')->middleware('auth');
+Route::get('/testmodal', function () {
+    return view('components.confirm-modal');
+});
 
+// ---- Penting v v v -----
+// --- ROUTE UNTUK FILE MANAGER ---
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

@@ -319,7 +319,7 @@ big {
 	color:#F7941D;
 }
 /*=============================
-	Start Demos CSS 
+	Start Demos CSS
 ===============================*/
 .demo-section{
 	width: 100%;
@@ -458,7 +458,7 @@ big {
 	color:#755ce4;
 }
 /*=============================
-	/End Demos CSS 
+	/End Demos CSS
 ===============================*/
 
 /* Preloader Animaion */
@@ -493,7 +493,7 @@ big {
 	--uiPreloaderSize: var(--cpPreloaderSize, 80px);
 	font-size: 70px;
 }
-.cp-preloader-inner::after, 
+.cp-preloader-inner::after,
 .cp-preloader-inner::before {
 	content: "";
 	width: 7.5%;
@@ -1041,62 +1041,62 @@ object {
 
 
 /* Start Modal Css */
-.modal-dialog .quickview-slider-active{
+:not(.bs).modal-dialog .quickview-slider-active{
 	display:block;
 	height:100%;
 	width:550px;
 	height:100%;
 }
-.modal-dialog .quickview-slider-active img{
+:not(.bs).modal-dialog .quickview-slider-active img{
 	display:inline-block;
 }
-.modal-dialog {
+:not(.bs).modal-dialog {
   margin: 12% auto 8%;
   max-width: 1358px;
   width: 1358px;
 }
 
 @media only screen and (min-width: 1366px) and (max-width: 1600px) {
-  .modal-dialog {
+  :not(.bs).modal-dialog {
     width: 1145px;
     max-width: 1145px;
   }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
-  .modal-dialog {
+  :not(.bs).modal-dialog {
     width: 1145px;
     max-width: 1145px;
   }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .modal-dialog {
+  :not(.bs).modal-dialog {
     width: 960px;
     max-width: 960px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .modal-dialog {
+  :not(.bs).modal-dialog {
     width: 720px;
     max-width: 720px;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .modal-dialog {
+  :not(.bs).modal-dialog {
     width: 100%;
     max-width: 100%;
     padding: 35px 0;
   }
 }
 
-.modal-dialog .modal-content {
+:not(.bs).modal-dialog :not(.bs).modal-content {
   border-radius: 0;
 }
 
-.modal-dialog .modal-content .modal-header {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header {
 	border: none;
 	padding: 0;
 	right: 10px;
@@ -1106,12 +1106,12 @@ object {
 }
 
 @media only screen and (max-width: 767px) {
-  .modal-dialog .modal-content .modal-header {
+  :not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header {
     right: 0px;
     top: -10px;
   }
 }
-.modal-dialog .modal-content .modal-header .close {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header .close {
 	color: #fff;
 	cursor: pointer;
 	opacity: 1;
@@ -1131,7 +1131,7 @@ object {
 	transition:all 0.4s ease;
 }
 @media only screen and (max-width: 767px) {
-  .modal-dialog .modal-content .modal-header .close {
+  :not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header .close {
     width: 34px;
     height: 34px;
     line-height: 34px;
@@ -1139,12 +1139,12 @@ object {
   }
 }
 
-.modal-dialog .modal-content .modal-header .close:hover {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header .close:hover {
   color: #fff;
   border-color:transparent;
   background:#F7941D;
 }
-.modal-dialog .modal-content .modal-body {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-body {
 	padding: 0px;
 	overflow-y: auto;
 	max-height: 510px;
@@ -1629,20 +1629,20 @@ object {
 	width: 151px;
 	display: inline-block;
 }
-.modal .product-gallery .single-slider{
+:not(.bs).modal .product-gallery .single-slider{
 	width:100%;
 	height:100%;
 	display:block;
 }
 /* Slider Nav */
-.modal .owl-nav{
+:not(.bs).modal .owl-nav{
 	margin: 0;
     position: absolute;
     top: 50%;
     width: 100%;
 	margin-top:-25px;
 }
-.modal .owl-carousel .owl-nav div {
+:not(.bs).modal .owl-carousel .owl-nav div {
 	height: 60px;
 	width: 30px;
 	line-height: 58px;
@@ -1658,19 +1658,19 @@ object {
 	transition:all 0.4s ease;
 	box-shadow: 0px 0px 10px #3333331c;
 }
-.modal .owl-carousel .owl-nav div:hover{
+:not(.bs).modal .owl-carousel .owl-nav div:hover{
 	color:#fff;
 	background:#F7941D;
 }
-.modal .owl-carousel .owl-controls .owl-nav .owl-prev{
+:not(.bs).modal .owl-carousel .owl-controls .owl-nav .owl-prev{
 	left:0;
-	
+
 }
-.modal .owl-carousel .owl-controls .owl-nav .owl-next{
+:not(.bs).modal .owl-carousel .owl-controls .owl-nav .owl-next{
 	right:0;
 }
-.modal .product-gallery
-.modal .product-gallery img{
+:not(.bs).modal .product-gallery
+:not(.bs).modal .product-gallery img{
 	width:100%;
 	height:100%;
 	display:block;
@@ -1791,7 +1791,7 @@ object {
 	/* display: block; */
 }
 .default-social ul li a i {
-  
+
 }
 .default-social ul li a:hover {
   color: #F7941D;
