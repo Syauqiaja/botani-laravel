@@ -26,19 +26,21 @@
 						<div class="blog-single-main">
 							<div class="row">
 								<div class="col-12">
+                                    @if($blog['foto'] != null)
 									<div class="image">
-										<img src="https://via.placeholder.com/950x460" alt="#">
+										<img src="{{asset($blog['foto'])}}" alt="#">
 									</div>
+                                    @endif
 									<div class="blog-detail">
-										<h2 class="blog-title">What are the secrets to start- up success?</h2>
+										<h2 class="blog-title">{{$blog['nama_blog']}}</h2>
 										<div class="blog-meta">
-											<span class="author"><a href="#"><i class="fa fa-user"></i>By Admin</a><a href="#"><i class="fa fa-calendar"></i>Dec 24, 2018</a><a href="#"><i class="fa fa-comments"></i>Comment (15)</a></span>
+											<span class="author">
+                                                <a href="#"><i class="fa fa-user"></i>{{strtok($user->nama, " ")}}</a>
+                                                <a href="#"><i class="fa fa-calendar"></i>{{date("d/m/Y", strtotime($blog['updated_at']))}}</a>
+                                                <a href="#"><i class="fa fa-comments"></i>Komentar ({{$comCount}})</a></span>
 										</div>
 										<div class="content">
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
-											<blockquote> <i class="fa fa-quote-left"></i> Do what you love to do and give it your very best. Whether it's business or baseball, or the theater, or any field. If you don't love what you're doing and you can't give it your best, get out of it. Life is too short. You'll be an old man before you know it. risus. Ut tincidunt, erat eget feugiat eleifend, eros magna dapibus diam.</blockquote>
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
+                                            {!! $blog['isi_blog'] !!}
 										</div>
 									</div>
 									<div class="share-social">
@@ -47,93 +49,90 @@
 												<div class="content-tags">
 													<h4>Tags:</h4>
 													<ul class="tag-inner">
-														<li><a href="#">Glass</a></li>
-														<li><a href="#">Pant</a></li>
-														<li><a href="#">t-shirt</a></li>
-														<li><a href="#">swater</a></li>
+														<li><a href="#">[Fitur Belum Tersedia]</a></li>
 													</ul>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+                                {{-- Start Comment Section  --}}
 								<div class="col-12">
 									<div class="comments">
-										<h3 class="comment-title">Comments (3)</h3>
-										<!-- Single Comment -->
-										<div class="single-comment">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-												</div>
-											</div>
-										</div>
-										<!-- End Single Comment -->
-										<!-- Single Comment -->
-										<div class="single-comment left">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>john deo <span>Feb 28, 2018 at 8:59 pm</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-												</div>
-											</div>
-										</div>
-										<!-- End Single Comment -->
-										<!-- Single Comment -->
-										<div class="single-comment">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>megan mart <span>Feb 28, 2018 at 8:59 pm</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-												</div>
-											</div>
-										</div>
-										<!-- End Single Comment -->
+										<h3 class="comment-title">Komentar ({{$comCount}})</h3>
+                                        @forelse ($comments as $comment)
+                                        @if($comment->id_parent == null)
+                                        <!-- Single Comment -->
+                                        <div class="single-comment">
+                                                <img src="{{asset($comment->user->foto_profil)}}" alt="#">
+                                                <div class="content">
+                                                    <h4>{{$comment->user->nama}} <span>At {{$comment->updated_at}}</span></h4>
+                                                    <p>{!!$comment->comment!!}</p>
+
+                                                    <a class="btn reply-button"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+
+                                                    <div class="reply-form d-none">
+                                                        <form action="{{route('blog.reply')}}" method="POST">@csrf
+                                                            <textarea name="isi_comment" placeholder=""></textarea>
+                                                            <input type="hidden" name="id_parent" value="{{$comment->id}}">
+                                                            <input type="hidden" name="id_blog" value="{{$blog->id}}">
+                                                            <button type="submit" class="btn bs btn-success rounded-0">Kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                            <!-- End Single Comment -->
+                                            @include('Blog.reply', ["blog"=>$blog, "replies"=>$comment->replies])
+                                            @endif
+                                        @empty
+                                        <div class="single-comment">
+                                            <h5>Belum ada komentar</h5>
+                                        </div>
+                                        @endforelse
 									</div>
 								</div>
+                                {{-- End Comment Section  --}}
+
+                                {{-- Start Comment Form  --}}
 								<div class="col-12">
 									<div class="reply">
 										<div class="reply-head">
-											<h2 class="reply-title">Leave a Comment</h2>
+											<h2 class="reply-title">Tinggalkan Komentar</h2>
 											<!-- Comment Form -->
-											<form class="form" action="#">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-12">
-														<div class="form-group">
-															<label>Your Name<span>*</span></label>
-															<input type="text" name="name" placeholder="" required="required">
-														</div>
-													</div>
-													<div class="col-lg-6 col-md-6 col-12">
-														<div class="form-group">
-															<label>Your Email<span>*</span></label>
-															<input type="email" name="email" placeholder="" required="required">
+                                            @if (!Auth::guest())
+											<form class="form" action="{{route('blog.comment')}}" method="POST">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <label>Nama Anda<span>*</span></label>
+															<input type="text" name="" disabled value="{{Auth::user()->nama}}">
 														</div>
 													</div>
 													<div class="col-12">
-														<div class="form-group">
-															<label>Your Message<span>*</span></label>
-															<textarea name="message" placeholder=""></textarea>
+                                                        <div class="form-group">
+                                                            <label>Pesan<span>*</span></label>
+															<textarea name="isi_comment" placeholder=""></textarea>
 														</div>
 													</div>
+                                                    <input type="hidden" name="id_blog" required="required"  value="{{$blog->id}}">
 													<div class="col-12">
-														<div class="form-group button">
-															<button type="submit" class="btn">Post comment</button>
+                                                        <div class="form-group button">
+                                                            <button type="submit" class="btn">Kirim</button>
 														</div>
 													</div>
 												</div>
 											</form>
+                                            @else
+                                                <div class="alert alert-primary" role="alert">
+                                                    <span>Mohon <a href="{{route('login')}}"><u>masuk</u></a> terlebih dahulu agar dapat berkomentar</span>
+                                                </div>
+                                            @endif
 											<!-- End Comment Form -->
 										</div>
 									</div>
 								</div>
+                                {{-- End Comment Form  --}}
 							</div>
 						</div>
 					</div>
@@ -239,5 +238,21 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End Blog Single -->
+@endsection
+@section('script')
+<script>
+$(document).ready(function(e) {
+    $('.reply-button').on('click', function(e) {
+        e.preventDefault();
+        //locate the TD with value
+        $form = $(this).next('.reply-form');
+        if($form.hasClass("d-none")){
+            $('.reply-form:not(.d-none)').addClass('d-none');
+            $form.removeClass("d-none");
+        }else{
+            $form.addClass("d-none");
+        }
+    });
+});
+</script>
 @endsection

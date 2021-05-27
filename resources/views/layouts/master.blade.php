@@ -154,10 +154,10 @@
                                     <small>Anda belum masuk</small>
                                     <hr>
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Masuk</a>
+                                        <a href="{{route('login')}}" class="btn animate btn-profile">Masuk</a>
 									</div>
                                     <div class="bottom mt-0 final">
-                                        <a href="#" class="btn animate btn-profile w-100 rounded-0 btn-success">Daftar</a>
+                                        <a href="{{route('register')}}" class="btn animate btn-profile w-100 rounded-0 btn-success">Daftar</a>
 									</div>
 								</div>
                                 @endif
@@ -293,7 +293,8 @@
 
 													<li class="mr-0"><a href="#">Blogtani<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
-															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
+															<li><a href="{{route('blog.create')}}">Buat Blogtani</a></li>
+                                                            <li><a href="#">Blogtani [belum tersedia]</a></li>
 														</ul>
 													</li>
 													<li class="mr-0"><a href="contact.html">Hubungi Kami</a></li>
@@ -407,7 +408,6 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-    @yield('script')
 	<!-- Jquery -->
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/jquery-migrate-3.0.0.js') }}"></script>
@@ -457,5 +457,6 @@
     <script src="{{URL::asset('js/userjs.js')}}"></script>
     <script src="{{ URL::asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ URL::asset('js/demo/chart-pie-demo.js') }}"></script>
+    @yield('script')
 </body>
 </html>

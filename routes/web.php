@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
@@ -47,6 +48,7 @@ Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
 Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('auth');
 
 //Buat Test biar bisa edit nanti disesuaikan aja gpp :v
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
@@ -63,5 +65,13 @@ Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create p
 
 //     return redirect('/');
 // })->middleware(['auth', 'signed'])->name('verification.verify');
+// Blog comment reply system
+Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.comment')->middleware('auth');
+Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply')->middleware('auth');
+Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store')->middleware('auth');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
