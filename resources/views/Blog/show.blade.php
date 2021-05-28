@@ -87,7 +87,7 @@
                                                 <a href="#"><i class="fa fa-calendar"></i>{{date("d/m/Y", strtotime($blog['updated_at']))}}</a>
                                                 <a href="#" class="comment-button"><i class="fa fa-comments"></i>Komentar ({{$comCount}})</a>
                                                 @auth
-                                                <a href="{{route('blog.edit',$blog->id)}}"><i class="fas fa-edit"></i>Ubah</a>
+                                                <a href="{{route('blog.edit',$blog->id)}}"><i class="far fa-edit"></i>Ubah</a>
                                                 <button type="button" class="text-danger mx-3" style="background:none; border:none;"  data-toggle="modal" data-target="#modalHapus">
                                                     <i class="fas fa-trash-alt text-danger"></i>Hapus
                                                 </button>

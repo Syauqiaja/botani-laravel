@@ -40,7 +40,9 @@ Route::prefix('produks')->group(function () {
 Route::get('/tokos/register', [TokoController::class, 'register'])->name('toko.register');
 Route::get('/tokos/dashboard', [TokoController::class, 'dashboard'])->name('toko.dashboard');
 
-Route::get('/users/show/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
+Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
 Route::get('/users/', [UserController::class, 'index'])->name('user.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

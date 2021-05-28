@@ -134,7 +134,7 @@
                                     <h1 class="h5 mb-3 text-gray-800 text-center">{{strtok(Auth::user()->nama, " ")}}</h1>
                                     <hr>
                                     <div class="bottom mt-4 mb-0">
-										<a href="{{url('users/show')}}/{{Auth::user()->id}}" class="btn animate btn-profile">Profil</a>
+										<a href="{{route('user.show',Auth::user()->id)}}" class="btn animate btn-profile">Profil</a>
 									</div>
                                     <div class="bottom mt-0">
                                         <a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
