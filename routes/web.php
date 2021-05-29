@@ -49,6 +49,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/test', function () {
     return view('text',  ["user"=>Auth::user()]);
 });
+Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
+Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
+Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
 
 //Buat Test biar bisa edit nanti disesuaikan aja gpp :v
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
@@ -76,9 +79,6 @@ Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit')->middleware('auth');
 Route::patch('/blogs/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
 Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy')->middleware('auth');
-Route::get('/testmodal', function () {
-    return view('components.confirm-modal');
-});
 
 // ---- Penting v v v -----
 // --- ROUTE UNTUK FILE MANAGER ---

@@ -150,29 +150,149 @@ return flag;
                             </head>
                             <body oncontextmenu='return false' class='snippet-body'>
                             <div class="container-fluid px-1 py-5 mx-auto">
+                                @if(session()->has('pesan'))
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    <span>{{session()->get('pesan')}}</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                </div>
+                            @endif
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             <div class="card">
                 <h5 class="text-center mb-4">Buat Pesanan</h5>
-                <form class="form-card" onsubmit="event.preventDefault()">
+                <form class="form-card" action="{{route('pemesanan.update', $pemesanan->id)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PATCH')
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Pemesan<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Masukkan nama barang" onblur="validate(1)"> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Alamat Pemesan<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Masukkan harga barang" onblur="validate(2)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Pemesan<span class="text-danger"> *</span></label> <input type="text" id="" name="nama_pemesan" value="{{$pemesanan->user->nama}}" onblur="validate(1)" disabled> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Pesanan<span class="text-danger"> *</span></label> <input type="text" id="" name="nama_produk" value="{{$pemesanan->produk->nama_produk}}" onblur="validate(2)" disabled> </div>
                     </div>
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Bukti Bayar<span class="text-danger"> *</span></label> <input type="file" id="file" name="file" placeholder="" onblur="validate(3)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Jumlah Pesanan<span class="text-danger"> *</span></label> <input type="text" id="" name="kuantitas" value="{{$pemesanan->kuantitas}}" onblur="validate(2)" disabled> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Toko<span class="text-danger"> *</span></label> <input type="text" id="" name="nama_toko" value="{{$pemesanan->toko->nama_toko}}" onblur="validate(1)" disabled> </div>
                     </div>
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Ekspedisi<span class="text-danger"> *</span></label> <input type="text" id="eks" name="eks" placeholder="Masukkan ekspekdisi" onblur="validate(4)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Harga<span class="text-danger"> *</span></label> <input type="text" id="" name="harga_produk" value="{{$pemesanan->produk->harga_produk}}" onblur="validate(1)" disabled> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Ekspedisi<span class="text-danger"> *</span></label>
+                             <select type="ekspedisi" id="ekspedisi" name="ekspedisi" class="custom-select">
+                                 <option value="" selected>--Pilih Ekspedisi--</option>
+                                 <option value="Pos Indonesia" {{(old('ekspedisi') == 'Pos Indonesia') ? "selected" : ""}}>Pos Indonesia</option>
+                                 <option value="JNE" {{(old('ekspedisi') == 'JNE') ? "selected" : ""}}>JNE</option>
+                                 <option value="Ninja Express" {{(old('ekspedisi') == 'Ninja Express') ? "selected" : ""}}>Ninja Express</option>
+                                 <option value="SICEPAT" {{(old('ekspedisi') == 'SICEPAT') ? "selected" : ""}}>SICEPAT</option>
+                                </select>
+                                @error('ekspedisi')
+                                <span class="text-danger" role="alert">
+                                    <small><strong>{{ $message }}</strong></small>
+                                </span>
+                                @enderror
+                            </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Total Harga<span class="text-danger"> *</span></label> <input type="text" id="" name="total_harga" value="{{$pemesanan->total_harga}}" onblur="validate(2)" disabled> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Bukti Pembayaran<span class="text-danger"> *</span></label> <input type="file" id="bukti" name="bukti" placeholder="" onblur="validate(3)">
+                            @error('bukti')
+                            <span class="text-danger" role="alert">
+                                <small><strong>{{ $message }}</strong></small>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Alamat Tujuan<span class="text-danger"> *</span></label> <textarea name="alamat" id="alamat" cols="10" rows="5">{{ (!empty(old('alamat')))? old('alamat') : Auth::user()->alamat }}</textarea> </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Tambahkan Pesanan</button> </div>
+                        <div class="form-group col-sm-6"> <button type="button" class="btn-block btn-primary" id="submitButton" data-toggle="modal" data-target="#exampleModalCenter">Buat Pesanan</button> </div>
                     </div>
+                    <div class="bs modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="bs modal-dialog modal-dialog-centered" role="document">
+                          <div class="bs modal-content">
+                            <div class="bs modal-header">
+                              <h5 class="bs modal-title" id="exampleModalLongTitle">Konfirmasi Pesanan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="bs modal-body">
+                              <div><h1 class="h4 text-gray-800">Berikut Pesanan Anda</h1></div>
+                              <p>Pastikan seluruh data benar! jika terbukti terdapat kesalahan dari pembeli, maka kami tidak bertanggung jawab</p>
+                                <div class="form-konfirmasi justify-content-start text-left mt-5">
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Nama Pembeli</h6></div>
+                                        <div class="col-sm-8 text-secondary">{{$pemesanan->user->nama}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Toko Penjual</h6></div>
+                                        <div class="col-sm-8 text-secondary">{{$pemesanan->toko->nama_toko}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Nama Barang</h6></div>
+                                        <div class="col-sm-8 text-secondary">{{$pemesanan->produk->nama_produk}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Harga Barang</h6></div>
+                                        <div class="col-sm-8 text-secondary">{{$pemesanan->kuantitas}} x {{$pemesanan->produk->harga_produk}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Total Harga</h6></div>
+                                        <div class="col-sm-8 text-secondary">{{$pemesanan->total_harga}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Ekspedisi</h6></div>
+                                        <div class="col-sm-8 text-secondary" id="konfirmasiEkspedisi"></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Alamat Tujuan</h6></div>
+                                        <div class="col-sm-8 text-secondary" id="konfirmasiAlamat">{{Auth::user()->alamat}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4"><h6>Bukti pembayaran</h6></div>
+                                        <div class="col-sm-8 text-secondary rect-img-container h-100 p-0 mx-3">
+                                            <img src="{{asset('images/profiles/preview.png')}}" alt="Foto" class="img-fluid rect-img" style="left:0%; width:100%" id="konfirmasiBukti">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>Kami sarankan untuk memeriksa kembali pesanan anda</p>
+                                </div>
+                            </div>
+                            <div class="bs modal-footer">
+                              <button type="submit" class="btn bs btn-primary">Konfirmasi</button>
+                              <button type="button" class="btn bs btn-outline-danger" data-dismiss="modal">Batalkan</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $("#submitButton").on('click', function(){
+        $("#konfirmasiEkspedisi").html($("select[name='ekspedisi'] option").filter(':selected').val());
+        $("#konfirmasiAlamat").html($("textarea[name='alamat']").val());
+    });
+    $("#bukti").on("change", function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                $("#konfirmasiBukti").attr('src', reader.result);
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+</script>
                             </body>
                         </html>
 @endsection

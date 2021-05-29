@@ -1,41 +1,65 @@
 @extends('layouts.master')
 
+@section('style')
+    <style>
+.card {
+    padding: 20px 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: none !important;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+}
+        </style>
+@endsection
+
 @section('content')
     <script>var harga = parseInt("<?php echo $produk->harga_produk; ?>");</script>
 
-    <!-- POP-UP START -->
-    <div class="popup-overlay container-fluid row justify-content-center">
-        <div class="popup-content my-5 col-5">
-            <h1 class="h2 mb-3 mt-5 text-gray-800 text-center">Tambahkan Pesanan</h1>
-            <div class="my-5 mx-3">
-                <div class="pop-header my-3 row justify-content-between">
-                    <div class="rect-img-container col-3">
-                        <img src="https://via.placeholder.com/370x370" alt="Foto" class="img-fluid rect-img">
+    <div class="bs modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="bs modal-dialog modal-dialog-centered" role="document">
+          <form action="{{route('pemesanan.store')}}" class="bs modal-content" method="POST">
+            @csrf
+            <div class="bs modal-header">
+              <h5 class="bs modal-title" id="exampleModalLongTitle">Dapatkan Barangmu</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="bs modal-body">
+                <div class="my-3 row justify-content-between">
+                    <div class="rect-img-container col-sm-3 h-100 p-0 mx-3">
+                        <img src="{{asset($fotos->first()->path)}}" alt="Foto" class="img-fluid rect-img" style="left:0%; width:100%">
                     </div>
-                    <h2 class="col align-self-end text-right"><small>Rp.</small><span id="total" class="h2">0</span></h2>
+                    <div class="col-sm-8">
+                        <h3 class="h4 text-gray-800">{{$produk->nama_produk}}</h3>
+                        <h2 class="align-self-end text-right"><small>Rp.</small><span id="total" class="h2">0</span></h2>
+                    </div>
                 </div>
-                <form action="" class="">
                     <div>
                         <div class="form-group row justify-content-between my-4">
                             <h4 class="text-gray-700 col-sm-4 h4">Jumlah</h4>
                             <div class="input-group col d-flex justify-content-end">
                                 <a class="btn bs btn-outline-danger mx-1 rounded-0" id="barang-minus"><i class="fas fa-minus"></i></a>
                                 <input type="number" value="0" name="jumlah_barang" style="max-width:15%" class="form-control text-center">
+                                <input type="hidden" value="{{$produk->harga_produk}}" name="harga">
+                                <input type="hidden" value="{{$produk->id}}" name="id_produk">
+                                <input type="hidden" value="{{Auth::user()->id}}" name="id_user">
+                                <input type="hidden" value="{{1}}" name="id_toko"> <!-- Perlu diedit !-->
                                 <a class="btn bs btn-outline-success mx-1 rounded-0" id="barang-plus"><i class="fas fa-plus"></i></a>
                             </div>
                         </div>
-                        <input type="submit" name="checkout" id="" value="Checkout" class="btn bs w-100 btn-success my-1 p-2" style="font-size: 18px">
-                        <input type="submit" name="keranjang" id="" value="Masukkan Keranjang" class="btn bs w-100 btn-primary my-1 p-2" style="font-size: 18px">
-                    </div>
-                </form>
+                </div>
             </div>
-            <div class="position-absolute top-0 end-0"><a id="popClose"class="fas fa-times text-success" style="font-size: 24px"></a></div>
+            <div class="bs modal-footer">
+                <button type="submit" class="btn btn-primary bs rounded-0">Checkout</button>
+              <button type="button" class="btn btn-outline-danger bs rounded-0" data-dismiss="modal">Batalkan</button>
+            </div>
+        </form>
         </div>
-    </div>
-    <!-- POP-UP END -->
+      </div>
 
     <div class="container my-5 mx-3 row align-items-start">
-        <div class="col-md-5 my-3">
+        <div class="col-md-5 my-3 card mr-4">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   @forelse ($fotos as $foto)
@@ -49,7 +73,7 @@
                     @forelse ($fotos as $foto)
                         <div class="carousel-item @if($loop->first) active @endif">
                             <div class="rect-img-container">
-                                <img src="{{URL::asset('images/'.$foto->path)}}" alt="Foto" class="img-fluid rect-img">
+                                <img src="{{URL::asset($foto->path)}}" alt="Foto" class="img-fluid rect-img">
                             </div>
                         </div>
                     @empty
@@ -69,9 +93,9 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div class="mt-3">
+            <div class="mt-3 card-body">
                 <div>
-                    <a class="h3 mb-3 btn bs btn-success text-center text-success w-100" id="popOpen">
+                    <a class="h3 mb-3 btn bs btn-success text-center text-success w-100 rounded-0" data-toggle="modal" data-target="#exampleModalCenter">
                         Dapatkan Barangmu
                     </a>
                 </div>
@@ -80,6 +104,14 @@
         </div>
         <div class="col-md my-3">
             <div>
+                @if(session()->has('pesan'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <span>{{session()->get('pesan')}}</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                @endif
                 <h1 class="h3 mb-3 text-gray-800">Detail Produk</h1>
                 <div style="font-size:16px">
                     <div class="row">
@@ -103,7 +135,7 @@
                             <i style="color:#1CD449;" class="fas fa-chevron-down" id="arrow"></i>
                         </a></div>
                         <div class="deskripsi" id="deskripsi">
-                            {{$produk->deskripsi_produk}}
+                            {!!$produk->deskripsi_produk!!}
                         </div>
                     </div>
                 </div>
