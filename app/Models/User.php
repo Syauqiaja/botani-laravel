@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasMany(Blog::class, 'id_user');
 
     }
+    public function toko() {
+
+        return $this->hasOne(Toko::class, 'id_user');
+
+    }
     /**
      * The attributes that are mass assignable.
      *

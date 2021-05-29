@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -44,5 +47,15 @@ class UserController extends Controller
         }
         $user->save();
         return redirect()->route('user.show', $user->id)->with('pesan', 'Selamat, perubahan berhasil !');
+    }
+    public function penjual(){
+        $toko = DB::table('tokos')->where('id_user', '=', Auth::user())->first();
+        if($toko == null){
+            return redirect()->route('toko.create');
+        }
+        return redirect()->route('home');
+    }
+    public function admin(){
+        return redirect()->route('home');
     }
 }

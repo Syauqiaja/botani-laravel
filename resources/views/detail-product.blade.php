@@ -44,7 +44,7 @@
                                 <input type="hidden" value="{{$produk->harga_produk}}" name="harga">
                                 <input type="hidden" value="{{$produk->id}}" name="id_produk">
                                 <input type="hidden" value="{{Auth::user()->id}}" name="id_user">
-                                <input type="hidden" value="{{1}}" name="id_toko"> <!-- Perlu diedit !-->
+                                <input type="hidden" value="{{Auth::user()->toko->id}}" name="id_toko"> <!-- Perlu diedit !-->
                                 <a class="btn bs btn-outline-success mx-1 rounded-0" id="barang-plus"><i class="fas fa-plus"></i></a>
                             </div>
                         </div>

@@ -14,50 +14,42 @@
                 FORM REGISTRASI SELLER
             </div>
             <div class="card-body ">
-                <form method="POST">
+                <form method="POST" action="{{route('toko.store')}}" >
+                    @csrf
                     <div class="form-group">
                         <label for="nama">Nama Toko</label>
                             <input id="nama" type="text" class="form-control" name="nama" value="" placeholder="Masukkan Nama Toko">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telepon">Nomor Telepon</label>
-                            <input id="telepon" type="text" class="form-control" name="telepon" value="" placeholder="Masukkan Nomor Telepon/HP">
+                            @error('nama')
+                            <span class="text-danger" role="alert">
+                                <small><strong>{{ $message }}</strong></small>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
+                        @error('alamat')
+                        <span class="text-danger" role="alert">
+                            <small><strong>{{ $message }}</strong></small>
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="info">Informasi Toko</label>
                         <textarea class="form-control" id="info" rows="3" name="info"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                            <input id="email" type="email" class="form-control" name="email" value="" placeholder="Masukkan Alamat Email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                            <input id="password" type="password" class="form-control" name="password" placeholder="Masukkan Kata Sandi">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password2">Konfirmasi Password</label>
-                            <input id="password2" type="password" class="form-control" name="password2" placeholder="Ulangi Kata Sandi">
+                        @error('info')
+                        <span class="text-danger" role="alert">
+                            <small><strong>{{ $message }}</strong></small>
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="form-group m-0">
                         <button type="submit" class="btn btn-primary btn-block">
-                            Buat
+                            Kirim
                         </button>
-                    </div>
-
-                    <div class="mt-4 mb-2 text-center">
-                        Sudah punya akun? Silakan login <a href="login">disini</a>
                     </div>
                 </form>
             </div>

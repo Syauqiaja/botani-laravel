@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,7 +30,21 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = "/";
+    public function redirectTo(){
+        $role = Auth::user()->role;
+        // Check user role
+        switch ($role) {
+            case 2:
+                    return '/users/penjual';
+                break;
+            case 3:
+                    return '/users/admin';
+                break;
+            default:
+                    return '/';
+                break;
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -80,6 +95,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -96,6 +112,7 @@ class RegisterController extends Controller
             $nama = $data['nama'].rand(99,999).time().'.'.$ext;
             $path = $data['foto_profil']->move('images\profiles',$nama);
         }
+
         return User::create([
             'nama' => $data['nama'],
             'email' => $data['email'],

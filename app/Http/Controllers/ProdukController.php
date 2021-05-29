@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Foto;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
@@ -54,7 +55,7 @@ class ProdukController extends Controller
         $produk->stok = $request['stok'];
         $produk->jenis_produk = $request['tipe'];
         $produk->deskripsi_produk = $request['deskripsi'];
-        $produk->id_toko = 1;
+        $produk->id_toko = Auth::user()->toko->id;
         $produk->save();
 
         if($request->hasFile('files')){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Toko;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TokoController extends Controller
 {
@@ -37,7 +38,7 @@ class TokoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Toko.create');
     }
 
     /**
@@ -48,7 +49,19 @@ class TokoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nama" => "required|max:255",
+            "info" => "required",
+            "alamat" => "required",
+        ]);
+        $toko = new Toko;
+        $toko->user()->associate(Auth::user());
+        $toko->nama_toko = $request->nama;
+        $toko->informasi_toko = $request->info;
+        $toko->alamat_toko = $request->alamat;
+        $toko->save();
+
+        return redirect()->route('home')->with('pesan', 'Pembuatan toko berhasil');
     }
 
     /**

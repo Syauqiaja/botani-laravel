@@ -37,9 +37,9 @@ Route::prefix('produks')->group(function () {
     Route::patch('/{produk}', [ProdukController::class, 'update'])->name('produk.update');
     Route::delete('/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 });
-Route::get('/tokos/register', [TokoController::class, 'register'])->name('toko.register');
-Route::get('/tokos/dashboard', [TokoController::class, 'dashboard'])->name('toko.dashboard');
 
+Route::get('/users/penjual', [UserController::class, 'penjual']);
+Route::get('/users/admin', [UserController::class, 'admin']);
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
 Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
@@ -52,6 +52,9 @@ Route::get('/test', function () {
 Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
 Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
 Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
+
+Route::get('/tokos/create', [TokoController::class, 'create'])->name('toko.create');
+Route::post('/tokos', [TokoController::class, 'store'])->name('toko.store');
 
 //Buat Test biar bisa edit nanti disesuaikan aja gpp :v
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
