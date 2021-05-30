@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', "Beranda")
 @section('style')
 <style>
 .carousel-item{

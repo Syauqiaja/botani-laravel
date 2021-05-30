@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'Buat Pesanan')
 @section('content')
 <!doctype html>
                         <html>

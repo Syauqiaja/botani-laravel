@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Comment;
+use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Cache\RedisTaggedCache;
 use Illuminate\Database\Eloquent\Collection;
@@ -76,6 +77,19 @@ class BlogController extends Controller
 
         return $count;
     }
+    public function rate(Request $request, Blog $blog){
+        $request->validate(['rating' => 'required']);
+        if($blog->rateId()->id != null){
+            $rating = Rating::find($blog->rateId()->id);
+        }else{
+            $rating = new Rating;
+            $rating->user()->associate(Auth::user());
+        }
+            $rating->rating = $request->rating;
+            $blog->ratings()->save($rating);
+
+        return redirect()->route('blog.show', $blog->id);
+    }
     public function show(Blog $blog)
     {
         $user = $blog->user;
@@ -85,7 +99,7 @@ class BlogController extends Controller
                                         ->where('commentable_id', '=', $blog->id)
                                         ->count();
 
-        return view('Blog.show', ["blog"=>$blog, "user" => $user, "comments" => $comments, "comCount" => $commentCount]);
+        return view('Blog.show', ["blog"=>$blog, "user" => $user, "comments" => $comments, "comCount" => $commentCount, "rating" => Rating::find($blog->rateId()->id)]);
     }
 
     /**

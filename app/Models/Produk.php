@@ -22,4 +22,8 @@ class Produk extends Model
     public function fotos(){
         return $this->hasMany(Foto::class, 'id_produk', 'id');
     }
+
+    public function ratings(){
+        return $this->morphMany(Rating::class, 'ratable');
+    }
 }

@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Profil')
 @section('style')
 <style type="text/css">
 body{

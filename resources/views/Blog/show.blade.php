@@ -22,6 +22,9 @@
         outline: none;
         border-bottom: 1px solid #1CD449;
     }
+    .card{
+        box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+    }
     @keyframes fadein{
         0%{
             margin-left: 50%;
@@ -38,6 +41,7 @@
         animation-fill-mode: forwards;
     }
 </style>
+<link rel="stylesheet" href="{{asset('rating.css')}}">
 @endsection
 
 @section('content')
@@ -102,12 +106,25 @@
 									<div class="share-social">
 										<div class="row">
 											<div class="col-12">
-												<div class="content-tags">
-													<h4>Tags:</h4>
-													<ul class="tag-inner">
-														<li><a href="#">[Fitur Belum Tersedia]</a></li>
-													</ul>
+                                                <div class="content-tags card text-center">
+                                                    <div>Bagaimana menurutmu blogtani ini?</div>
+                                                    <form class="cc-selector mt-3" id="ratingForm" action="{{route('blog.rate', $blog->id)}}" method="POST">@csrf
+                                                            <input id="nilai-1" type="radio" name="rating" value="1" @if($rating->rating == '1') checked @endif/>
+                                                            <label class="drinkcard-cc nilai-1" for="nilai-1" data-toggle="tooltip" data-placement="top" title="Sangat Buruk!"></label>
+
+                                                            <input id="nilai-2" type="radio" name="rating" value="2" @if($rating->rating == '2') checked @endif/>
+                                                            <label class="drinkcard-cc nilai-2" for="nilai-2" data-toggle="tooltip" data-placement="top" title="Buruk"></label>
+
+                                                            <input id="nilai-3" type="radio" name="rating" value="3" @if($rating->rating == '3') checked @endif/>
+                                                            <label class="drinkcard-cc nilai-3" for="nilai-3" data-toggle="tooltip" data-placement="top" title="Cukup"></label>
+
+                                                            <input id="nilai-4" type="radio" name="rating" value="4" @if($rating->rating == '4') checked @endif/>
+                                                            <label class="drinkcard-cc nilai-4" for="nilai-4" data-toggle="tooltip" data-placement="top" title="Bagus"></label>
+                                                            <input id="nilai-5" type="radio" name="rating" value="5" @if($rating->rating == '5') checked @endif/>
+                                                            <label class="drinkcard-cc nilai-5" for="nilai-5" data-toggle="tooltip" data-placement="top" title="Sangat Bagus!"></label>
+                                                    </form>
 												</div>
+                                                <div><small class="text-secondary"><a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small></div>
 											</div>
 										</div>
 									</div>
@@ -331,7 +348,9 @@
 @section('script')
 <script>
 $(document).ready(function(e) {
-    window.location = '#';
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     $('.reply-button').on('click', function(e) {
         e.preventDefault();
         //locate the TD with value
@@ -343,6 +362,9 @@ $(document).ready(function(e) {
             $form.removeClass("d-none");
             $("textarea.reply-tarea:not(.d-none)").focus();
         }
+    });
+    $("input[name='rating']").on('change', function(){
+        $("#ratingForm").submit();
     });
     $(".comment-button").on('click', function(e){
         e.preventDefault();

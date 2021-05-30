@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Blog extends Model
 {
@@ -35,6 +37,20 @@ class Blog extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function ratings(){
+        return $this->morphMany(Rating::class, 'ratable');
+    }
+
+    public function rateId(){
+        $rating = DB::table('ratings')->where('id_user', Auth::user()->id)->where('ratable_id', $this->id)
+                        ->where('ratable_type', 'App\Models\Blog')->first('id');
+
+        return $rating;
+    }
+
+    public function rating(){
+        return Rating::find($this->rateId());
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
