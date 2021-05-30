@@ -50,6 +50,11 @@ Route::get('/users/', [UserController::class, 'index'])->name('user.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Buat Test biar bisa edit nanti disesuaikan aja gpp :v
+Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
+Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
+Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
+Route::get('/showproduct',[HomeController::class,'showProduct']);//show product dashboard toko
 Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
 Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
 Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');

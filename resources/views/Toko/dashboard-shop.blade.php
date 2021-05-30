@@ -1,120 +1,70 @@
 @extends('layouts.master')
 
     @section('content')
-	<!-- Slider Area -->
-	<section class="hero-slider">
-
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div><div class="container-fluid">
-
-							<!-- Page Heading -->
-							<br>
-							<br>
-							<div class="d-sm-flex align-items-center justify-content-between mb-4">
-								<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-								<a href="#" class="d-none d-sm-inline-block btn bs btn-sm btn-primary shadow-sm"><i
-										class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-							</div>
-
-							<!-- Content Row -->
-							<div class="row">
-
-								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-3 col-md-6 mb-4">
-									<div class="card border-left-primary shadow h-100 py-2">
-										<div class="card-body">
-											<div class="row no-gutters align-items-center">
-												<div class="col mr-2">
-													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-														Earnings (Monthly)</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-												</div>
-												<div class="col-auto">
-													<i class="fas fa-calendar fa-2x text-gray-300"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-3 col-md-6 mb-4">
-									<div class="card border-left-success shadow h-100 py-2">
-										<div class="card-body">
-											<div class="row no-gutters align-items-center">
-												<div class="col mr-2">
-													<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-														Earnings (Annual)</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-												</div>
-												<div class="col-auto">
-													<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-3 col-md-6 mb-4">
-									<div class="card border-left-info shadow h-100 py-2">
-										<div class="card-body">
-											<div class="row no-gutters align-items-center">
-												<div class="col mr-2">
-													<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-													</div>
-													<div class="row no-gutters align-items-center">
-														<div class="col-auto">
-															<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-														</div>
-														<div class="col">
-															<div class="progress progress-sm mr-2">
-																<div class="progress-bar bg-info" role="progressbar"
-																	style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-																	aria-valuemax="100"></div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-auto">
-													<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Pending Requests Card Example -->
-								<div class="col-xl-3 col-md-6 mb-4">
-									<div class="card border-left-warning shadow h-100 py-2">
-										<div class="card-body">
-											<div class="row no-gutters align-items-center">
-												<div class="col mr-2">
-													<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-														Pending Requests</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-												</div>
-												<div class="col-auto">
-													<i class="fas fa-comments fa-2x text-gray-300"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Content Row -->
-
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	</section>
-	<!--/ End Slider Area -->
-    @endsection
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/A.style.css.pagespeed.cf.PlwJDa5bmm.css">
+</head>
+<body>
+<section class="ftco-section">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-6 text-center mb-5">
+<br>
+<br>
+<h2 class="heading-section">Produk Toko</h2>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-wrap">
+<table class="table">
+	<thead class="thead-primary">
+		<tr>
+			<a href="" class="btn btn-secondary">Tambah Produk</a>
+		</tr>
+		<tr>
+			<th>No</th>
+			<th>Nama Produk</th>
+			<th>Harga Produk</th>
+			<th>Deksripsi Produk</th>
+			<th>Gambar Produk</th>
+			<th>Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row" class="scope">1</th>
+			<td>Apel</td>
+			<td>20.000</td>
+			<td>Ini apel bagus mamank</td>
+			<td>Ini gambar apel</td>
+			<td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+		</tr>
+		<tr>
+			<th scope="row" class="scope">2</th>
+			<td>Anggur</td>
+			<td>40.000</td>
+			<td>Ini anggur bagus mamank</td>
+			<td>Ini gambar anggur</td>
+			<td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js+bootstrap.min.js+main.js.pagespeed.jc.mGo61WuhWO.js"></script><script>eval(mod_pagespeed_VlMY9A_Ej6);</script>
+<script>eval(mod_pagespeed_Jrc1mCtwoH);</script>
+<script>eval(mod_pagespeed_p4wjUenRL9);</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"657906123960051b","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.5.2","si":10}'></script>
+</body>
+</html>
+@endsection
