@@ -330,8 +330,10 @@
 							<div class="logo">
 								<a href="index.html"><img src="{{asset('images/nerfed-logo.png')}}" alt="#"></a>
 							</div>
-							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							<p class="text">Botani adalah sebuah website marketplace yang berfungsi untuk membantu orang-orang yang ingin menjual tanaman
+                                serta memberikan edukasi lebih untuk perawatan masing-masing tumbuhan tersebut.
+                            </p>
+							<p class="call">Ingin bertanya? Hubungi kami 24/7<span><a href="tel:123456789">+6281234869493</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -366,14 +368,14 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Get In Touch</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li>Jl.Kapi Janula Raya 15D/5</li>
+									<li>Sawojajar 2. Malang, Jawa Timur, Indonesia.</li>
+									<li>info@botani.com</li>
+									<li>+6281234869483</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
