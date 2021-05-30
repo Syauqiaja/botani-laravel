@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.toko-layout')
 
     @section('content')
 <html lang="en">
