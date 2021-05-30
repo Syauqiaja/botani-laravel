@@ -223,7 +223,7 @@ Version:1.0
 .small-banner .single-banner{
 	margin-bottom: 18px;
 }
-.modal-dialog .quickview-slider-active{
+:not(.bs).modal-dialog .quickview-slider-active{
 	width:720px;
 }
 .quickview-content {
@@ -645,7 +645,7 @@ Version:1.0
 .small-banner .single-banner{
 	margin-bottom: 18px;
 }
-.modal-dialog .quickview-slider-active{
+:not(.bs).modal-dialog .quickview-slider-active{
 	width:720px;
 }
 .quickview-content {
@@ -1020,10 +1020,10 @@ Version:1.0
 .footer .single-footer {
 	padding:20px 0;
 }
-.modal-dialog .quickview-slider-active {
+:not(.bs).modal-dialog .quickview-slider-active {
 	display: none;
 }
-.modal-dialog .modal-content .modal-header {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header {
 	right: 15px;
 	top: 12px;
 }
@@ -1043,7 +1043,7 @@ Version:1.0
 .quickview-content .size .title {
 	margin-top:10px;
 }
-.modal-dialog .modal-content .modal-header .close {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header .close {
 	font-size: 9px;
 }
 .quickview-content .quantity .input-group {
@@ -1618,10 +1618,10 @@ Version:1.0
 .footer .single-footer {
 	padding:12px 0;
 }
-.modal-dialog .quickview-slider-active {
+:not(.bs).modal-dialog .quickview-slider-active {
 	display: none;
 }
-.modal-dialog .modal-content .modal-header {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header {
 	right: 15px;
 	top: 12px;
 }
@@ -1641,7 +1641,7 @@ Version:1.0
 .quickview-content .size .title {
 	margin-top:10px;
 }
-.modal-dialog .modal-content .modal-header .close {
+:not(.bs).modal-dialog :not(.bs).modal-content :not(.bs).modal-header .close {
 	font-size: 9px;
 }
 .quickview-content .quantity .input-group {

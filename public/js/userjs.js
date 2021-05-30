@@ -30,11 +30,11 @@ $(document).ready(function (){
         if($("#arrow").hasClass("fa-chevron-down")){
             $("#arrow").removeClass("fa-chevron-down");
             $("#arrow").addClass("fa-chevron-up");
-            $('#deskripsi').addClass("invisible");
+            $('#deskripsi').addClass("d-none");
         }else{
             $("#arrow").addClass("fa-chevron-down");
             $("#arrow").removeClass("fa-chevron-up");
-            $('#deskripsi').removeClass("invisible");
+            $('#deskripsi').removeClass("d-none");
         }
     });
 });

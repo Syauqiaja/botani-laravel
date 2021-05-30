@@ -1,0 +1,39 @@
+
+    .cc-selector input{
+        margin:0;padding:0;
+        -webkit-appearance:none;
+           -moz-appearance:none;
+                appearance:none;
+    }
+
+    .cc-selector input:active +.drinkcard-cc{opacity: 1;}
+    .cc-selector input:checked +.drinkcard-cc{
+        -webkit-filter: none;
+           -moz-filter: none;
+                filter: none;
+                width:40px;height:40px;
+    }
+    .drinkcard-cc{
+        border-radius: 10px;
+        cursor:pointer;
+        background-size:contain;
+        background-repeat:no-repeat;
+        display:inline-block;
+        width:35px;height:35px;
+        -webkit-transition: all 100ms ease-in;
+           -moz-transition: all 100ms ease-in;
+                transition: all 100ms ease-in;
+        -webkit-filter: brightness(1) grayscale(.7) opacity(.8);
+           -moz-filter: brightness(1) grayscale(.7) opacity(.8);
+                filter: brightness(1) grayscale(.7) opacity(.8);
+    }
+    .drinkcard-cc:hover{
+        -webkit-filter: brightness(1) grayscale(.4) opacity(.9);
+           -moz-filter: brightness(1) grayscale(.4) opacity(.9);
+                filter: brightness(1) grayscale(.4) opacity(.9);
+    }
+    .nilai-1{background-image: url('images/emoji/angry.png');}
+    .nilai-2{background-image: url('images/emoji/sad.png');}
+    .nilai-3{background-image: url('images/emoji/happy.png');}
+    .nilai-4{background-image: url('images/emoji/big-smile.png');}
+    .nilai-5{background-image: url('images/emoji/love.png');}

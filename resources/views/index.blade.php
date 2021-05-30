@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', "Beranda")
 @section('style')
 <style>
 .carousel-item{
@@ -58,6 +59,26 @@ color: #29ec5a;
 
 @section('content')
 	<!-- Slider Area -->
+@if(session()->has('pesan'))
+    <div class="bs modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="bs modal-dialog modal-dialog-centered" role="document">
+          <div class="bs modal-content">
+            <div class="bs modal-header">
+              <h5 class="bs modal-title" id="exampleModalLongTitle">Selamat!!!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="bs modal-body">
+                {{session()->get('pesan')}}
+            </div>
+            <div class="bs modal-footer">
+              <button type="button" class="bs btn btn-info" data-dismiss="modal">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+@endif
 	<section class="hero-slider">
 
 		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
@@ -154,6 +175,7 @@ color: #29ec5a;
 	  </div>
 	</section>
 	<!--/ End Slider Area -->
+
 	<!-- Start Small Banner  -->
 	<section class="small-banner section">
 		<div class="container-fluid">
@@ -941,4 +963,13 @@ color: #29ec5a;
             </div>
     </div>
     <!-- Modal end -->
+@endsection
+@section('script')
+@if(session()->has('pesan'))
+<script>
+    $(document).ready(function(){
+        $("#exampleModalCenter").modal('show');
+    });
+</script>
+@endif
 @endsection

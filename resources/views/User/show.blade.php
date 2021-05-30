@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Profil')
 @section('style')
 <style type="text/css">
 body{
@@ -53,15 +54,15 @@ height: 100%!important;
 .shadow-none {
 box-shadow: none!important;
 }
-.namatoko {
+.text-link {
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
             transition: all 100ms ease-in;
 }
-.namatoko:hover {
+.text-link:hover {
     color: #1CD449;
 }
-.namatoko:active {
+.text-link:active {
     color: #23a142;
 }
 </style>
@@ -109,11 +110,23 @@ box-shadow: none!important;
                 </div>
               </div>
             </div>
-
             <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
+                <div class="card mb-3">
+                    <div class="card-body">
+                    @if(session()->has('pesan'))
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <span>{{session()->get('pesan')}}</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                    @endif
+                  @auth
+                  <div class="text-right">
+                      <a href="{{route('user.edit',Auth::user()->id)}}" class="text-link"><i class="far fa-edit"></i> Ubah</a>
+                  </div>
+                  @endauth
+                  <div class="row mt-2">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Nama Lengkap</h6>
                     </div>
@@ -164,7 +177,7 @@ box-shadow: none!important;
                       <h6 class="mb-0">Toko</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <a href="#" class="namatoko">---Nama Toko---</a>
+                        <a href="#" class="text-link">---Nama Toko---</a>
                     </div>
                  </div>
                  @endif

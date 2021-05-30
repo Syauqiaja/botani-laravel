@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
 use App\Models\Produk;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
@@ -17,10 +20,6 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('detail-product',["harga"=>100]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +28,10 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('Produk.create');
+    }
+    public function edit(){
+        return view('Produk.edit');
     }
 
     /**
@@ -40,7 +42,36 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk = new Produk;
+        $request->validate([
+            "nama" => "required",
+            "harga" => "required|digits_between:1,30",
+            "stok" => "required|digits_between:1,10",
+            "tipe" => "required|not_in:0",
+            "files.*" => "image|max:3000",
+        ]);
+        $produk->nama_produk = $request['nama'];
+        $produk->harga_produk = $request['harga'];
+        $produk->stok = $request['stok'];
+        $produk->jenis_produk = $request['tipe'];
+        $produk->deskripsi_produk = $request['deskripsi'];
+        $produk->id_toko = Auth::user()->toko->id;
+        $produk->save();
+
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+            foreach($files as $file){
+                $ext = $file->getClientOriginalExtension();
+                $nama = md5($file->getClientOriginalName().time()).'.'.$ext;
+                $path = $file->move('images\produks',$nama);
+                $fotos = new Foto;
+                $fotos->id_produk = $produk->id;
+                $fotos->path = $path;
+                $produk->fotos()->save($fotos);
+            }
+        }
+        $produk->save();
+        return redirect()->route('produk.show', $produk->id)->with('pesan', "Produk berhasil ditambahkan");
     }
 
     /**
@@ -51,20 +82,29 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        $fotos = DB::table('fotos')->where('id_produk', '=', $produk->id)->get('path');
-        return view('detail-product')->with('produk', $produk)->with('fotos', $fotos);
+        $fotos = $produk->fotos;
+        return view('Produk.show')->with('produk', $produk)->with('fotos', $fotos);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Produk  $produk
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Produk $produk)
-    {
-        //
+    public function search(Request $request){
+        if($request->category != ""){
+            $produks = DB::table('produks')
+                            ->where('jenis_produk', '=', $request->category)
+                            ->where('nama_produk', 'like', "%".$request->search."%")
+                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
+        }else{
+            $produks = DB::table('produks')
+                            ->where('nama_produk', 'like', "%".$request->search."%")
+                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
+        }
+        foreach($produks as $produk){
+            $produk->foto_produk = DB::table('fotos')->where('id_produk', '=', $produk->id)->first('path');
+        }
+        // dump($produks);
+        // die;
+        return view('Produk.search', ["produks" => $produks]);
     }
+
 
     /**
      * Update the specified resource in storage.
