@@ -90,8 +90,9 @@
 							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
+								<form class="search-form" action="{{route('produk.search')}}" method="POST">
+                                    @csrf
+									<input type="text" placeholder="Cari di sini..." name="search">
 									<button value="search" type="submit"><i class="ti-search"></i></button>
 								</form>
 							</div>
@@ -103,15 +104,16 @@
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select>
-									<option>All Category</option>
-									<option>watch</option>
-									<option>mobile</option>
-									<option>kid’s item</option>
+								<select id="searchCat">
+                                    <option value="">Semua</option>
+									<option value="Tanaman">Tanaman</option>
+									<option value="Peralatan">Peralatan</option>
 								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
+                                <form action="{{route('produk.search')}}" method="POST" id="search-form">
+                                    @csrf
+									<input name="search" placeholder="Cari di sini..." type="search">
 									<button class="btnn"><i class="ti-search"></i></button>
+                                    <input type="hidden" name="category" value="" id="search-category">
 								</form>
 							</div>
 						</div>
@@ -454,9 +456,16 @@
     <script src="{{ URL::asset('vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{URL::asset('js/userjs.js')}}"></script>
     <script src="{{ URL::asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ URL::asset('js/demo/chart-pie-demo.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+        $(".btnn").on('click', function(){
+            $("#search-category").val($("#searchCat").val());
+            $("#search-form").submit();
+        })
+    });
+    </script>
     @yield('script')
 </body>
 </html>

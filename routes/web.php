@@ -31,6 +31,7 @@ Auth::routes();
 Route::prefix('produks')->group(function () {
     Route::get('/', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('/create', [ProdukController::class, 'create'])->name('produk.create');
+    Route::post('/search', [ProdukController::class, 'search'])->name('produk.search');
     Route::post('/', [ProdukController::class, 'store'])->name('produk.store');
     Route::get('/{produk}', [ProdukController::class, 'show'])->name('produk.show');
     Route::get('/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
@@ -83,6 +84,9 @@ Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blog.ed
 Route::patch('/blogs/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
 Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy')->middleware('auth');
 
+Route::get('shopgrid', function(){
+    return view('Produk.search');
+});
 // ---- Penting v v v -----
 // --- ROUTE UNTUK FILE MANAGER ---
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {

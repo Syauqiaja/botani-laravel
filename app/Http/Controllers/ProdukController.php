@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use App\Models\Produk;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,10 +20,6 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('detail-product',["harga"=>100]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +28,10 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('Produk.create');
+    }
+    public function edit(){
+        return view('Produk.edit');
     }
 
     /**
@@ -83,19 +83,28 @@ class ProdukController extends Controller
     public function show(Produk $produk)
     {
         $fotos = $produk->fotos;
-        return view('detail-product')->with('produk', $produk)->with('fotos', $fotos);
+        return view('Produk.show')->with('produk', $produk)->with('fotos', $fotos);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Produk  $produk
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Produk $produk)
-    {
-        //
+    public function search(Request $request){
+        if($request->category != ""){
+            $produks = DB::table('produks')
+                            ->where('jenis_produk', '=', $request->category)
+                            ->where('nama_produk', 'like', "%".$request->search."%")
+                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
+        }else{
+            $produks = DB::table('produks')
+                            ->where('nama_produk', 'like', "%".$request->search."%")
+                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
+        }
+        foreach($produks as $produk){
+            $produk->foto_produk = DB::table('fotos')->where('id_produk', '=', $produk->id)->first('path');
+        }
+        // dump($produks);
+        // die;
+        return view('Produk.search', ["produks" => $produks]);
     }
+
 
     /**
      * Update the specified resource in storage.
