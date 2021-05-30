@@ -41,4 +41,8 @@ class HomeController extends Controller
     {
         return view('Toko.dashboard-shop');
     }
+    public function showUser()
+    {
+        return view('Admin.dashboard-admin');
+    }
 }

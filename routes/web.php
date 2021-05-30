@@ -55,6 +55,8 @@ Route::get('/createproduct',[HomeController::class,'createProduct']); //create p
 Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
 Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
 Route::get('/showproduct',[HomeController::class,'showProduct']);//show product dashboard toko
+Route::get('/showuser',[HomeController::class,'showUser']);//show user dashboard admin
+
 Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
 Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
 Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
