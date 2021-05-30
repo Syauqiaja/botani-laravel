@@ -23,7 +23,7 @@
         border-bottom: 1px solid #1CD449;
     }
     .card{
-        box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 12px #00000020;
     }
     @keyframes fadein{
         0%{
@@ -91,11 +91,12 @@
                                                 <a href="#"><i class="fa fa-calendar"></i>{{date("d/m/Y", strtotime($blog['updated_at']))}}</a>
                                                 <a href="#" class="comment-button"><i class="fa fa-comments"></i>Komentar ({{$comCount}})</a>
                                                 @auth
+                                                @if (Auth::user()->id == $blog->user->id)
                                                 <a href="{{route('blog.edit',$blog->id)}}"><i class="far fa-edit"></i>Ubah</a>
                                                 <button type="button" class="text-danger mx-3" style="background:none; border:none;"  data-toggle="modal" data-target="#modalHapus">
                                                     <i class="fas fa-trash-alt text-danger"></i>Hapus
                                                 </button>
-
+                                                @endif
                                                 @endauth
                                             </span>
 										</div>
@@ -109,18 +110,18 @@
                                                 <div class="content-tags card text-center">
                                                     <div>Bagaimana menurutmu blogtani ini?</div>
                                                     <form class="cc-selector mt-3" id="ratingForm" action="{{route('blog.rate', $blog->id)}}" method="POST">@csrf
-                                                            <input id="nilai-1" type="radio" name="rating" value="1" @if($rating->rating == '1') checked @endif/>
+                                                            <input id="nilai-1" type="radio" name="rating" value="1" @if($rating != null)@if($rating->rating == '1') checked @endif @endif/>
                                                             <label class="drinkcard-cc nilai-1" for="nilai-1" data-toggle="tooltip" data-placement="top" title="Sangat Buruk!"></label>
 
-                                                            <input id="nilai-2" type="radio" name="rating" value="2" @if($rating->rating == '2') checked @endif/>
+                                                            <input id="nilai-2" type="radio" name="rating" value="2" @if($rating != null)@if($rating->rating == '2') checked @endif @endif/>
                                                             <label class="drinkcard-cc nilai-2" for="nilai-2" data-toggle="tooltip" data-placement="top" title="Buruk"></label>
 
-                                                            <input id="nilai-3" type="radio" name="rating" value="3" @if($rating->rating == '3') checked @endif/>
+                                                            <input id="nilai-3" type="radio" name="rating" value="3" @if($rating != null)@if($rating->rating == '3') checked @endif @endif/>
                                                             <label class="drinkcard-cc nilai-3" for="nilai-3" data-toggle="tooltip" data-placement="top" title="Cukup"></label>
 
-                                                            <input id="nilai-4" type="radio" name="rating" value="4" @if($rating->rating == '4') checked @endif/>
+                                                            <input id="nilai-4" type="radio" name="rating" value="4" @if($rating != null)@if($rating->rating == '4') checked @endif @endif/>
                                                             <label class="drinkcard-cc nilai-4" for="nilai-4" data-toggle="tooltip" data-placement="top" title="Bagus"></label>
-                                                            <input id="nilai-5" type="radio" name="rating" value="5" @if($rating->rating == '5') checked @endif/>
+                                                            <input id="nilai-5" type="radio" name="rating" value="5" @if($rating != null)@if($rating->rating == '5') checked @endif @endif/>
                                                             <label class="drinkcard-cc nilai-5" for="nilai-5" data-toggle="tooltip" data-placement="top" title="Sangat Bagus!"></label>
                                                     </form>
 												</div>
@@ -319,6 +320,7 @@
 		</section>
 
 @auth
+@if (Auth::user()->id == $blog->user->id)
   <!-- Modal -->
   <div class="modal fade bs" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusTitle" aria-hidden="true">
     <div class="modal-dialog bs" role="document">
@@ -342,6 +344,7 @@
       </div>
     </div>
   </div>
+@endif
 @endauth
 
 @endsection

@@ -24,6 +24,9 @@ class BlogController extends Controller
         return view('Blog.show');
     }
 
+    public function list(){
+        return view('Blog.list');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -79,9 +82,8 @@ class BlogController extends Controller
     }
     public function rate(Request $request, Blog $blog){
         $request->validate(['rating' => 'required']);
-        if($blog->rateId()->id != null){
-            $rating = Rating::find($blog->rateId()->id);
-        }else{
+        $rating = $blog->rating();
+        if($rating == null){
             $rating = new Rating;
             $rating->user()->associate(Auth::user());
         }
@@ -99,7 +101,7 @@ class BlogController extends Controller
                                         ->where('commentable_id', '=', $blog->id)
                                         ->count();
 
-        return view('Blog.show', ["blog"=>$blog, "user" => $user, "comments" => $comments, "comCount" => $commentCount, "rating" => Rating::find($blog->rateId()->id)]);
+        return view('Blog.show', ["blog"=>$blog, "user" => $user, "comments" => $comments, "comCount" => $commentCount, "rating" => $blog->rating()]);
     }
 
     /**

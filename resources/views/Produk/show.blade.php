@@ -115,19 +115,19 @@
                 <h1 class="h3 mb-3 text-gray-800">Detail Produk</h1>
                 <div style="font-size:16px">
                     <div class="row">
-                        <div class="col-3 "><strong>Nama Barang</strong></div>
+                        <div class="col-4 "><strong>Nama Barang</strong></div>
                         <div class="col">: {{$produk->nama_produk}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-3 "><strong>Jenis Barang</strong></div>
+                        <div class="col-4 "><strong>Jenis Barang</strong></div>
                         <div class="col">: {{$produk->jenis_produk}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-3 fw-500 fs-3"><strong>Harga</strong></div>
+                        <div class="col-4 fw-500 fs-3"><strong>Harga</strong></div>
                         <div class="col">: Rp.<span id="detailharga">{{$produk->harga_produk}}</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-3 fw-500 fs-3"><strong>Barang Tersedia</strong></div>
+                        <div class="col-4 fw-500 fs-3"><strong>Barang Tersedia</strong></div>
                         <div class="col">: {{$produk->stok}}</div>
                     </div>
                     <div>

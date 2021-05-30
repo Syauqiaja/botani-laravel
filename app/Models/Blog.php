@@ -49,7 +49,11 @@ class Blog extends Model
     }
 
     public function rating(){
-        return Rating::find($this->rateId());
+        $id = $this->rateId();
+        if($id != null){
+            return Rating::find($id->id);
+        }
+        return null;
     }
     /**
      * The attributes that should be hidden for arrays.

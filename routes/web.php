@@ -75,6 +75,7 @@ Route::post('/blogs/comment', [CommentController::class, 'store'])->name('blog.c
 Route::post('/blogs/reply', [CommentController::class, 'replystore'])->name('blog.reply')->middleware('auth');
 Route::post('/blogs/create', [BlogController::class, 'store'])->name('blog.store')->middleware('auth');
 Route::post('/blogs/rate/{blog}', [BlogController::class, 'rate'])->name('blog.rate')->middleware('auth');
+Route::get('/blogs/list', [BlogController::class, 'list'])->name('blog.list');
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit')->middleware('auth');
 Route::patch('/blogs/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
