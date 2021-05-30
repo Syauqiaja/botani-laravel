@@ -37,4 +37,8 @@ class HomeController extends Controller
     {
         return view('User.create-pemesanan');
     }
+    public function showProduct()
+    {
+        return view('Toko.dashboard-shop');
+    }
 }

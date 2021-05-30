@@ -54,6 +54,7 @@ Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.creat
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
 Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
 Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
+Route::get('/showproduct',[HomeController::class,'showProduct']);//show product dashboard toko
 
 // Route::get('/email/verify', function () {
 //     return view('auth.verify');
