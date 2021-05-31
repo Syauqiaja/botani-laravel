@@ -24,8 +24,12 @@ class BlogController extends Controller
         return view('Blog.show');
     }
 
-    public function list(){
-        return view('Blog.list');
+    public function list(Request $request){
+        // $blogs = DB::table('blogs')->where('nama_blog', 'like', '%'.$request->search.'%')
+        //                             ->get(['id', 'nama_blog', 'isi_blog', 'foto', 'updated_at', 'rate']);
+
+        $blogs = Blog::where('nama_blog', 'like', '%'.$request->search.'%')->withCount(['ratings', 'comments'])->get();
+        return view('Blog.list', ["blogs"=>$blogs]);
     }
     /**
      * Show the form for creating a new resource.
@@ -86,6 +90,7 @@ class BlogController extends Controller
         if($rating == null){
             $rating = new Rating;
             $rating->user()->associate(Auth::user());
+            $blog->rate = $request->rating;
         }
             $rating->rating = $request->rating;
             $blog->ratings()->save($rating);

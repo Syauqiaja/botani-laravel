@@ -22,11 +22,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-wrap">
+        <a href="" class="btn btn-secondary mb-3">Tambah Produk</a>
 <table class="table">
 	<thead class="thead-primary">
-		<tr>
-			<a href="" class="btn btn-secondary">Tambah Produk</a>
-		</tr>
 		<tr>
 			<th>No</th>
 			<th>Nama Produk</th>
@@ -43,7 +41,7 @@
 			<td>20.000</td>
 			<td>Ini apel bagus mamank</td>
 			<td>Ini gambar apel</td>
-			<td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+			<td><a href="#" class="btn btn-primary bs">Edit</a> <a href="#" class="btn bs btn-danger">Delete</a></td>
 		</tr>
 		<tr>
 			<th scope="row" class="scope">2</th>
@@ -51,7 +49,7 @@
 			<td>40.000</td>
 			<td>Ini anggur bagus mamank</td>
 			<td>Ini gambar anggur</td>
-			<td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
+			<td><a href="#" class="btn btn-primary bs">Edit</a> <a href="#" class="btn bs btn-danger">Delete</a></td>
 		</tr>
 	</tbody>
 </table>

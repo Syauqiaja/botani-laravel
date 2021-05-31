@@ -17,8 +17,9 @@ class User extends Authenticatable
 
     }
     public function toko() {
-
-        return $this->hasOne(Toko::class, 'id_user');
+        if($this->role == 2)
+            return $this->hasOne(Toko::class, 'id_user');
+        else return null;
 
     }
     /**

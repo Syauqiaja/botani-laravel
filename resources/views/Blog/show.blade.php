@@ -220,11 +220,11 @@
 						<div class="main-sidebar">
 							<!-- Single Widget -->
 							<div class="single-widget search">
-								<div class="form">
-									<input type="email" placeholder="Search Here...">
-									<a class="button" href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
+                                <form class="form" action="{{route('blog.list')}}" method="POST"> @csrf
+                                    <input type="text" name="search" placeholder="Search Here...">
+                                    <button type="submit" class="button" href="#"><i class="fa fa-search"></i></a>
+                                </form>
+                            </div>
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
 							<div class="single-widget category">

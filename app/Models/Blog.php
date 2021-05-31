@@ -32,6 +32,10 @@ class Blog extends Model
         return $this->belongsTo(User::class, 'id_user');
     }
 
+    public function toko(){
+        return $this->belongsTo(Toko::class, 'id_toko');
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
@@ -54,6 +58,11 @@ class Blog extends Model
             return Rating::find($id->id);
         }
         return null;
+    }
+
+    public function ratingValue(){
+        $rating = $this->ratings->avg('rating');
+        return $rating;
     }
     /**
      * The attributes that should be hidden for arrays.
