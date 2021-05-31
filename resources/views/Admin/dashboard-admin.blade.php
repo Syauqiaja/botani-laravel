@@ -1,4 +1,4 @@
-@extends('layouts.toko-layout')
+@extends('layouts.admin-layout')
 
     @section('content')
 <html lang="en">
@@ -16,40 +16,36 @@
 <div class="col-md-6 text-center mb-5">
 <br>
 <br>
-<h2 class="heading-section">Produk Toko</h2>
+<h2 class="heading-section">Manajemen User</h2>
 </div>
 </div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-wrap">
-        <a href="" class="btn btn-secondary mb-3">Tambah Produk</a>
 <table class="table">
 	<thead class="thead-primary">
 		<tr>
 			<th>No</th>
-			<th>Nama Produk</th>
-			<th>Harga Produk</th>
-			<th>Deksripsi Produk</th>
-			<th>Gambar Produk</th>
-			<th>Aksi</th>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Role</th>
+			<th class="text-center">Aksi</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<th scope="row" class="scope">1</th>
-			<td>Apel</td>
-			<td>20.000</td>
-			<td>Ini apel bagus mamank</td>
-			<td>Ini gambar apel</td>
-			<td><a href="#" class="btn btn-primary bs">Edit</a> <a href="#" class="btn bs btn-danger">Delete</a></td>
+			<td>Helmi Jauhar Irsyad</td>
+			<td>kangwibu</td>
+			<td>admin</td>
+			<td class="text-center"><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
 		</tr>
 		<tr>
 			<th scope="row" class="scope">2</th>
-			<td>Anggur</td>
-			<td>40.000</td>
-			<td>Ini anggur bagus mamank</td>
-			<td>Ini gambar anggur</td>
-			<td><a href="#" class="btn btn-primary bs">Edit</a> <a href="#" class="btn bs btn-danger">Delete</a></td>
+			<td>Ahmad Fajrudin Syauqi</td>
+			<td>1234</td>
+			<td>admin</td>
+			<td class="text-center"><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a></td>
 		</tr>
 	</tbody>
 </table>
