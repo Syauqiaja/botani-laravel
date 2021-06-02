@@ -27,6 +27,11 @@ class Blog extends Model
         'id_user',
     ];
 
+    public static function latestBlog($i){
+        $blogs = Blog::orderBy('created_at', 'desc')->take($i)->withCount(['comments', 'ratings'])->get();
+        return $blogs;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');

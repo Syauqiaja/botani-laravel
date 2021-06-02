@@ -228,61 +228,36 @@
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
 							<div class="single-widget category">
-								<h3 class="title">Blog Categories</h3>
+								<h3 class="title">Kategori Blog</h3>
 								<ul class="categor-list">
-									<li><a href="#">Men's Apparel</a></li>
-									<li><a href="#">Women's Apparel</a></li>
-									<li><a href="#">Bags Collection</a></li>
-									<li><a href="#">Accessories</a></li>
-									<li><a href="#">Sun Glasses</a></li>
+									<li><a href="#">Perawatan Tumbuhan</a></li>
+									<li><a href="#">Mengenal Si Hijau</a></li>
+									<li><a href="#">Berita Hijau</a></li>
+									<li><a href="#">Penggunaan Peralatan</a></li>
 								</ul>
 							</div>
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
 							<div class="single-widget recent-post">
-								<h3 class="title">Recent post</h3>
+								<h3 class="title">Postingan terbaru</h3>
+                                @foreach (\App\Models\Blog::latestBlog(3) as $newblog)
 								<!-- Single Post -->
 								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
+                                    <div class="image">
+                                        {{-- <div class="rect-img-container"> --}}
+                                            <img src="{{($newblog->foto == null)? asset('images/profiles/preview.png') : asset($newblog->foto)}}" alt="#" class="rect-img img-fluid">
+                                        {{-- </div> --}}
 									</div>
 									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
+                                        <h5><a href="#">{{$newblog->nama_blog}}</a></h5>
 										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>{{date("d-m-Y", strtotime($newblog->created_at))}}</li>
+											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>{{$newblog->comments_count}}</li>
 										</ul>
 									</div>
 								</div>
 								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Mar 05, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>59</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>June 09, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>44</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
+                                @endforeach
 							</div>
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
