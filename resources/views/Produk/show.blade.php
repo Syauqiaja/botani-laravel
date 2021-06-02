@@ -35,6 +35,7 @@
                         <h2 class="align-self-end text-right"><small>Rp.</small><span id="total" class="h2">0</span></h2>
                     </div>
                 </div>
+                <hr>
                     <div>
                         <div class="form-group row justify-content-between my-4">
                             <h4 class="text-gray-700 col-sm-4 h4">Jumlah</h4>
@@ -48,6 +49,8 @@
                                 <a class="btn bs btn-outline-success mx-1 rounded-0" id="barang-plus"><i class="fas fa-plus"></i></a>
                             </div>
                         </div>
+                        <hr>
+                        <p class="text-warning">Mohon perhatikan, harga di atas belum termasuk ongkir</p>
                 </div>
             </div>
             <div class="bs modal-footer">

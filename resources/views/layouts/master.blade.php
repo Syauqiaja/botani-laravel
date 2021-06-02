@@ -82,7 +82,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="{{asset('images/nerfed-logo.png')}}" alt="logo"></a>
+							<a href="{{route('home')}}"><img src="{{asset('images/nerfed-logo.png')}}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -139,13 +139,17 @@
 										<a href="{{route('user.show',Auth::user()->id)}}" class="btn animate btn-profile">Profil</a>
 									</div>
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
+                                        <a href="{{route('user.riwayat')}}" class="btn animate btn-profile">Riwayat Pembelian</a>
 									</div>
                                     @if (Auth::user()->role == 2)
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Toko Saya</a>
+                                        <a href="{{route('toko.show', Auth::user()->toko->id)}}" class="btn animate btn-profile">Toko Saya</a>
+									</div>
+                                    <div class="bottom mt-0">
+                                        <a href="{{route('toko.manage')}}" class="btn animate btn-profile">Manage Toko</a>
 									</div>
                                     @endif
+
 									<div class="bottom mt-4"><form method="POST" action="{{ route('logout') }}">@csrf
 										<button type="submit" href="checkout.html" class="btn animate w-100 final">Keluar</button>
                                     </form></div>
@@ -166,34 +170,10 @@
 								<!--/ End Shopping Item -->
 							</div>
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="#" class="single-icon"><i class="ti-bag"></i></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
-									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
-									</div>
-									<ul class="shopping-list">
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
-									</div>
+                                    [Belum Tersedia]
 								</div>
 								<!--/ End Shopping Item -->
 							</div>
@@ -284,15 +264,23 @@
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active mr-0"><a href="{{url('/')}}">Beranda</a></li>
 													<li class="mr-0"><a href="#">Produk</a></li>
-													
+
 
 													<li class="mr-0"><a href="#">Blogtani<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
-															<li><a href="{{route('blog.create')}}">Buat Blogtani</a></li>
-                                                            <li><a href="#">Blogtani [belum tersedia]</a></li>
+                                                            <li><form action="{{route('blog.list')}}" method="POST" id="gotoBlogList"> @csrf
+                                                                <input type="hidden" name="search" value="">
+                                                                <a type="submit" id="searchBlog">Blogtani</a>
+                                                            </form></li>
+                                                            <li><a href="{{route('blog.create')}}">Buat Blogtani</a></li>
 														</ul>
 													</li>
 													<li class="mr-0"><a href="contact.html">Hubungi Kami</a></li>
+                                                    @auth
+                                                        @if(Auth::user()->role == 3)
+                                                        <li class="mr-0"><a href="{{route('admin.user')}}">Admin Page</a></li>
+                                                        @endif
+                                                    @endauth
 												</ul>
 										</div>
 									</div>
@@ -459,6 +447,9 @@
             $("#search-category").val($("#searchCat").val());
             $("#search-form").submit();
         })
+        $("#searchBlog").on('click', function(){
+            $("#gotoBlogList").submit();
+        });
     });
     </script>
     @yield('script')

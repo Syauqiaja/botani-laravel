@@ -33,10 +33,6 @@ class HomeController extends Controller
     {
         return view('Toko.edit-product');
     }
-    public function createPesanan()
-    {
-        return view('User.create-pemesanan');
-    }
     public function showProduct()
     {
         return view('Toko.dashboard-shop');

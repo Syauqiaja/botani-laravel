@@ -15,12 +15,15 @@ class Produk extends Model
         'id_toko',
         'harga_produk',
         'deskripsi_produk',
-        'foto_produk',
         'stok',
     ];
 
     public function fotos(){
         return $this->hasMany(Foto::class, 'id_produk', 'id');
+    }
+
+    public function toko(){
+        return $this->belongsTo(Toko::class, 'id_toko');
     }
 
     public function ratings(){

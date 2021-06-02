@@ -17,10 +17,7 @@ class User extends Authenticatable
 
     }
     public function toko() {
-        if($this->role == 2)
             return $this->hasOne(Toko::class, 'id_user');
-        else return null;
-
     }
     /**
      * The attributes that are mass assignable.

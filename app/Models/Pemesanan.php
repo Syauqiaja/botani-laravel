@@ -11,15 +11,15 @@ class Pemesanan extends Model
     protected $fillable = [
         'id_produk',
         'id_user',
+        'id_toko',
         'ekspedisi',
         'kuantitas',
         'total_harga',
         'bukti_pembayaran',
         'batas_pembayaran',
         'alamat_pengiriman',
-        'tanggal_pemesanan',
         'tanggal_pembayaran',
-        'id_toko',
+        'status'
     ];
 
     public function produk(){
@@ -30,5 +30,8 @@ class Pemesanan extends Model
     }
     public function toko(){
         return $this->belongsTo(Toko::class, 'id_toko');
+    }
+    public function resi(){
+        return $this->hasOne(Resi::class, 'id_pemesanan');
     }
 }

@@ -65,6 +65,10 @@ box-shadow: none!important;
 .text-link:active {
     color: #23a142;
 }
+.no-outline, .no-outline:active:focus, .no-outline.active:focus{
+    outline:none !important;
+    box-shadow: none !important;
+}
 </style>
 @endsection
 @section('content')
@@ -91,6 +95,11 @@ box-shadow: none!important;
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
+                    @auth @if(Auth::user()->id == $user->id)
+                    <div class="text-right">
+                        <a href="{{route('user.edit',Auth::user()->id)}}" class="text-link"><i class="far fa-edit"></i> Ubah</a>
+                    </div>
+                    @endif @endauth
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="{{asset($user['foto_profil'])}}" alt="Admin" class="rounded-circle" width="150"
                     style="background-color: @if(strpos(Auth::user()->foto_profil,'male-')) #c7ccf5; @elseif(strpos(Auth::user()->foto_profil,'female-')) #f5c7cf; @else white; @endif">
@@ -102,8 +111,17 @@ box-shadow: none!important;
                         <footer class="blockquote-footer"><small> {{$user['nama']}} </small></footer>
                       </blockquote>
                       <div class="text-center">
-                        <button class="btn bs btn-primary rounded-0 mx-1">Follow</button>
-                        <button class="btn bs btn-outline-primary rounded-0 mx-1">Message</button>
+                        <div class="dropdown show">
+                            <a class="btn bs btn-primary dropdown-toggle rounded-0 no-outline" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Pindah Halaman
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <a class="dropdown-item active" href="{{route('user.show', $user->id)}}">Profil</a>
+                              @if($user->id == Auth::user()->id)<a class="dropdown-item" href="{{route('user.riwayat')}}">Riwayat Pembelian</a>@endif
+                              @if($user->toko != null)<a class="dropdown-item" href="{{route('toko.show', Auth::user()->toko->id)}}">Toko</a>@endif
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -121,11 +139,7 @@ box-shadow: none!important;
                               </button>
                         </div>
                     @endif
-                  @auth
-                  <div class="text-right">
-                      <a href="{{route('user.edit',Auth::user()->id)}}" class="text-link"><i class="far fa-edit"></i> Ubah</a>
-                  </div>
-                  @endauth
+
                   <div class="row mt-2">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Nama Lengkap</h6>

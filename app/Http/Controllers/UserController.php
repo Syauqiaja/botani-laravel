@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,6 +14,12 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function riwayat(){
+        $pemesanans = Pemesanan::where('id_user', Auth::user()->id)
+                                    ->orderBy('updated_at', 'desc')
+                                    ->orderBy('status', 'asc')->get();
+        return view('User.riwayat', ["user" => Auth::user(), "pemesanans" => $pemesanans]);
     }
 
     public function index(){
@@ -49,8 +56,7 @@ class UserController extends Controller
         return redirect()->route('user.show', $user->id)->with('pesan', 'Selamat, perubahan berhasil !');
     }
     public function penjual(){
-        $toko = DB::table('tokos')->where('id_user', '=', Auth::user())->first();
-        if($toko == null){
+        if(Auth::user()->toko == null){
             return redirect()->route('toko.create');
         }
         return redirect()->route('home');

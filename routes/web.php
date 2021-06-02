@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -41,6 +42,7 @@ Route::prefix('produks')->group(function () {
     Route::delete('/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 });
 
+Route::get('/users/riwayat', [UserController::class, 'riwayat'])->name('user.riwayat');
 Route::get('/users/penjual', [UserController::class, 'penjual']);
 Route::get('/users/admin', [UserController::class, 'admin']);
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -48,32 +50,34 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
 Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
 Route::get('/users/', [UserController::class, 'index'])->name('user.index');
 
+Route::get('/admin/user', [AdminController::class, 'manageUser'])->name('admin.user');
+Route::get('/admin/blog', [AdminController::class, 'manageBlog'])->name('admin.blog');
+Route::get('/admin/produk', [AdminController::class, 'manageProduk'])->name('admin.produk');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Buat Test biar bisa edit nanti disesuaikan aja gpp :v
 Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
 Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
-Route::get('/createpesanan',[HomeController::class,'createPesanan']); //create pesanan
 Route::get('/showproduct',[HomeController::class,'showProduct']);//show product dashboard toko
 Route::get('/showuser',[HomeController::class,'showUser']);//show user dashboard admin
 
 Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
+Route::get('/pemesanans/{pemesanan}/bayar', [PemesananController::class, 'bayar'])->name('pemesanan.bayar');
+Route::patch('/pemesanans/{pemesanan}/kirim', [PemesananController::class, 'kirim'])->name('pemesanan.kirim');
+Route::patch('/pemesanans/{pemesanan}/bayar', [PemesananController::class, 'bayarStore'])->name('pemesanan.bayar.store');
+Route::get('/pemesanans/{pemesanan}', [PemesananController::class, 'show'])->name('pemesanan.show');
 Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
 Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
 
+
 Route::get('/tokos/create', [TokoController::class, 'create'])->name('toko.create');
+Route::get('/tokos/manage', [TokoController::class, 'manageProduk'])->name('toko.manage');
+Route::get('/tokos/manage/produk', [TokoController::class, 'manageProduk'])->name('toko.manage.produk');
+Route::get('/tokos/manage/blog', [TokoController::class, 'manageBlog'])->name('toko.manage.blog');
+Route::get('/tokos//manage/pesanan', [TokoController::class, 'managePesanan'])->name('toko.manage.pesanan');
 Route::post('/tokos', [TokoController::class, 'store'])->name('toko.store');
-
-// Route::get('/email/verify', function () {
-    //     return view('auth.verify');
-    // })->middleware('auth')->name('verification.notice');
-
-
-    // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-        //     $request->fulfill();
-
-        //     return redirect('/');
-        // })->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/tokos/{toko}', [TokoController::class, 'show'])->name('toko.show');
 
 Route::get('/blogs', [BlogController::class, 'index']);
 Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('auth');

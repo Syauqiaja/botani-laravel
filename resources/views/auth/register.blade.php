@@ -6,16 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('avatar-selector.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active
+        {
+         -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
+                .card{
+                    box-shadow: 0px 6px 12px #3d3d3d3b;
+                }
+                form input{
+                background: transparent !important;
+                outline: none !important;
+                box-shadow: none !important;
+                border: 0px !important;
+                border-bottom:2px solid rgb(160, 219, 149) !important;
+                border-radius: 0% !important;
+                -webkit-transition: all 100ms ease-in;
+                -moz-transition: all 100ms ease-in;
+                transition: all 100ms ease-in;
+                }
+                form input:focus{
+                    outline: none;
+                    border-bottom: 2px solid #1CD449 !important;
+                }
+                .head-title{
+                    width: 100%;
+                    height: 8px;
+                    background: rgb(24,139,52);
+                    background: linear-gradient(60deg, rgba(34,149,115,1) 4%, rgba(30,227,72,1) 100%);
+                }
+                .h5-masuk{
+                    font-size: 30px;
+                    font-weight: 700;
+                    color: rgb(50, 80, 50);
+                }
+                .btn.btn-success{
+                    background: linear-gradient(60deg, rgba(34,149,115,1) 4%, rgba(30,227,72,1) 100%);
+                    -webkit-transition: all 100ms ease-in;
+                -moz-transition: all 100ms ease-in;
+                transition: all 100ms ease-in;
+                }
+                .btn.btn-success:hover{
+                    opacity: 0.8;
+                }
+            </style>
     <title>Form Registrasi</title>
 </head>
-<body style="background-color:rgb(7, 148, 26);">
+<body style="background:linear-gradient(60deg, rgba(34,149,115,1) 4%, rgba(30,227,72,1) 100%);">
 
     <div class="container-fluid my-5 row justify-content-center ">
         <div class="card col-6">
-            <div class="card-header text-center font-weight-bold">
-                Isikan Identitas Anda
-            </div>
             <div class="card-body ">
+                <div class="my-3">
+                    <h1 class="h5 h5-masuk text-center">Registrasi</h1>
+                    <div class="head-title"></div>
+                </div>
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -168,7 +216,7 @@
                         </div>
                     </div>
                     <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-primary btn-block bs">
+                        <button type="submit" class="btn btn-success btn-block bs">
                             Registrasi
                         </button>
                     </div>

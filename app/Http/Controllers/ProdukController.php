@@ -88,19 +88,18 @@ class ProdukController extends Controller
 
     public function search(Request $request){
         if($request->category != ""){
-            $produks = DB::table('produks')
-                            ->where('jenis_produk', '=', $request->category)
+            $produks = Produk::where('jenis_produk', '=', $request->category)
                             ->where('nama_produk', 'like', "%".$request->search."%")
-                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
+                            ->get();
         }else{
-            $produks = DB::table('produks')
-                            ->where('nama_produk', 'like', "%".$request->search."%")
-                            ->get(['id', 'nama_produk', 'harga_produk', 'created_at', 'jenis_produk']);
-        }
-        foreach($produks as $produk){
-            $produk->foto_produk = DB::table('fotos')->where('id_produk', '=', $produk->id)->first('path');
+            $produks = Produk::where('nama_produk', 'like', "%".$request->search."%")
+                            ->get();
         }
         // dump($produks);
+        // die;
+        // foreach($produks as $produk){
+        //     dump($produk->toko);
+        // }
         // die;
         return view('Produk.search', ["produks" => $produks]);
     }

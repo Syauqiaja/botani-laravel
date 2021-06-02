@@ -82,7 +82,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="{{asset('images/nerfed-logo.png')}}" alt="logo"></a>
+							<a href="{{route('home')}}"><img src="{{asset('images/nerfed-logo.png')}}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -139,13 +139,17 @@
 										<a href="{{route('user.show',Auth::user()->id)}}" class="btn animate btn-profile">Profil</a>
 									</div>
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Riwayat Pembelian</a>
+                                        <a href="{{route('user.riwayat')}}" class="btn animate btn-profile">Riwayat Pembelian</a>
 									</div>
                                     @if (Auth::user()->role == 2)
                                     <div class="bottom mt-0">
-                                        <a href="#" class="btn animate btn-profile">Toko Saya</a>
+                                        <a href="{{route('toko.show', Auth::user()->toko->id)}}" class="btn animate btn-profile">Toko Saya</a>
+									</div>
+                                    <div class="bottom mt-0">
+                                        <a href="{{route('toko.manage')}}" class="btn animate btn-profile">Manage Toko</a>
 									</div>
                                     @endif
+
 									<div class="bottom mt-4"><form method="POST" action="{{ route('logout') }}">@csrf
 										<button type="submit" href="checkout.html" class="btn animate w-100 final">Keluar</button>
                                     </form></div>
@@ -166,34 +170,10 @@
 								<!--/ End Shopping Item -->
 							</div>
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="#" class="single-icon"><i class="ti-bag"></i>/a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
-									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
-									</div>
-									<ul class="shopping-list">
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
-									</div>
+                                    [Belum Tersedia]
 								</div>
 								<!--/ End Shopping Item -->
 							</div>
@@ -208,7 +188,9 @@
 				<div class="cat-nav-head">
 					<div class="row">
 						<div class="col-lg-3">
-							
+                            <div class="all-category">
+								<h3 class="cat-heading">Admin Page</h3>
+                            </div>
 						</div>
 						<div class="col-lg-9 col-12">
 							<div class="menu-area">
@@ -217,8 +199,9 @@
 									<div class="navbar-collapse">
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active mr-0"><a href="{{url('/')}}">Manage User</a></li>
-													<li class="mr-0"><a href="#">Manage Blog</a></li>
+													<li class="mr-0 @yield('user')"><a href="{{route('admin.user')}}">User</a></li>
+                                                    <li class="mr-0 @yield('produk')"><a href="{{route('admin.produk')}}">Produk</a></li>
+													<li class="mr-0 @yield('blog')"><a href="{{route('admin.blog')}}">Blog</a></li>
 												</ul>
 										</div>
 									</div>

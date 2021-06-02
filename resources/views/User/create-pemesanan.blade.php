@@ -192,13 +192,6 @@ return flag;
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Total Harga<span class="text-danger"> *</span></label> <input type="text" id="" name="total_harga" value="{{$pemesanan->total_harga}}" onblur="validate(2)" disabled> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Bukti Pembayaran<span class="text-danger"> *</span></label> <input type="file" id="bukti" name="bukti" placeholder="" onblur="validate(3)">
-                            @error('bukti')
-                            <span class="text-danger" role="alert">
-                                <small><strong>{{ $message }}</strong></small>
-                            </span>
-                            @enderror
-                        </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Alamat Tujuan<span class="text-danger"> *</span></label> <textarea name="alamat" id="alamat" cols="10" rows="5">{{ (!empty(old('alamat')))? old('alamat') : Auth::user()->alamat }}</textarea> </div>
@@ -252,13 +245,6 @@ return flag;
                                     <div class="row">
                                         <div class="col-sm-4"><h6>Alamat Tujuan</h6></div>
                                         <div class="col-sm-8 text-secondary" id="konfirmasiAlamat">{{Auth::user()->alamat}}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-4"><h6>Bukti pembayaran</h6></div>
-                                        <div class="col-sm-8 text-secondary rect-img-container h-100 p-0 mx-3">
-                                            <img src="{{asset('images/profiles/preview.png')}}" alt="Foto" class="img-fluid rect-img" style="left:0%; width:100%" id="konfirmasiBukti">
-                                        </div>
                                     </div>
                                     <hr>
                                     <p>Kami sarankan untuk memeriksa kembali pesanan anda</p>

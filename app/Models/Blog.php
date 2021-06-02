@@ -52,6 +52,14 @@ class Blog extends Model
         return $rating;
     }
 
+    public function isRated(User $user){
+        $rating = DB::table('ratings')->where('id_user', $user->id)->where('ratable_id', $this->id)
+                        ->where('ratable_type', 'App\Models\Blog')->first('id');
+
+        if($rating != null) return true;
+        else return false;
+    }
+
     public function rating(){
         $id = $this->rateId();
         if($id != null){
@@ -62,7 +70,8 @@ class Blog extends Model
 
     public function ratingValue(){
         $rating = $this->ratings->avg('rating');
-        return $rating;
+
+        return number_format((float)$rating, 2, '.', '');
     }
     /**
      * The attributes that should be hidden for arrays.

@@ -59,6 +59,7 @@ class BlogController extends Controller
         $blog->user()->associate(Auth::user());
         $blog->isi_blog = $validated['blogcontent'];
         $blog->nama_blog = $validated['blog_title'];
+        $blog->toko = Auth::user()->toko;
 
         if($request->hasFile('blog_image')){
             $ext = $validated['blog_image']->getClientOriginalExtension();

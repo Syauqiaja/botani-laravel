@@ -139,7 +139,7 @@
 					</div>
 					<div class="col-lg-9 col-md-8 col-12">
 						<div class="row">
-							<div class="col-12">
+							{{-- <div class="col-12"> --}}
 								<!-- Shop Top -->
 								<div class="shop-top">
 									<div class="shop-shorter">
@@ -167,7 +167,7 @@
 									</ul>
 								</div>
 								<!--/ End Shop Top -->
-							</div>
+							{{-- </div> --}}
 						</div>
 						<div class="row">
                             @forelse ($produks as $produk)
@@ -175,8 +175,8 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="{{route('produk.show', $produk->id)}}">
-											<img class="default-img" src="{{ (!empty($produk->foto_produk)) ? asset($produk->foto_produk->path) : asset('images/profiles/preview.png') }}" alt="#">
-											<img class="hover-img" src="{{ (!empty($produk->foto_produk)) ? asset($produk->foto_produk->path) : asset('images/profiles/preview.png') }}" alt="#">
+											<img class="default-img" src="{{ (!empty($produk->fotos)) ? asset($produk->fotos->first()->path) : asset('images/profiles/preview.png') }}" alt="#">
+											<img class="hover-img" src="{{ (!empty($produk->fotos)) ? asset($produk->fotos->first()->path) : asset('images/profiles/preview.png') }}" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
@@ -185,7 +185,7 @@
 												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart">Masukkan Keranjang</a>
+												<a title="Toko" href="{{route('toko.show', $produk->id_toko)}}">{{$produk->toko['nama_toko']}}</a>
 											</div>
 										</div>
 									</div>
