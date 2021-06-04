@@ -1,10 +1,11 @@
 1. Download seluruh file pada repo ini
 2. Extract, lalui buka melalui text editor
-3. pada terminal text editor, jalankan perintah berikut
+3. pada terminal text editor, jalankan perintah berikut perbaris
 
 composer install
 cp .env.example .env
 php artisan key:generate
+composer require unisharp/laravel-filemanager
 php artisan migrate --seed
 
 4. Lalu, tinggal jalankan server :
