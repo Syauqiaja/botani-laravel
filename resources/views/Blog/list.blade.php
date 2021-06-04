@@ -138,8 +138,8 @@
                                       </button>
                                     </div>
                                     <div class="bs modal-body text-center">
-                                      Maaf, barang tidak ditemukan. <br>
-                                      Barang anda tidak terdaftar dengn nama tersebut. <br>
+                                      Maaf, blog tidak ditemukan. <br>
+                                      blog anda tidak terdaftar dengan Judul tersebut. <br>
                                       Mohon cari dengan kata kunci lain :)
                                     </div>
                                     <div class="bs modal-footer">
@@ -195,9 +195,7 @@
 								<!-- Single Post -->
 								<div class="single-post">
                                     <div class="image">
-                                        {{-- <div class="rect-img-container"> --}}
                                             <img src="{{($newblog->foto == null)? asset('images/profiles/preview.png') : asset($newblog->foto)}}" alt="#" class="rect-img img-fluid">
-                                        {{-- </div> --}}
 									</div>
 									<div class="content">
                                         <h5><a href="{{route('blog.show', $newblog->id)}}">{{$newblog->nama_blog}}</a></h5>

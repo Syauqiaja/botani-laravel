@@ -152,7 +152,9 @@ class PemesananController extends Controller
         $pemesanan->tanggal_pembayaran = Carbon::now();
         $pemesanan->save();
 
-        return redirect()->route('home')->with('pesan', "Pemesanan berhasil dibuat, silahkan lihat pesanan di 'Riwayat Pembelian' untuk melakukan pembayaran");
+        return redirect()->route('home')
+                        ->with('pesan', "Pemesanan berhasil dibuat, silahkan lihat pesanan di 'Riwayat Pembelian' untuk melakukan pembayaran")
+                        ->with('id_pemesanan', $pemesanan->id);
     }
 
     /**

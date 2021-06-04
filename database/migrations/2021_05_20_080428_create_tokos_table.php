@@ -19,6 +19,8 @@ class CreateTokosTable extends Migration
             $table->string('nama_toko');
             $table->text('informasi_toko');
             $table->text('alamat_toko');
+            $table->string('ktp');
+            $table->string('nik', 16);
             $table->timestamps();
         });
     }

@@ -38,8 +38,12 @@ class UserController extends Controller
             "email" => "required|email|unique:users,email,".$user->id.",id|string|max:255",
             "jenis_kelamin" => "",
             "alamat" => "",
+            "quote" => "",
+            "toko" => "",
             "foto_profil" => "image|max:2000"
         ]);
+        $user->toko->nama_toko = $validator['toko'];
+        $user->quote = $validator['quote'];
         $user->nama = $validator['nama'];
         $user->telepon = $validator['telepon'];
         $user->email = $validator['email'];
@@ -55,6 +59,7 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('user.show', $user->id)->with('pesan', 'Selamat, perubahan berhasil !');
     }
+
     public function penjual(){
         if(Auth::user()->toko == null){
             return redirect()->route('toko.create');
@@ -63,5 +68,11 @@ class UserController extends Controller
     }
     public function admin(){
         return redirect()->route('home');
+    }
+
+    public function destroy(User $user){
+        $user->delete();
+
+        return redirect()->route('admin.user');
     }
 }

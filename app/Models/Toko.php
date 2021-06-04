@@ -12,11 +12,24 @@ class Toko extends Model
         "id_user",
         "nama_toko",
         "informasi_toko",
+        "nik",
+        "ktp",
         "alamat_toko",
     ];
 
+    protected $hidden = [
+        'nik',
+        'ktp',
+    ];
+
+    public static function popular($i){
+        $tokos = Toko::withCount(['produks', 'blogs'])->orderBy('produks_count', 'desc')->take($i)->get();
+        return $tokos;
+    }
+
     public function user(){
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user')->withDefault(
+            MissingUser::make(['id' => $this->id_user]));
     }
 
     public function pembayaran(){
@@ -37,5 +50,22 @@ class Toko extends Model
         if($this->blogs->count() > 0)
             return number_format((float)$blogRatings/$this->blogs->count(), 2, '.', '');
         else return "N";
+    }
+    public function delete()
+    {
+        // delete all related photos
+        $this->blogs()->delete();
+        $this->pembayaran()->delete();
+        $this->produks()->delete();
+        // as suggested by Dirk in comment,
+        // it's an uglier alternative, but faster
+        // Photo::where("user_id", $this->id)->delete()
+
+        // delete the user
+        return parent::delete();
+    }
+    public static function findOrMissing($id)
+    {
+        return self::find($id) ?? MissingToko::make();
     }
 }

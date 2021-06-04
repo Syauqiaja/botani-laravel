@@ -21,7 +21,7 @@ class CommentController extends Controller
 
         $comment->user()->associate($request->user());
 
-        $blog = Blog::find($request->id_blog);
+        $blog = Blog::findOrMissing($request->id_blog);
 
         $blog->comments()->save($comment);
 
@@ -42,7 +42,7 @@ class CommentController extends Controller
 
         $reply->id_parent = $request->get('id_parent');
 
-        $blog = Blog::find($request->get('id_blog'));
+        $blog = Blog::findOrMissing($request->get('id_blog'));
 
         $blog->comments()->save($reply);
 

@@ -95,13 +95,17 @@ class ProdukController extends Controller
             $produks = Produk::where('nama_produk', 'like', "%".$request->search."%")
                             ->get();
         }
-        // dump($produks);
-        // die;
-        // foreach($produks as $produk){
-        //     dump($produk->toko);
-        // }
-        // die;
         return view('Produk.search', ["produks" => $produks]);
+    }
+
+    public function showJenis($jenis){
+            $produks = Produk::where('jenis_produk', '=', $jenis)
+                            ->get();
+        return view('Produk.search', ["produks" => $produks]);
+    }
+
+    public function showList(){
+        return view('Produk.search', ["produks" => Produk::all()]);
     }
 
 
@@ -125,6 +129,10 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+        $produk->delete();
+        if(Auth::user()->role == 2)
+            return redirect()->route('toko.manage.produk');
+        else if(Auth::user()->role == 3)
+        return redirect()->route('admin.produk');
     }
 }

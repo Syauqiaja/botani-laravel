@@ -263,7 +263,7 @@
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active mr-0"><a href="{{url('/')}}">Beranda</a></li>
-													<li class="mr-0"><a href="#">Produk</a></li>
+													<li class="mr-0"><a href="{{route('produk.showList')}}">Produk</a></li>
 
 
 													<li class="mr-0"><a href="#">Blogtani<i class="ti-angle-down"></i></a>
@@ -275,7 +275,7 @@
                                                             <li><a href="{{route('blog.create')}}">Buat Blogtani</a></li>
 														</ul>
 													</li>
-													<li class="mr-0"><a href="contact.html">Hubungi Kami</a></li>
+													<li class="mr-0"><a href="{{route('contact')}}">Tentang</a></li>
                                                     @auth
                                                         @if(Auth::user()->role == 3)
                                                         <li class="mr-0"><a href="{{route('admin.user')}}">Admin Page</a></li>

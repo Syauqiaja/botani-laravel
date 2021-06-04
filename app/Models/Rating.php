@@ -19,6 +19,7 @@ class Rating extends Model
         return $this->morphTo();
     }
     public function user(){
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user')->withDefault(
+            MissingUser::make(['id' => $this->id_user]));
     }
 }

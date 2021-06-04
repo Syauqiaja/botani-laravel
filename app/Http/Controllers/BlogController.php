@@ -157,12 +157,10 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        DB::table('comments')
-                ->where('commentable_type', '=', 'App\Models\Blog')
-                ->where('commentable_id', '=', $blog->id)
-                ->delete();
         $blog->delete();
-
-        return "Data dihapus";
+        if(Auth::user()->role == 2)
+            return redirect()->route('toko.manage.blog');
+        else if(Auth::user()->role == 3)
+            return redirect()->route('admin.blog');
     }
 }

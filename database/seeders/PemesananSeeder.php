@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Produk;
+use App\Models\User;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,14 +19,15 @@ class PemesananSeeder extends Seeder
     {
 
         $faker = Faker::create('id_ID');
-
+        $ucount = User::count();
+        $pcount = Produk::count();
         $ekspedisi = ["Pos Indonesia","JNE","Ninja Express","SICEPAT"];
         for($i = 1; $i <= 50; $i++){
-            $produk = Produk::find(rand(1,50));
+            $produk = Produk::findOrMissing(rand(1,$pcount));
             $kuantitas = rand(1,30);
             DB::table('pemesanans')->insert([
                 'id_produk' => $produk->id,
-                'id_user' => 51,
+                'id_user' => rand(1,$ucount),
                 'id_toko' => $produk->toko->id,
                 'ekspedisi' => $ekspedisi[rand(0,3)],
                 'kuantitas' => $kuantitas,

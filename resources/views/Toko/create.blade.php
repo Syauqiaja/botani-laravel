@@ -68,7 +68,7 @@
                         <div class="head-title"></div>
                     </div>
                 </div>
-                <form method="POST" action="{{route('toko.store')}}" >
+                <form method="POST" action="{{route('toko.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama Toko</label>
@@ -105,7 +105,39 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group mt-3">
+                        <label for="atas_nama">Atas Nama (no.rek)</label>
+                            <input id="atas_nama" type="text" class="form-control" name="atas_nama" value="" placeholder="Atas Nama">
+                            @error('atas_nama')
+                            <span class="text-danger" role="alert">
+                                <small><strong>{{ $message }}</strong></small>
+                            </span>
+                        @enderror
+                    </div>
 
+                    <div class="form-group mt-3">
+                        <label for="nik">NIK Pemilik Toko</label>
+                            <input id="nik" type="text" class="form-control" name="nik" value="" placeholder="NIK atau No.KTP">
+                            @error('nik')
+                            <span class="text-danger" role="alert">
+                                <small><strong>{{ $message }}</strong></small>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="ktp" name="ktp">
+                            <label class="custom-file-label" for="ktp" aria-describedby="PembayaranAria">Foto KTP<small> (semua elemen harus terlihat jelas)</small></label>
+                        </div>
+                        @error('ktp')
+                        <span class="text-danger" role="alert">
+                            <small><strong>{{ $message }}</strong></small>
+                        </span>
+                        @enderror
+                    </div>
+                    <small>* tenang saja, kami tidak akan menyebarluaskan informasi pribadi tentang anda</small>
+                    <hr>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
@@ -131,6 +163,7 @@
                             Kirim
                         </button>
                     </div>
+
                 </form>
             </div>
             <div class="card-footer">

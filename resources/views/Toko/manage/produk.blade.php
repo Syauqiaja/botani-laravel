@@ -93,7 +93,8 @@ box-shadow: none!important;
             <table class="table table-hover table-inverse table-scrollx" style="width: 100%">
                 <thead class="thead-inverse">
                     <tr class="bg-success text-white text-center table-title">
-                        <th colspan="8">Manajemen Produk</th>
+                        <th colspan="7">Manajemen Produk</th>
+                        <th><a href="{{route('produk.create')}}" class="border border-white px-2 py-1 text-truncate rounded">Tambah <i class="fas fa-plus"></i></a></th>
                     </tr>
                     <tr class="bg-success text-white text-center">
                         <th>No</th>
@@ -131,7 +132,7 @@ box-shadow: none!important;
                             <td>
                                 <div class="rect-img-container">
                                     @if($produk->fotos != null)
-                                    <img src="{{$produk->fotos->first()->path}}" alt="" class="rect-img img-fluid">
+                                    <img src="{{asset($produk->fotos->first()->path)}}" alt="" class="rect-img img-fluid">
                                     @else
                                     <img src="{{asset('images/profiles/preview.png')}}" alt="" class="rect-img img-fluid">
                                     @endif
@@ -139,9 +140,10 @@ box-shadow: none!important;
                             </td>
                             <td class="text-truncate text-center">
                                 <div class="d-block">
-                                    <form action="" method="post" class="position-relative">
+                                    <form action="{{route('produk.destroy', $produk->id)}}" method="post" class="position-relative" onSubmit="return confirm('Apa kamu yakin ingin menghapus ini?');">
+                                        @csrf @method('DELETE')
                                         <a class="btn bs btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                                        <button type="submit" class="btn bs btn-danger"><i class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn bs btn-danger" onclick="return confirm_reset()"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -162,6 +164,9 @@ box-shadow: none!important;
 @endsection
 @section('script')
 <script>
+    function confirm_reset() {
+    return confirm("Apa kamu yakin ingin menghapus ini?");
+}
     $(document).ready(function(){
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");

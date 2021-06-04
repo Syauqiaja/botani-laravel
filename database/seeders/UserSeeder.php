@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,11 +22,12 @@ class UserSeeder extends Seeder
         $profil = ['female-', 'male-'];
 
         for($i = 1; $i <= 50; $i++){
+            $nama = $faker->name;
           DB::table('users')->insert([
-              'nama' => $faker->name,
-              'email' => $faker->name.rand(0, 1000).'@gmail.com',
+              'nama' => $nama,
+              'email' => Str::snake($nama.rand(0, 1000)).'@gmail.com',
               'jenis_kelamin' => $kelamin[rand(0,1)],
-              'password' => $faker->hash,
+              'password' => Hash::make("12345678"),
               'telepon' => substr($faker->phoneNumber, 0, 30),
               'quote' => $faker->text($maxNbChars = 100),
               'alamat' => $faker->address,

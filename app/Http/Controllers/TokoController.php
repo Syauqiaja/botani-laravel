@@ -69,20 +69,32 @@ class TokoController extends Controller
             "nama" => "required|max:255",
             "info" => "required",
             "alamat" => "required",
+            "atas_nama" => "required",
             "kode_identitas" => "required",
+            "nik" => "required|digits:16",
+            "ktp" => "required|image",
             "pembayaran" => "required",
         ]);
         $toko = new Toko;
+
+        if($request->hasFile('ktp')){
+            $ext = $request->ktp->getClientOriginalExtension();
+            $nama = md5($request->ktp->getClientOriginalName().time()).'.'.$ext;
+            $path = $request->ktp->move('images\ktp',$nama);
+        }
 
         $toko->user()->associate(Auth::user());
         $toko->nama_toko = $request->nama;
         $toko->informasi_toko = $request->info;
         $toko->alamat_toko = $request->alamat;
+        $toko->nik = $request->nik;
+        $toko->ktp = $path;
         $toko->save();
 
         $pembayaran = new Pembayaran;
         $pembayaran->metode = $request->pembayaran;
         $pembayaran->kode_identitas = $request->kode_identitas;
+        $pembayaran->atas_nama = $request->atas_nama;
         $pembayaran->toko()->associate($toko);
         $pembayaran->user()->associate(Auth::user());
         $pembayaran->save();

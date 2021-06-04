@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'Produk')
 @section('content')
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
@@ -8,8 +8,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="blog-single.html">Shop Grid</a></li>
+								<li><a href="{{route('home')}}">Beranda<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="{{route('produk.showList')}}">Produk</a></li>
 							</ul>
 						</div>
 					</div>
@@ -26,57 +26,28 @@
 						<div class="shop-sidebar">
 								<!-- Single Widget -->
 								<div class="single-widget category">
-									<h3 class="title">Categories</h3>
+									<h3 class="title">Kategori</h3>
 									<ul class="categor-list">
-										<li><a href="#">T-shirts</a></li>
-										<li><a href="#">jacket</a></li>
-										<li><a href="#">jeans</a></li>
-										<li><a href="#">sweatshirts</a></li>
-										<li><a href="#">trousers</a></li>
-										<li><a href="#">kitwears</a></li>
-										<li><a href="#">accessories</a></li>
+										<li><a href="{{route('produk.showJenis',"Tanaman")}}">Tanaman</a></li>
+										<li><a href="{{route('produk.showJenis',"Peralatan")}}">Peralatan</a></li>
 									</ul>
 								</div>
 								<!--/ End Single Widget -->
-								<!-- Shop By Price -->
-									<div class="single-widget range">
-										<h3 class="title">Shop by Price</h3>
-										<div class="price-filter">
-											<div class="price-filter-inner">
-												<div id="slider-range"></div>
-													<div class="price_slider_amount">
-													<div class="label-input">
-														<span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price"/>
-													</div>
-												</div>
-											</div>
-										</div>
-										<ul class="check-box-list">
-											<li>
-												<label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - $50<span class="count">(3)</span></label>
-											</li>
-											<li>
-												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - $100<span class="count">(5)</span></label>
-											</li>
-											<li>
-												<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - $250<span class="count">(8)</span></label>
-											</li>
-										</ul>
-									</div>
-									<!--/ End Shop By Price -->
+
 								<!-- Single Widget -->
 								<div class="single-widget recent-post">
 									<h3 class="title">Recent post</h3>
+                                    @foreach (\App\Models\Produk::latestProduk(3) as $produk)
 									<!-- Single Post -->
 									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
+                                        <div class="image">
+                                            <img src="{{($produk->fotos == null)? asset('images/profiles/preview.png') : asset($produk->fotos->first()->path)}}" alt="#" class="rect-img img-fluid">
+									    </div>
 										<div class="content">
-											<h5><a href="#">Girls Dress</a></h5>
-											<p class="price">$99.50</p>
+                                            <h5><a href="{{route('produk.show', $produk->id)}}">{{$produk->nama_produk}}</a></h5>
+											<p class="price">Rp.<span class="harga-produk">{{$produk->harga_produk}}</span></p>
 											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
+                                                <li class="yellow"><i class="ti-star"></i></li>
 												<li class="yellow"><i class="ti-star"></i></li>
 												<li class="yellow"><i class="ti-star"></i></li>
 												<li><i class="ti-star"></i></li>
@@ -85,53 +56,16 @@
 										</div>
 									</div>
 									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Women Clothings</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Man Tshirt</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
+                                    @endforeach
 								</div>
 								<!--/ End Single Widget -->
 								<!-- Single Widget -->
 								<div class="single-widget category">
-									<h3 class="title">Manufacturers</h3>
+									<h3 class="title">Toko Terpopuler</h3>
 									<ul class="categor-list">
-										<li><a href="#">Forever</a></li>
-										<li><a href="#">giordano</a></li>
-										<li><a href="#">abercrombie</a></li>
-										<li><a href="#">ecko united</a></li>
-										<li><a href="#">zara</a></li>
+                                        @foreach (\App\Models\Toko::popular(3) as $toko)
+										<li><a href="{{route('toko.show', $toko->id)}}">{{$toko->nama_toko}}</a></li>
+                                        @endforeach
 									</ul>
 								</div>
 								<!--/ End Single Widget -->
@@ -139,7 +73,7 @@
 					</div>
 					<div class="col-lg-9 col-md-8 col-12">
 						<div class="row">
-							{{-- <div class="col-12"> --}}
+							<div class="col-12">
 								<!-- Shop Top -->
 								<div class="shop-top">
 									<div class="shop-shorter">
@@ -162,12 +96,11 @@
 										</div>
 									</div>
 									<ul class="view-mode">
-										<li class="active"><a href="shop-grid.html"><i class="fa fa-th-large"></i></a></li>
-										<li><a href="shop-list.html"><i class="fa fa-th-list"></i></a></li>
+										<li class="active"><a><i class="fa fa-th-large"></i></a></li>
 									</ul>
 								</div>
 								<!--/ End Shop Top -->
-							{{-- </div> --}}
+							</div>
 						</div>
 						<div class="row">
                             @forelse ($produks as $produk)
@@ -193,6 +126,11 @@
 										<h3><a href="{{route('produk.show', $produk->id)}}">{{$produk->nama_produk}}</a></h3>
 										<div class="product-price">
 											<span>Rp.<span class="harga-produk">{{$produk->harga_produk}}</span></span>
+                                            @if($produk->jenis_produk == "Tanaman")
+                                            <span class="text-right mx-auto text-success border border-success px-1">Tanaman</span>
+                                            @else
+                                            <span class="text-right mx-auto text-primary border border-primary px-1">Peralatan</span>
+                                            @endif
 										</div>
 									</div>
 								</div>

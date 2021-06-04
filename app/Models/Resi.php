@@ -17,7 +17,8 @@ class Resi extends Model
     ];
 
     public function toko(){
-        return $this->belongsTo(Toko::class, 'id_toko');
+        return $this->belongsTo(Toko::class, 'id_toko')->withDefault(
+            MissingToko::make(['id' => $this->id_toko]));
     }
 
     public function pemesanan(){

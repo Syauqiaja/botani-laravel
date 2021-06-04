@@ -123,7 +123,7 @@ box-shadow: none!important;
                             <td>
                                 <div class="rect-img-container">
                                     @if($produk->fotos != null)
-                                    <img src="{{$produk->fotos->first()->path}}" alt="" class="rect-img img-fluid">
+                                    <img src="{{asset($produk->fotos->first()->path)}}" alt="" class="rect-img img-fluid">
                                     @else
                                     <img src="{{asset('images/profiles/preview.png')}}" alt="" class="rect-img img-fluid">
                                     @endif
@@ -131,7 +131,8 @@ box-shadow: none!important;
                             </td>
                             <td class="text-truncate">
                                 <div class="d-block">
-                                    <form action="" method="post" class="position-relative">
+                                    <form action="{{route('produk.destroy', $produk->id)}}" method="post" class="position-relative" onSubmit="return confirm('Apa kamu yakin ingin menghapus ini?');">
+                                        @csrf @method('DELETE')
                                         <a href="" class="btn bs btn-primary mr-1"><i class="fas fa-edit"></i></a>
                                         <button type="submit" class="btn bs btn-danger"><i class="fas fa-trash"></i></button>
                                     </form>
@@ -154,6 +155,9 @@ box-shadow: none!important;
 @endsection
 @section('script')
 <script>
+    function confirm_reset() {
+    return confirm("Apa kamu yakin ingin menghapus ini?");
+}
     $(document).ready(function(){
         $('.table-scrollx').DataTable({
             "scrollX": true,

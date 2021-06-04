@@ -13,6 +13,7 @@ class Pembayaran extends Model
         'id_user',
         'id_toko',
         'metode',
+        'atas_nama',
         'kode_identitas'
     ];
 

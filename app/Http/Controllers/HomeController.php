@@ -25,20 +25,7 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function createProduct()
-    {
-        return view('Toko.create-product');
-    }
-    public function editProduct()
-    {
-        return view('Toko.edit-product');
-    }
-    public function showProduct()
-    {
-        return view('Toko.dashboard-shop');
-    }
-    public function showUser()
-    {
-        return view('Admin.dashboard-admin');
+    public function contact(){
+        return view('contact');
     }
 }

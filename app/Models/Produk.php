@@ -23,10 +23,30 @@ class Produk extends Model
     }
 
     public function toko(){
-        return $this->belongsTo(Toko::class, 'id_toko');
+        return $this->belongsTo(Toko::class, 'id_toko')->withDefault(
+            MissingToko::make(['id' => $this->id_toko]));
     }
 
     public function ratings(){
         return $this->morphMany(Rating::class, 'ratable');
+    }
+    public static function latestProduk($i){
+        $produks = Produk::orderBy('created_at', 'desc')->take($i)->get();
+        return $produks;
+    }
+    public function delete()
+    {
+        // delete all related photos
+        $this->fotos()->delete();
+        // as suggested by Dirk in comment,
+        // it's an uglier alternative, but faster
+        // Photo::where("user_id", $this->id)->delete()
+
+        // delete the user
+        return parent::delete();
+    }
+    public static function findOrMissing($id)
+    {
+        return self::find($id) ?? MissingProduk::make();
     }
 }

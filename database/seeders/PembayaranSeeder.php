@@ -18,16 +18,17 @@ class PembayaranSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         $metode = ["BRI","BCA","BNI","Mandiri"];
+        $tcount = Toko::count();
         for($i = 1; $i <= 50; $i++){
 
-            $kuantitas = rand(1,30);
-            $toko = Toko::find(rand(1, 20));
+            $toko = Toko::findOrMissing(rand(1, $tcount));
             if($toko != null)
             DB::table('pembayarans')->insert([
                 'id_user' => $toko->user->id,
                 'id_toko' => $toko->id,
                 'metode' => $metode[rand(0,3)],
                 'kode_identitas' => $faker->bankAccountNumber,
+                'atas_nama' => $toko->user->nama,
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);

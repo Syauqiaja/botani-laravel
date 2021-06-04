@@ -130,9 +130,9 @@ box-shadow: none!important;
                             </td>
                             <td class="text-truncate">
                                 <div class="d-block">
-                                    <form action="" method="post" class="position-relative">
+                                    <form action="{{route('blog.destroy', $blog->id)}}" method="post" class="position-relative" onSubmit="return confirm('Apa kamu yakin ingin menghapus ini?');">@csrf @method('DELETE')
                                         <a href="{{route('blog.edit', $blog->id)}}" class="btn bs btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                                        <button type="submit" class="btn bs btn-danger"><i class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn bs btn-danger" onclick="return confirm_reset()"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -153,6 +153,9 @@ box-shadow: none!important;
 @endsection
 @section('script')
 <script>
+    function confirm_reset() {
+    return confirm("Apa kamu yakin ingin menghapus ini?");
+}
     $(document).ready(function(){
         $('.table-scrollx').DataTable({
             "scrollX": true,

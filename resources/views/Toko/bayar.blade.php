@@ -38,7 +38,7 @@ background-color: #e2e8f0;
                              <h3 class="card-title">{{$pembayaran->metode}}</h3>
                          </div>
                          <div class="card-body">
-                             <p class="card-text">[{{$pembayaran->kode_identitas}}]</p>
+                             <p class="card-text">[{{$pembayaran->kode_identitas}}] - {{$pembayaran->atas_nama}}</p>
                             </div>
                         </div>
                     </div>

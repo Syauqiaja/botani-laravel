@@ -25,8 +25,9 @@ class BlogSeeder extends Seeder
             asset('images/produks/bc300e83edcb3ba0895cf4ad76bba60d.jpeg'),
             asset('images/produks/aaea353f072b0ae90ed5ead35e72c6e8.jpeg'),
         ];
-        for($i = 1; $i <= 50; $i++){
-            $toko = Toko::find(rand(1, 20));
+        $tcount = Toko::count();
+        for($i = 1; $i <= 70; $i++){
+            $toko = Toko::findOrMissing(rand(1, $tcount));
             if($toko != null)
             DB::table('blogs')->insert([
                 'nama_blog' => $faker->sentence(4,true),

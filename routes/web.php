@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::prefix('produks')->group(function () {
     Route::get('/', [ProdukController::class, 'index'])->name('produk.index');
+    Route::get('/showList', [ProdukController::class, 'showList'])->name('produk.showList');
+    Route::get('/show/jenis/{jenis}', [ProdukController::class, 'showJenis'])->name('produk.showJenis');
     Route::get('/create', [ProdukController::class, 'create'])->name('produk.create');
     Route::post('/search', [ProdukController::class, 'search'])->name('produk.search');
     Route::post('/rate/{produk}', [ProdukController::class, 'rate'])->name('produk.rate');
@@ -49,18 +51,14 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.ed
 Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
 Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
 Route::get('/users/', [UserController::class, 'index'])->name('user.index');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::get('/admin/user', [AdminController::class, 'manageUser'])->name('admin.user');
 Route::get('/admin/blog', [AdminController::class, 'manageBlog'])->name('admin.blog');
 Route::get('/admin/produk', [AdminController::class, 'manageProduk'])->name('admin.produk');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Buat Test biar bisa edit nanti disesuaikan aja gpp :v
-Route::get('/createproduct',[HomeController::class,'createProduct']); //create produk toko
-Route::get('/editproduct',[HomeController::class,'editProduct']); //edit produk toko
-Route::get('/showproduct',[HomeController::class,'showProduct']);//show product dashboard toko
-Route::get('/showuser',[HomeController::class,'showUser']);//show user dashboard admin
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 
 Route::post('/pemesanans/', [PemesananController::class, 'store'])->name('pemesanan.store');
 Route::get('/pemesanans/{pemesanan}/bayar', [PemesananController::class, 'bayar'])->name('pemesanan.bayar');
@@ -70,6 +68,9 @@ Route::get('/pemesanans/{pemesanan}', [PemesananController::class, 'show'])->nam
 Route::get('/pemesanans/{pemesanan}/edit', [PemesananController::class, 'edit'])->name('pemesanan.edit');
 Route::patch('/pemesanans/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
 
+Route::get('/force-logout', function () {
+    return view('logout');
+});
 
 Route::get('/tokos/create', [TokoController::class, 'create'])->name('toko.create');
 Route::get('/tokos/manage', [TokoController::class, 'manageProduk'])->name('toko.manage');

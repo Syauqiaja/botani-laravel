@@ -19,6 +19,7 @@ class CreatePembayaransTable extends Migration
             $table->bigInteger('id_toko');
             $table->string('metode');
             $table->string('kode_identitas');
+            $table->string('atas_nama');
             $table->timestamps();
         });
     }

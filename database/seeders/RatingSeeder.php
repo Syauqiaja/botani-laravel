@@ -18,9 +18,11 @@ class RatingSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
+        $ucount = User::count();
+        $bcount = Blog::count();
         for($i = 1; $i <= 50; $i++){
-            $blog = Blog::find(rand(1,38));
-            $user = User::find(rand(1,52));
+            $blog = Blog::findOrMissing(rand(1,$bcount));
+            $user = User::findOrMissing(rand(1,$ucount));
 
             if(!$blog->isRated($user))
             DB::table('ratings')->insert([

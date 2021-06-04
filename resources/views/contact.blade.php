@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', "Tentang")
 @section('content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -26,48 +26,18 @@
 						<div class="col-lg-8 col-12">
 							<div class="form-main">
 								<div class="title">
-									<h4>Get in touch</h4>
-									<h3>Write us a message</h3>
+									<h4>Mengenal Startup Botani</h4>
+									<h3>AL KISAH</h3>
 								</div>
-								<form class="form" method="post" action="mail/mail.php">
-									<div class="row">
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Name<span>*</span></label>
-												<input name="name" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Subjects<span>*</span></label>
-												<input name="subject" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Email<span>*</span></label>
-												<input name="email" type="email" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Phone<span>*</span></label>
-												<input name="company_name" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-12">
-											<div class="form-group message">
-												<label>your message<span>*</span></label>
-												<textarea name="message" placeholder=""></textarea>
-											</div>
-										</div>
-										<div class="col-12">
-											<div class="form-group button">
-												<button type="submit" class="btn ">Send Message</button>
-											</div>
-										</div>
-									</div>
-								</form>
+								<p>
+                                    Website botani ini adalah karya anak bangsa yang menuangkan ide-ide cemerlang mereka pada media digital.
+                                    Ini bermula ketika 3 mahasiswa Universitas Negeri Malang yang sedang menjalani tugas besar matakuliah Pemrograman Web.
+                                    Mereka saling berdikusi tentang apa yang ingin mereka ciptakan.
+                                </p> <br>
+                                <p>Bukan hanya sebagai penggugur kewajiban, atau pemenuhan tugas. Tapi, mereka mencari inovasi baru yang dapat berguna bagi seluruh kalangan masyarakat.
+                                    Baik sebagai tempat berbisnis, maupun belajar. Akhirnya setelah perdebatan panjang, komitmen tinggi, serta perjuangan tanpa henti, lahirlah BOTANI.
+                                </p><hr>
+                                <p>Oleh : Syauqi, Diaz, dan Helmi</p>
 							</div>
 						</div>
 						<div class="col-lg-4 col-12">

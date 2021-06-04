@@ -191,7 +191,7 @@ box-shadow: none!important;
                       <h6 class="mb-0">Toko</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <a href="#" class="text-link">---Nama Toko---</a>
+                        <a href="{{route('toko.show', $user->toko->id)}}" class="text-link">{{$user->toko->nama_toko}}</a>
                     </div>
                  </div>
                  @endif

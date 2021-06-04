@@ -13,6 +13,23 @@
 @endsection
 
 @section('content')
+        <!-- Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="bread-inner">
+							<ul class="bread-list">
+								<li><a href="{{route('home')}}">Beranda<i class="ti-arrow-right"></i></a></li>
+								<li ><a href="{{route('produk.showList')}}">Produk<i class="ti-arrow-right"></i></a></li>
+                                <li class="active"><a href="{{route('produk.show', $produk->id)}}">Detail Produk</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
     <script>var harga = parseInt("<?php echo $produk->harga_produk; ?>");</script>
 
     <div class="bs modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

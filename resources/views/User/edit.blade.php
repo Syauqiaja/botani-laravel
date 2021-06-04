@@ -266,11 +266,9 @@ form input:focus{
                 @if($user['role']=='2')
                 <div class="row mb-3">
                     <div class="col-sm-3">
-                        <h6 class="mb-0">Toko</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        <a href="#" class="text-link">---Nama Toko---</a>
-                    </div>
+                        <label for="toko"><h6 class="mb-0">Toko</h6></label>
+                      </div>
+                      <input type="text" name="toko" id="toko" class="h-100 col-sm-8 text-secondary" value="{{$user->toko->nama_toko}}">
                 </div>
                 @endif
                 <button type="submit" class="btn bs btn-success rounded-0">Simpan Perubahan</button>

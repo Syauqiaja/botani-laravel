@@ -126,7 +126,8 @@ box-shadow: none!important;
                             <td>{{date("d-m-Y", strtotime($user->created_at))}}</td>
                             <td class="text-truncate">
                                 <div class="d-block">
-                                    <form action="" method="post" class="position-relative">
+                                    <form action="{{route('user.destroy', $user->id)}}" method="post" class="position-relative" onSubmit="return confirm('Apa kamu yakin ingin menghapus ini?');">
+                                        @csrf @method('DELETE')
                                         <a href="{{route('user.edit', $user->id)}}" class="btn bs btn-primary mr-1"><i class="fas fa-edit"></i></a>
                                         <button type="submit" class="btn bs btn-danger"><i class="fas fa-trash"></i></button>
                                     </form>
@@ -149,6 +150,9 @@ box-shadow: none!important;
 @endsection
 @section('script')
 <script>
+    function confirm_reset() {
+    return confirm("Apa kamu yakin ingin menghapus ini?");
+}
     $(document).ready(function(){
         $('.table-scrollx').DataTable({
             "scrollX": true,

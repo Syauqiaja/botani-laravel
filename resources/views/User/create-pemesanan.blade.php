@@ -161,7 +161,7 @@ return flag;
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             <div class="card">
-                <h5 class="text-center mb-4">Buat Pesanan</h5>
+                <h5 class="text-center mb-4">Lengkapi Pesanan</h5>
                 <form class="form-card" action="{{route('pemesanan.update', $pemesanan->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')

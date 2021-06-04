@@ -34,11 +34,13 @@ class Blog extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user')->withDefault(
+            MissingUser::make(['id' => $this->id_user]));
     }
 
     public function toko(){
-        return $this->belongsTo(Toko::class, 'id_toko');
+        return $this->belongsTo(Toko::class, 'id_toko')->withDefault(
+            MissingToko::make(['id' => $this->id_toko]));
     }
 
     public function comments()
@@ -55,6 +57,19 @@ class Blog extends Model
                         ->where('ratable_type', 'App\Models\Blog')->first('id');
 
         return $rating;
+    }
+
+    public function delete()
+    {
+        // delete all related photos
+        $this->ratings()->delete();
+        $this->comments()->delete();
+        // as suggested by Dirk in comment,
+        // it's an uglier alternative, but faster
+        // Photo::where("user_id", $this->id)->delete()
+
+        // delete the user
+        return parent::delete();
     }
 
     public function isRated(User $user){
@@ -87,4 +102,9 @@ class Blog extends Model
         'password',
         'remember_token',
     ];
+
+    public static function findOrMissing($id)
+    {
+        return self::find($id) ?? MissingBlog::make();
+    }
 }

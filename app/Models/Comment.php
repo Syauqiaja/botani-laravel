@@ -17,7 +17,8 @@ class Comment extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user')->withDefault(
+            MissingUser::make(['id' => $this->id_user]));
     }
 
     public function replies()
@@ -31,5 +32,16 @@ class Comment extends Model
 
     public function commentable(){
         return $this->morphTo();
+    }
+    public function delete()
+    {
+        // delete all related photos
+        $this->replies()->delete();
+        // as suggested by Dirk in comment,
+        // it's an uglier alternative, but faster
+        // Photo::where("user_id", $this->id)->delete()
+
+        // delete the user
+        return parent::delete();
     }
 }

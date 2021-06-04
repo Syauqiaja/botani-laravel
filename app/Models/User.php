@@ -19,6 +19,21 @@ class User extends Authenticatable
     public function toko() {
             return $this->hasOne(Toko::class, 'id_user');
     }
+    public function ratings(){
+        return $this->hasMany(Rating::class, 'id_user');
+    }
+    public function delete()
+    {
+        // delete all related photos
+        $this->toko()->delete();
+        $this->ratings()->delete();
+        // as suggested by Dirk in comment,
+        // it's an uglier alternative, but faster
+        // Photo::where("user_id", $this->id)->delete()
+
+        // delete the user
+        return parent::delete();
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +60,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public static function findOrMissing($id)
+    {
+        return self::find($id) ?? MissingUser::make();
+    }
 
     /**
      * The attributes that should be cast to native types.
