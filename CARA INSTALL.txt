@@ -1,0 +1,5 @@
+1. Download seluruh file pada repo ini
+2. Extract, lalui buka melalui text editor
+3. pada terminal text editor, jalankan perintah berikut
+
+composer install
